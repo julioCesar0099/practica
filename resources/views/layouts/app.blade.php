@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Custom Login</title>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
@@ -15,5 +16,7 @@
 
         @yield('content')
     </div>
+
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
