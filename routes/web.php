@@ -19,4 +19,4 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-route::resource('/roles','RolesController');
+route::get('/roles','RolesController@index')->name('roles');

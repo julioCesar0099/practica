@@ -1,4 +1,20 @@
-@extends('layouts.app')
+@extends('admin.layout')
+
+@section('header')
+		<h1>
+				Panel principal de Roles
+				<small>descripcion opcional</small>
+		
+		</h1>
+
+		<ol class="breadcrumb">
+
+			<li><a href="#"><i class="fa fa-dashboard"></i> level</a></li>
+			<li class="active"> roles</li>
+		
+		</ol>
+
+@stop
 
 @section('content')
 
