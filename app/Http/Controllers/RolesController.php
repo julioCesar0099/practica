@@ -19,6 +19,11 @@ class RolesController extends Controller
         ]);
     }
 
+    public function laravel()
+    {
+        return view('laravel');
+    }
+
     /**
      * prueba nro 3
      * prueba nro 2

@@ -30,14 +30,14 @@
                          </div>
                     </div>
                     <div class="box-body">
-                        <div class="form-group">
+                       
                             @foreach ($roles as $role)
 
                                 <h1>{{ $role->name }}  </h1> <hr>
 
 
                             @endforeach 
-                        </div>
+                        
                     </div>
               </div>
 

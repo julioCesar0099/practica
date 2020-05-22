@@ -1,13 +1,13 @@
 <ul class="sidebar-menu" data-widget="tree">
   <li class="header">Navegación</li>
 
-	<li class="active">
-		<a href="#">
+	<li {{ request()->is('admin') ? 'class=active' : ''}}>
+		<a href="{{route('dashboard')}}">
 		<i class="fa fa-dashboard"></i> <span>Inicio</span>
 		</a>
 	</li>
 
-	<li class="treeview ">
+	<li class="treeview {{ request()->is('admin/combocatorias*') ? 'active' : ''}}">
 
 				<a href="#"><i class="fa fa-book"></i> <span>conbocatorias</span>
 						<span class="pull-right-container">
@@ -15,13 +15,13 @@
 						</span>
 				</a>
 						<ul class="treeview-menu">
-							<li >
-								<a href="#">
+							<li {{ request()->is('admin/combocatorias') ? 'class=active' : ''}} >
+								<a href="{{ route('admin.combocatorias.index') }}">
 									<i class="fa fa-eye"></i> Ver todos las combocatorias
 								</a>
 							</li>
-							<li>
-								<a href="#" >
+							<li {{ request()->is('admin/combocatorias/create') ? 'class=active' : ''}} >
+								<a href="{{route('admin.combocatorias.create')}}" >
 									<i class="fa fa-pencil"></i>Crear una combocatoria
 								</a>
 							</li>

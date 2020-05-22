@@ -11,12 +11,27 @@
 |
 */
 
+
 Route::get('/','Auth\LoginController@showLoginForm');
 
-Route::get('dashboard','DashboardController@index')->name('dashboard');
+
+
+Route::group([
+   'prefix'=> 'admin',
+   'namespace'=> 'Admin',
+   'middleware'=>'auth'],
+
+   function(){
+       Route::get('/','DashboardController@index')->name('dashboard');
+       Route::get('/combocatorias','CombocatoriaController@index')->name('admin.combocatorias.index');
+       Route::get('combocatorias/create','CombocatoriaController@create')->name('admin.combocatorias.create');
+       Route::post('combocatorias','CombocatoriaController@store')->name('admin.combocatorias.store');
+
+
+       route::get('/roles','RolesController@index')->name('roles');
+   });
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
 
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-route::get('/roles','RolesController@index')->name('roles');
