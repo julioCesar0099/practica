@@ -26,6 +26,7 @@ Route::group([
        Route::get('/combocatorias','CombocatoriaController@index')->name('admin.combocatorias.index');
        Route::get('combocatorias/create','CombocatoriaController@create')->name('admin.combocatorias.create');
        Route::post('combocatorias','CombocatoriaController@store')->name('admin.combocatorias.store');
+       Route::delete('combocatorias/{combocatoria}','CombocatoriaController@destroy')->name('admin.combocatorias.destroy');
 
 
        route::get('/roles','RolesController@index')->name('roles');

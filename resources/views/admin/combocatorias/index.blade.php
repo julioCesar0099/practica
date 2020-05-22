@@ -13,42 +13,40 @@
 
 @section('content')
   <div class="box box-primary">
-    <div class="box-header">
-      <h3 class="box-title">Lista de combocatorias</h3>
-      <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
-				<i class="fa fa-plus"></i>  Crear combocatoria
-			</button>
-    </div>
-    <div class="box-body">
-      <table id="combocatoria-table" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Descripcion</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($combocatorias as $combocatoria)
-            <tr>
-              <td>{{ $combocatoria->id }}</td>
-              <td>{{ $combocatoria->titulo }}</td>
-              <td>{{ $combocatoria->descripcion }}</td>
-              <td>
-                <a href="#"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
-				<a href="#"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
-				<a action="#" style="display: inline">
-						<button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar esta publicación?')"
-								><i class="fa fa-times"></i>
-						</button>
-				</a>	
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
+            <div class="box-header">
+                  <h3 class="box-title">Lista de combocatorias</h3>
+            </div>
+            <div class="box-body">
+              <table id="combocatoria-table" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($combocatorias as $combocatoria)
+                    <tr>
+                      <td>{{ $combocatoria->id }}</td>
+                      <td>{{ $combocatoria->titulo }}</td>
+                      <td>{{ $combocatoria->descripcion }}</td>
+                      <td>
+                          <a href="#"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
+                          <a href="#"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
+                          <form  method="POST" action="{{ route('admin.combocatorias.destroy', $combocatoria) }}"  style="display: inline">
+                          {{ csrf_field() }} {{ method_field('DELETE')}}
+
+                          <button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar esta publicación?')"><i class="fa fa-times"></i></button>
+                          
+                          </form>
+                      </td>
+                    </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
     <!-- /.box-body -->
   </div>
 @endsection

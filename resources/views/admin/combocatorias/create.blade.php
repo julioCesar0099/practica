@@ -17,10 +17,10 @@
 {{ csrf_field() }}
                 <div class="row">
                             <div class="col-md-6">
-                                    <div class="box box-primary">
-                                        <div class="box-header">
-                                            <h3 class="box-title">Crear una Combocatoria</h3>
-                                        </div>
+                                        <div class="box box-primary">
+                                                <div class="box-header">
+                                                    <h3 class="box-title">Crear una Combocatoria</h3>
+                                                </div>
                                                 <div class="box-body">
                                                         <div class="form-group {{ $errors->has('titulo') ? 'has-error' : '' }}">
                                                             <label> Titulo de la combocatoria</label>
@@ -48,7 +48,7 @@
                                     </div>
                             </div>
                             <div class="col-md-6">
-                                    <div class="box box-primary">
+                                                <div class="box box-primary">
                                                     <div class="box-header">
                                                     </div>
                                                 <div class="box-body">
@@ -139,11 +139,11 @@
                                             <div class="box-body">
                                                     <div class="form-group">
                                                         <label> Cantidad de auxiliares : Item 1</label>
-                                                        <input type="unsignedInteger" name="cantidad_aux" class="form-control" placeholder="ingresa el numero de auxiliares"></input>
+                                                        <input type="number" type="unsignedInteger" name="cantidad_aux" class="form-control" placeholder="ingresa el numero de auxiliares"></input>
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Horas laborales : Item 1</label>
-                                                        <input type="unsignedInteger" name="horas" class="form-control" placeholder="ingresa las horas asignadas"></input>
+                                                        <input type="number" type="unsignedInteger" name="horas" class="form-control" placeholder="ingresa las horas asignadas"></input>
                                                     </div>
                                                     <div class="form-group">
                                                         <label> Destino : Item 1</label>

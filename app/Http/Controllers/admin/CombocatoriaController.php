@@ -56,4 +56,11 @@ class CombocatoriaController extends Controller
 
         return back()->with('flash','La combocatoria a sido publicada');
     }
+
+    public function destroy(Combocatoria $combocatoria){
+
+        $combocatoria->delete();
+
+        return redirect()->route('admin.combocatorias.index')->with('flash','la combocatoria ha sido eliminado');
+    }
 }
