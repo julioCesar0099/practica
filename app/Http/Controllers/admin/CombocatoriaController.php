@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Combocatoria;
+use App\Documento_Combocatoria;
+use App\Requisito_Combocatoria;
+use App\Item;
 use App\Facultad;
 use App\Area;
 use App\Carrera;
@@ -50,9 +53,28 @@ class CombocatoriaController extends Controller
         $conv-> facultad_id = $request->get('facultad');
 
         $conv-> save();
-
         $conv->Carreras()->attach($request->get('carreras'));
 
+        $doc = new Documento_Combocatoria;
+        $doc-> combocatoria_id = $conv->id;
+        $doc-> detalle = $request->get('detalle_documento');
+        $doc-> save();
+
+        $doc = new Requisito_Combocatoria;
+        $doc-> combocatoria_id = $conv->id;
+        $doc-> detalle = $request->get('detalle_requisito');
+        $doc-> save();
+
+
+        $doc = new Item;
+        $doc-> combocatoria_id = $conv->id;
+        $doc-> area_id = $request->get('area');
+        $doc-> cantidad_aux= $request->get('cantidad_aux');
+        $doc-> horas = $request->get('horas');
+        $doc-> destino = $request->get('destino');
+        $doc-> save();
+
+        
 
         return back()->with('flash','La combocatoria a sido publicada');
     }

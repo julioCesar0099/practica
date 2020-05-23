@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('area_id');
             $table->Integer('cantidad_aux');
             $table->Integer('horas');
-            $table->string('destino');
+            $table->text('destino');
             $table->timestamps();
         });
     }

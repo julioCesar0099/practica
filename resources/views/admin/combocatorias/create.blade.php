@@ -2,12 +2,12 @@
 
 @section('header')
   <h1>
-     Crear Nueva Combocatoria 
+     Crear Nueva Convocatoria 
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
-    <li><a href="{{ route('admin.combocatorias.index') }}"><i class="fa fa-list"></i> Combocatorias</a></li>
-    <li class="active"> crear combocatoria</li>
+    <li><a href="{{ route('admin.combocatorias.index') }}"><i class="fa fa-list"></i> Convocatorias</a></li>
+    <li class="active"> crear convocatoria</li>
   </ol>
 @endsection
 
@@ -19,17 +19,17 @@
                             <div class="col-md-6">
                                         <div class="box box-primary">
                                                 <div class="box-header">
-                                                    <h3 class="box-title">Crear una Combocatoria</h3>
+                                                    <h3 class="box-title">Crear una Convocatoria</h3>
                                                 </div>
                                                 <div class="box-body">
                                                         <div class="form-group {{ $errors->has('titulo') ? 'has-error' : '' }}">
-                                                            <label> Titulo de la combocatoria</label>
-                                                            <input name="titulo" class="form-control" placeholder="ingresa el titulo de la combocatoria">
+                                                            <label> Titulo de la convocatoria</label>
+                                                            <input name="titulo" class="form-control" placeholder="ingresa el titulo de la convocatoria">
                                                             {!! $errors->first('titulo','<span class=help-block>:message</span>') !!}
                                                         </div>
                                                         <div class="form-group {{ $errors->has('descripcion') ? 'has-error' : '' }} ">
-                                                            <label> Descripcion de la combocatoria</label>
-                                                            <input name="descripcion" class="form-control" placeholder="ingresa la descripcion de la combocatoria">
+                                                            <label> Descripcion de la convocatoria</label>
+                                                            <input name="descripcion" class="form-control" placeholder="ingresa la descripcion de la convocatoria">
                                                             {!! $errors->first('descripcion','<span class=help-block>:message</span>') !!}
                                                         </div>
                                                                 <div  class="form-group {{ $errors->has('tabla') ? 'has-error' : '' }}">
@@ -98,12 +98,12 @@
                         <div class="col-md-6">
                                 <div class="box box-primary">
                                             <div class="box-header">
-                                                <h3 class="box-title">Requisitos de la combocatoria</h3>
+                                                <h3 class="box-title">Requisitos de la convocatoria</h3>
                                             </div>
                                             <div class="box-body">
                                                     <div class="form-group">
-                                                        <label> Requisitos</label>
-                                                        <textarea name="detalle_requisito" class="form-control" placeholder="ingresa el requisito de la combocatoria"></textarea>
+                                                        <label> Requisito : 1</label>
+                                                        <textarea name="detalle_requisito" class="form-control" placeholder="ingresa el requisito de la convocatoria"></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <a href="#" >añadir nuevo requisito</a>
@@ -114,12 +114,12 @@
                         <div class="col-md-6">   
                                 <div class="box box-primary">
                                     <div class="box-header">
-                                        <h3 class="box-title">Documentos a presentar de la combocatoria</h3>
+                                        <h3 class="box-title">Documentos a presentar de la convocatoria</h3>
                                     </div>
                                             <div class="box-body">
                                                     <div class="form-group">
-                                                        <label> Requisitos</label>
-                                                        <textarea name="detalle_documento" class="form-control" placeholder="ingresa los detalles de la combocatoria"></textarea>
+                                                        <label> Documento : 1</label>
+                                                        <textarea name="detalle_documento" class="form-control" placeholder="ingresa los detalles de la convocatoria"></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <a href="#" >añadir nuevo Documento</a>
@@ -134,7 +134,7 @@
                         <div class="col-md-6">
                                 <div class="box box-primary">
                                             <div class="box-header">
-                                                <h3 class="box-title">Items de la combocatoria</h3>
+                                                <h3 class="box-title">Items de la convocatoria</h3>
                                             </div>
                                             <div class="box-body">
                                                     <div class="form-group">
@@ -158,12 +158,13 @@
                         <div class="col-md-6">
                                 <div class="box box-primary">
                                         <div class="box-header">
-                                                <h3 class="box-title">Acciones para la combocatoriaa</h3>
+                                                <h3 class="box-title">Acciones para la convocatoria</h3>
                                         </div>
                                         <div class="box-body">
                                                     <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary">CREAR COMBOCATORIA </button>
-                                                            <button href="#" class="btn btn-primary ">ATRAS</button>
+                                                            <button type="submit" class="btn btn-primary">CREAR CONVOCATORIA </button>
+                                                            <a href="{{ route('admin.combocatorias.index')}}" class="btn btn-primary">ATRAS</a>
+                                                            
                                                     </div>
                                                 
                                         </div>        

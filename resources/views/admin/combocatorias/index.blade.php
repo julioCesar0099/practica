@@ -23,7 +23,12 @@
                     <th>ID</th>
                     <th>Título</th>
                     <th>Descripcion</th>
+                    <th>Fecha publicacion</th>
+                    <th>Fecha finalizacion</th>
+                    <th>Area </th>
+                    <th>Carreras</th>
                     <th>Acciones</th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -32,6 +37,10 @@
                       <td>{{ $combocatoria->id }}</td>
                       <td>{{ $combocatoria->titulo }}</td>
                       <td>{{ $combocatoria->descripcion }}</td>
+                      <td>{{ $combocatoria->fecha_inicio->format('d - M - Y') }}</td>
+                      <td>{{ $combocatoria->fecha_fin->format('d - M - Y')  }}</td>
+                      <td>{{ $combocatoria->area->nombre }}</td>
+                      <td>{{ $combocatoria->carreras->pluck('nombre')->implode(' , ')}}</td>
                       <td>
                           <a href="#"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
                           <a href="#"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
@@ -65,11 +74,11 @@
     $(function () {
       $('#combocatoria-table').DataTable({
 			"paging":true,
-			"lengthChange":false,
-			"searching":false,
-			"ordering":true,
-			"info":true,
-			"autowidth":false
+			"lengthChange":true,
+			"searching":true,
+			"ordering":false,
+			"info":false,
+			"autowidth":true
 	  });
 
     });
