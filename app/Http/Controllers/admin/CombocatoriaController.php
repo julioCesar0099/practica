@@ -19,17 +19,52 @@ class CombocatoriaController extends Controller
 
     public function index()
     {
-        $combocatorias= Combocatoria::all();
+        if(auth()->user()->hasRole('Admin')){
 
-        return view('admin.combocatorias.index',compact('combocatorias')); 
+                $combocatorias= Combocatoria::all();
+    
+                return view('admin.combocatorias.index',compact('combocatorias')); 
+
+         }
+            else{
+
+            if( auth()->user()->hasPermissionTo('ver convocatorias')){
+
+                $combocatorias= Combocatoria::all();
+
+                return view('admin.combocatorias.index',compact('combocatorias')); 
+            }
+
+            return view('admin.dashboard');
+                
+            }
     }
 
     public function create(){
 
-        $carreras= Carrera::all();
-        $facultades = Facultad::all();
-        $areas = Area::all();
-        return view ('admin.combocatorias.create',compact('facultades','areas','carreras'));
+        if (auth()->user()->hasRole('Admin')){
+
+            $carreras= Carrera::all();
+            $facultades = Facultad::all();
+            $areas = Area::all();
+            return view ('admin.combocatorias.create',compact('facultades','areas','carreras')); 
+
+        }
+        else{
+
+            if( auth()->user()->hasPermissionTo('crear convocatorias')){
+
+                $carreras= Carrera::all();
+                $facultades = Facultad::all();
+                $areas = Area::all();
+                return view ('admin.combocatorias.create',compact('facultades','areas','carreras')); 
+            }
+    
+            return view('admin.dashboard');
+
+        }
+      
+           
     }
 
     public function store ( Request $request){
@@ -81,8 +116,28 @@ class CombocatoriaController extends Controller
 
     public function destroy(Combocatoria $combocatoria){
 
-        $combocatoria->delete();
 
-        return redirect()->route('admin.combocatorias.index')->with('flash','la combocatoria ha sido eliminado');
+        if(auth()->user()->hasRole('Admin')){
+
+                $combocatoria->Carreras()->detach();
+                $combocatoria->delete();
+        
+                return redirect()->route('admin.combocatorias.index')->with('flash','la combocatoria ha sido eliminado');
+
+        }
+        else{
+
+                 if( auth()->user()->hasPermissionTo('eliminar convocatorias')){
+                    $combocatoria->Carreras()->detach();
+                    $combocatoria->delete();
+            
+                    return redirect()->route('admin.combocatorias.index')->with('flash','la combocatoria ha sido eliminado');
+                 }
+                 return back()->with('flash','no puedes');
+        }
+
+        
+        
+       
     }
 }

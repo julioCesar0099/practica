@@ -13,7 +13,7 @@
 
 @section('content')
   <div class="box box-primary">
-            <div class="box-header">
+            <div class="box-header ">
                   <h3 class="box-title">Lista de combocatorias</h3>
             </div>
             <div class="box-body">
@@ -44,12 +44,12 @@
                       <td>
                           <a href="#"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
                           <a href="#"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
+	                        @can('eliminar convocatorias', new \Spatie\Permission\Models\Role)
                           <form  method="POST" action="{{ route('admin.combocatorias.destroy', $combocatoria) }}"  style="display: inline">
-                          {{ csrf_field() }} {{ method_field('DELETE')}}
-
-                          <button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar esta publicación?')"><i class="fa fa-times"></i></button>
-                          
+                                  {{ csrf_field() }} {{ method_field('DELETE')}}
+                                  <button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar esta publicación?')"><i class="fa fa-times"></i></button>
                           </form>
+                          @endcan
                       </td>
                     </tr>
                   @endforeach

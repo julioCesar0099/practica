@@ -25,4 +25,6 @@ class Combocatoria extends Model
     {
             return $this->belongsToMany(Carrera::class);
     }
+
+   
 }
