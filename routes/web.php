@@ -30,12 +30,22 @@ Route::group([
        
        route::get('roles','RolesController@index')->name('admin.roles.index');
        route::get('roles/create','RolesController@create')->name('admin.roles.create');
-       Route::post('roles','RolesController@store')->name('admin.roles.store');
 
+       route::get('roles/asignar','RolesController@asignar')->name('admin.roles.asignar');
+
+       route::get('roles/asignar/{user}','RolesController@asignar2')->name('admin.roles.asignar2');
+       route::put('roles/asignar/{user}','RolesController@asignar3')->name('admin.roles.asignar3');
+       route::put('roles/quitar/{user}','RolesController@quitar')->name('admin.roles.quitar');
+
+
+
+
+       Route::post('roles','RolesController@store')->name('admin.roles.store');
        Route::get('roles/{role}','RolesController@edit')->name('admin.roles.edit');
        Route::put('roles/{role}','RolesController@update')->name('admin.roles.update');
        Route::delete('roles/{role}','RolesController@destroy')->name('admin.roles.destroy');
 
+       Route::resource('personas', 'PersonasController');
        
        
    });

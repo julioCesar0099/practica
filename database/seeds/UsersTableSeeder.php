@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\personas;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -14,6 +15,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        personas::truncate();
         Permission::truncate();
         User::truncate();
         Role::truncate();
@@ -24,15 +26,20 @@ class UsersTableSeeder extends Seeder
         $permiso1=Permission::create(['name' =>'ver convocatorias']);
         $permiso2=Permission::create(['name' =>'crear convocatorias']);
         $permiso3=Permission::create(['name' =>'eliminar convocatorias']);
+
         $permiso4=Permission::create(['name' =>'ver roles']);
         $permiso5=Permission::create(['name' =>'eliminar roles']);
         $permiso6=Permission::create(['name' =>'crear roles']);
-        $permiso12=Permission::create(['name' =>'editar roles']);
-        $permiso7=Permission::create(['name' =>'ver ususarios']);
-        $permiso8=Permission::create(['name' =>'eliminar ususarios']);
-        $permiso9=Permission::create(['name' =>'actualizar ususarios']);
-        $permiso10=Permission::create(['name' =>'asignar roles a ususarios']);
-        $permiso11=Permission::create(['name' =>'publicar notas']);
+        $permiso7=Permission::create(['name' =>'editar roles']);
+        $permiso8=Permission::create(['name' =>'asignar roles']);
+        
+        $permiso9=Permission::create(['name' =>'ver usuarios']);
+        $permiso10=Permission::create(['name' =>'eliminar usuarios']);
+        $permiso11=Permission::create(['name' =>'editar usuarios']);
+        $permiso12=Permission::create(['name' =>'crear usuarios']);
+
+        $permiso13=Permission::create(['name' =>'publicar notas']);
+        $permiso14=Permission::create(['name' =>'registrar estudiantes especiales']);
 
         
 
@@ -48,6 +55,8 @@ class UsersTableSeeder extends Seeder
         $adminRole->givePermissionTo($permiso10);
         $adminRole->givePermissionTo($permiso11);
         $adminRole->givePermissionTo($permiso12);
+        $adminRole->givePermissionTo($permiso13);
+        $adminRole->givePermissionTo($permiso14);
 
 
         // $comiteRole->givePermissionTo($permiso1);
@@ -67,5 +76,20 @@ class UsersTableSeeder extends Seeder
         $comite -> save();
 
         $comite->assignRole($comiteRole);
+
+             $table = new personas;
+            $table->nombre ='esteban';
+            $table->apellidoP='sipe';
+            $table->apellidoM='gonzales';
+            $table->codigoSIS='201402299';
+            $table->carrera='Ingenieria de Sistemas';
+            $table->correo='esteban@gmail.com';
+            $table->telefono='77885423';
+            $table->facultad='Ciencias y Tecnologia';
+            $table->ocupacion='estudiante';
+            $table->save();
     }
+
+
+
 }

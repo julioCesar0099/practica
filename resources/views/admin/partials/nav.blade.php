@@ -51,10 +51,18 @@
 								</a>
 							</li>
 							@endcan
+							@can('asignar roles', new \Spatie\Permission\Models\Role)
+							<li {{ request()->is('admin/roles/asignar') ? 'class=active' : ''}} >
+								<a href="{{ route('admin.roles.asignar')}}" >
+									<i class="fa fa-list"></i>Asignar un rol a Usuarios
+								</a>
+							</li>
+							@endcan
 						</ul>
     </li>
     @endcan
-	<li class="treeview ">
+	@can('ver usuarios', new \Spatie\Permission\Models\Role)
+	<li class="treeview  {{ request()->is('admin/personas*') ? 'active' : ''}} ">
 
 	    	<a href="#"><i class="fa fa-users"></i> <span>ususarios</span>
 				<span class="pull-right-container">
@@ -62,18 +70,28 @@
 				</span>
 			</a>
 				<ul class="treeview-menu">
-					<li  >
-						<a href="#">
+					<li {{ request()->is('admin/personas') ? 'class=active' : ''}}  >
+						<a href="{{ url('admin/personas') }}">
 							<i class="fa fa-eye"></i> Ver todos los ususarios
 						</a>
 					</li>
-					<li>
+					@can('crear usuarios', new \Spatie\Permission\Models\Role)
+					<li {{ request()->is('#') ? 'class=active' : ''}}>
 						<a href="#" >
-							<i class="fa fa-pencil"></i>Crear un ususario
+							<i class="fa fa-pencil"></i>Registrar Usuarios
 						</a>
 					</li>
+					@endcan
+					@can('registrar estudiantes especiales', new \Spatie\Permission\Models\Role)
+					<li {{ request()->is('admin/personas/create') ? 'class=active' : ''}}>
+						<a href="{{ url('admin/personas/create')}}" >
+							<i class="fa fa-pencil"></i>Registrar estudiantes Especiales
+						</a>
+					</li>
+					@endcan
 				</ul>
 	</li>
+	@endcan
 
 	
 </ul>

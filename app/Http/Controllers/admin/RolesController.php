@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -16,12 +17,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->hasRole('Admin')){
-
-            return view('admin.roles.index',[ 'roles' => Role::all() ]);
-
-        }
-        else{
+     
 
             if( auth()->user()->hasPermissionTo('ver roles'))
             {
@@ -29,7 +25,7 @@ class RolesController extends Controller
             }
     
             return view('admin.dashboard');
-        }
+        
     }
 
 
@@ -42,15 +38,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        if(auth()->user()->hasRole('Admin')){
-        
-            return view('admin.roles.create',[
-                'role' => new Role,
-                'permissions' => Permission::pluck('name','id')
-            ]);
-        }
-        else
-        {
+       
             if(auth()->user()->hasPermissionTo('crear roles')){
                 return view('admin.roles.create',[
                     'role' => new Role,
@@ -59,7 +47,7 @@ class RolesController extends Controller
             }
             return back()->with('flash','no puedes');
 
-        }
+        
 
     }
 
@@ -92,10 +80,37 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function asignar()
     {
-        //
+
+        return view('admin.roles.asignar',[
+            'users' => User::all()
+        ]);
     }
+
+    public function asignar2( User $user)
+    {
+
+        return view('admin.roles.asignar2',[
+            'user' => $user,
+            'roles' => Role::with('permissions')->get()
+        ]);
+    }
+
+    public function asignar3(Request $request , User $user)
+    {
+        
+        $user->syncRoles($request->get('rol'));
+
+
+        return redirect()->route('admin.roles.asignar')->withFlash('Los roles se han actualizado Correctamente');
+    }
+
+   public function quitar(Request $request,User $user)
+   {
+                return $request;
+   }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -105,15 +120,7 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        if(auth()->user()->hasRole('Admin')){
         
-            return view('admin.roles.edit',[
-                'role' => $role,
-                'permissions' => Permission::pluck('name','id')
-                ]);
-        }
-        else
-        {
             if(auth()->user()->hasPermissionTo('editar roles')){
                 return view('admin.roles.edit',[
                     'role' => $role,
@@ -122,7 +129,7 @@ class RolesController extends Controller
             }
             return back()->with('flash','no puedes');
 
-        }
+        
      }
 
     /**
@@ -163,13 +170,7 @@ class RolesController extends Controller
     public function destroy(Role $role)
     {
 
-        if(auth()->user()->hasRole('Admin')){
-            $role->delete();
-
-            return redirect()->route('admin.roles.index')->withFlash('el rol fue eliminado');
-        }
-        else
-        {
+        
             if(auth()->user()->hasPermissionTo('eliminar roles')){
                 $role->delete();
 
@@ -177,9 +178,6 @@ class RolesController extends Controller
             }
             return back()->with('flash','no puedes');
 
-        }
-        $role->delete();
-
-        return redirect()->route('admin.roles.index')->withFlash('el rol fue eliminado');
+        
     }
 }
