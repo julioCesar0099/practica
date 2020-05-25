@@ -26,5 +26,19 @@ class Combocatoria extends Model
             return $this->belongsToMany(Carrera::class);
     }
 
+    public function Documentos()
+	{
+		return $this->hasMany(Documento_combocatoria::class);
+        }
+
+        public function Requisitos()
+         {
+                return $this->hasMany(Requisito_combocatoria::class);
+        }
+
+        public function Items()
+        {
+                return $this->hasMany(Item::class);
+        }
    
 }

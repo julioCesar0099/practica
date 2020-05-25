@@ -42,6 +42,8 @@ class CombocatoriaController extends Controller
 
     public function create(){
 
+
+
         if (auth()->user()->hasRole('Admin')){
 
             $carreras= Carrera::all();
@@ -72,9 +74,17 @@ class CombocatoriaController extends Controller
         $this->validate($request, [
             'titulo'=> 'required',
             'descripcion'=> 'required',
+            'fecha_fin'=> 'required',
+            'facultad'=> 'required',
             'area'=> 'required',
             'tabla'=> 'required',
-            'carreras'=> 'required'
+            'carreras'=> 'required',
+            'documentos'=> 'required',
+            'requisito'=> 'required',
+            'cantidad_aux'=> 'required',
+            'horas'=> 'required',
+            'destino'=> 'required'
+
         ]);
 
 
@@ -90,29 +100,47 @@ class CombocatoriaController extends Controller
         $conv-> save();
         $conv->Carreras()->attach($request->get('carreras'));
 
-        $doc = new Documento_Combocatoria;
-        $doc-> combocatoria_id = $conv->id;
-        $doc-> detalle = $request->get('detalle_documento');
-        $doc-> save();
 
-        $doc = new Requisito_Combocatoria;
-        $doc-> combocatoria_id = $conv->id;
-        $doc-> detalle = $request->get('detalle_requisito');
-        $doc-> save();
+        $array= $request->get('documentos');
+        $a= count($request->get('documentos'));
+        for ($i=0; $i<$a;$i++)
+            {
+            $doc = new Documento_Combocatoria;
+            $doc-> combocatoria_id = $conv->id;
+            $doc-> detalle = $array[$i];
+            $doc-> save();
+         }
 
 
-        $doc = new Item;
-        $doc-> combocatoria_id = $conv->id;
-        $doc-> area_id = $request->get('area');
-        $doc-> cantidad_aux= $request->get('cantidad_aux');
-        $doc-> horas = $request->get('horas');
-        $doc-> destino = $request->get('destino');
-        $doc-> save();
+        $array2= $request->get('requisito');
+        $a2= count($request->get('requisito'));
+        for ($i=0; $i<$a2;$i++)
+            {
+                $doc = new Requisito_Combocatoria;
+                $doc-> combocatoria_id = $conv->id;
+                $doc-> detalle = $array2[$i];
+                $doc-> save();
+            }
 
-        
 
-        return back()->with('flash','La combocatoria a sido publicada');
+        $array3= $request->get('cantidad_aux');
+        $array4= $request->get('horas');
+        $array5= $request->get('destino');
+        $a3= count($request->get('horas'));
+        for ($i=0; $i<$a3;$i++)
+            {
+                $doc = new Item;
+                $doc-> combocatoria_id = $conv->id;
+                $doc-> area_id = $request->get('area');
+                $doc-> cantidad_aux= $array3[$i];
+                $doc-> horas = $array4[$i];
+                $doc-> destino = $array5[$i];
+                $doc-> save();
+            }
+
+        return redirect()->route('admin.combocatorias.index')->with('flash','La combocatoria a sido publicada');
     }
+
 
     public function destroy(Combocatoria $combocatoria){
 
@@ -120,6 +148,10 @@ class CombocatoriaController extends Controller
         if(auth()->user()->hasRole('Admin')){
 
                 $combocatoria->Carreras()->detach();
+                $combocatoria->Documentos()->delete();
+                $combocatoria->Requisitos()->delete();
+                $combocatoria->Items()->delete();
+
                 $combocatoria->delete();
         
                 return redirect()->route('admin.combocatorias.index')->with('flash','la combocatoria ha sido eliminado');

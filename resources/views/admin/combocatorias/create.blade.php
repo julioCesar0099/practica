@@ -101,13 +101,14 @@
                                                 <h3 class="box-title">Requisitos de la convocatoria</h3>
                                             </div>
                                             <div class="box-body">
-                                                    <div class="form-group">
-                                                        <label> Requisito : 1</label>
-                                                        <textarea name="detalle_requisito" class="form-control" placeholder="ingresa el requisito de la convocatoria"></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <a href="#" >añadir nuevo requisito</a>
-                                                    </div>
+                                                        <div class="table-responsive">
+                                                                <table class="table table-bordered" id="dynamic_field">
+                                                                    <tr>
+                                                                        <td><input type="text" name="requisito[]" placeholder="Ingrese requisito" class="form-control name_list" /></td>
+                                                                        <td><button type="button" name="add" id="add" class="btn btn-primary">Añadir requisito </button></td>
+                                                                    </tr>
+                                                                </table>
+                                                        </div>
                                             </div>        
                                 </div>
                         </div>
@@ -117,14 +118,14 @@
                                         <h3 class="box-title">Documentos a presentar de la convocatoria</h3>
                                     </div>
                                             <div class="box-body">
-                                                    <div class="form-group">
-                                                        <label> Documento : 1</label>
-                                                        <textarea name="detalle_documento" class="form-control" placeholder="ingresa los detalles de la convocatoria"></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <a href="#" >añadir nuevo Documento</a>
-                                                    </div>
-                                                
+                                                        <div class="table-responsive">
+                                                                <table class="table table-bordered" id="dynamic_field2">
+                                                                    <tr>
+                                                                        <td><input type="text" name="documentos[]" placeholder="Ingrese Documento" class="form-control name_list" /></td>
+                                                                        <td><button type="button" name="add" id="add2" class="btn btn-primary">Añadir Documento </button></td>
+                                                                    </tr>
+                                                                </table>
+                                                        </div>
                                             </div>        
                                 </div>
                         </div>
@@ -137,21 +138,23 @@
                                                 <h3 class="box-title">Items de la convocatoria</h3>
                                             </div>
                                             <div class="box-body">
-                                                    <div class="form-group">
-                                                        <label> Cantidad de auxiliares : Item 1</label>
-                                                        <input type="number" type="unsignedInteger" name="cantidad_aux" class="form-control" placeholder="ingresa el numero de auxiliares"></input>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label> Horas laborales : Item 1</label>
-                                                        <input type="number" type="unsignedInteger" name="horas" class="form-control" placeholder="ingresa las horas asignadas"></input>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label> Destino : Item 1</label>
-                                                        <input  name="destino" class="form-control" placeholder="ingresa el destino del item"></input>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <a href="#" >añadir nuevo item</a>
-                                                    </div>
+                                            <div class="table-responsive">
+                                                    <table class="table table-bordered" id="dynamic_field3">
+                                                        <tr>
+                                                            <td>
+                                                            <label> Cantidad de auxiliares : Item </label>
+                                                            <input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input>
+                                                            <label> Horas laborales : Item </label>
+                                                            <input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input>
+                                                            <label> Destino : Item </label>
+                                                            <input  type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"></input>
+                                                            </td>
+                                                            <td><button type="button" name="add" id="add3" class="btn btn-primary">Añadir Item</button></td>
+                                                        </tr>
+                                                    </table>
+                                            
+                                            </div>
+                                                  
                                             </div>        
                                 </div>
                         </div>
@@ -177,35 +180,90 @@
 
 @push('styles')
 
-        <!-- daterange picker -->
-        <link rel="stylesheet" href="/adminlte/plugins/daterangepicker/daterangepicker.css">
+
          <!-- Select2 -->
         <link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
           <!-- bootstrap datepicker -->
          <link rel="stylesheet" href="/adminlte/plugins/datepicker/datepicker3.css">
+         
+        
+
+
 
 @endpush
 
 
 @push('scripts')
-             <!-- date-range-picker -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-            <script src="/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
+
             <!-- Select2 -->
             <script src="/adminlte/plugins/select2/select2.full.min.js"></script>
             <!-- bootstrap datepicker -->
             <script src="/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
-
-
+ 
+                  
             <script>  
-            $('#reservation').daterangepicker();
-
-            $(".select2").select2();
-            //Date picker
-                $('#datepicker').datepicker({
-                autoclose: true
-                });
+                    
+                    $(".select2").select2();
+                    //Date picker
+                    $('#datepicker').datepicker({
+                    autoclose: true
+            });
+            
             </script>
+
+            <script>
+                $(document).ready(function(){
+                    var i = 1;
+
+                    $('#add').click(function () {
+                        i++;
+                        $('#dynamic_field').append('<tr id="row'+i+'">' +
+                                                    '<td><input type="text" name="requisito[]" placeholder="Ingrese requisito" class="form-control name_list" /></td>' +
+                                                    '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>' +
+                                                    '</tr>');
+                    });
+                    
+                    $(document).on('click', '.btn_remove', function () {
+                        var id = $(this).attr('id');
+                    $('#row'+ id).remove();
+                    });   
+                })
+
+                $(document).ready(function(){
+                    var c = 1;
+
+                    $('#add2').click(function () {
+                        c++;
+                        $('#dynamic_field2').append('<tr id="row2'+c+'">' +
+                                                    '<td><input type="text" name="documentos[]" placeholder="Ingrese documento" class="form-control name_list" /></td>' +
+                                                    '<td><button type="button" name="remove" id2="'+c+'" class="btn btn-danger btn_remove">X</button></td>' +
+                                                    '</tr>');
+                    });
+                    
+                    $(document).on('click', '.btn_remove', function () {
+                        var id2 = $(this).attr('id2');
+                    $('#row2'+ id2).remove();
+                    });   
+                })
+
+                $(document).ready(function(){
+                    var d = 1;
+
+                    $('#add3').click(function () {
+                        d++;
+                        $('#dynamic_field3').append('<tr id="row3'+d+'">' +
+                                                    '<td> <label> Cantidad de auxiliares : Item  </label><input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input> <label> Horas laborales : Item </label><input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input><label> Destino : Item  </label><input  type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"></input>' +
+                                                    '<td><button type="button" name="remove" id3="'+d+'" class="btn btn-danger btn_remove">X</button></td>' +
+                                                    '</tr>');
+                    });
+                    
+                    $(document).on('click', '.btn_remove', function () {
+                        var id3 = $(this).attr('id3');
+                    $('#row3'+ id3).remove();
+                    });   
+                })
+            </script>
+
 @endpush
 
 
