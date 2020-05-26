@@ -53,9 +53,11 @@
                         
                         <label form="ocupacion">{{'Ocupacion'}}</label>
                         <input class="form-control" type="text" name="ocupacion" id="ocupacion" value="" Placeholder="Ingrese su ocupacion">
-                        
+                        <div class="form-group">
                         <input type="submit" class="btn btn-primary my-2 my-sm-0" value="Agregar">
                         <a href="{{ url('/admin/personas')}}" class="btn btn-primary my-2 my-sm-0">Regresar</a>
+                        
+                        </div>
                     </div>
                 </div>
             </div>
