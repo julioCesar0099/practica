@@ -12,9 +12,10 @@
 */
 
 
-Route::get('/','Auth\LoginController@showLoginForm');
-
-
+Route::get('/','InicioController@index');
+Route::get('/ayuda', 'ControllerMail@index');
+Route::post('/send', 'ControllerMail@send');
+Route::get('/login','Auth\LoginController@showLoginForm');
 
 Route::group([
    'prefix'=> 'admin',
@@ -53,3 +54,8 @@ Route::group([
 Route::post('login', 'Auth\LoginController@login')->name('login');
 
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/registroPost','PostulantController@registroPost')->name('registroPost');
+Route::get('/regPostulante/{id}','PostulantController@regPostulante')->name('regPostulante');
+Route::post('/regPostulante', 'PostulantController@crear')->name('postulantes.crear');
+Route::post('/registroPost', 'PostulantController@identificacion')->name('postulantes.identificacion');

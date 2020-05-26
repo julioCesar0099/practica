@@ -2,19 +2,19 @@
 
 @section('header')
   <h1>
-    combocatoria
+    Convocatoria
     <small>Listado</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
-    <li class="active">combocatoria</li>
+    <li class="active">convocatoria</li>
   </ol>
 @endsection
 
 @section('content')
   <div class="box box-primary">
             <div class="box-header ">
-                  <h3 class="box-title">Lista de combocatorias</h3>
+                  <h3 class="box-title">Lista de convocatorias</h3>
             </div>
             <div class="box-body">
               <table id="combocatoria-table" class="table table-bordered table-striped">

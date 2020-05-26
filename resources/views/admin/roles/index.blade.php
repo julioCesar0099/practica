@@ -2,8 +2,8 @@
 
 @section('header')
   <h1>
-    combocatoria
-    <small>Listado</small>
+    Roles
+    <small>Listado de roles</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>

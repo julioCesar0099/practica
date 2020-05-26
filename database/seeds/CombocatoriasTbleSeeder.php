@@ -5,6 +5,8 @@ use App\Facultad;
 use App\Area;
 use App\Item;
 use App\Carrera;
+use App\Area_Post;
+use App\Item_Post;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -21,19 +23,61 @@ class CombocatoriasTbleSeeder extends Seeder
         Facultad::truncate();
         Area::truncate();
         Item::truncate();
+        Area_Post::truncate();
+        Item_Post::truncate();
+
+        $c= new Area_Post;
+        $c->nombre="area1";
+        $c->save();
+
+        $c= new Area_Post;
+        $c->nombre="area2";
+        $c->save();
+
+        $c= new Area_Post;
+        $c->nombre="area3";
+        $c->save();
+
+        $c= new Area_Post;
+        $c->nombre="area4";
+        $c->save();
+
+        $c= new Area_Post;
+        $c->nombre="area5";
+        $c->save();
+
+        $c= new Item_Post;
+        $c->nombre="Item1";
+        $c->save();
+
+        $c= new Item_Post;
+        $c->nombre="Item2";
+        $c->save();
+
+        $c= new Item_Post;
+        $c->nombre="Item3";
+        $c->save();
+
+        $c= new Item_Post;
+        $c->nombre="Item4";
+        $c->save();
+
+        $c= new Item_Post;
+        $c->nombre="Item5";
+        $c->save();
 
         $a= new Area;
-        $a->nombre='INFORMATICA';
+        $a->nombre='Informatica';
         $a->facultad_id=1;
         $a-> save();
 
         $a= new Area;
-        $a->nombre='MATEMATICAS';
+        $a->nombre='Matematicas';
         $a->facultad_id=1;
         $a-> save();
 
         $a= new Area;
-        $a->nombre='MECANICA';
+        $a->nombre='Mecanica';
         $a->facultad_id=1;
         $a-> save();
 
@@ -90,8 +134,8 @@ class CombocatoriasTbleSeeder extends Seeder
 
 
         $conv= new Combocatoria;
-        $conv->titulo ='primera combocatoria';
-        $conv->descripcion ='descripcion primera combocatoria';
+        $conv->titulo ='Primera Convocatoria';
+        $conv->descripcion ='Descripcion primera convocatoria';
         $conv->fecha_inicio = Carbon::now();
         $conv->fecha_fin = Carbon::now()->addDays(15);
         $conv->area_id = 1;
@@ -102,9 +146,9 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->Carreras()->attach($c5);
 
         $conv= new Combocatoria;
-        $conv->titulo ='segunda combocatoria';
-        $conv->descripcion ='descripcion segunda combocatoria';
-        $conv->fecha_inicio = Carbon::now()->addDays(3);
+        $conv->titulo ='Segunda Convocatoria';
+        $conv->descripcion ='Descripcion segunda convocatoria';
+        $conv->fecha_inicio = Carbon::now()->subDays(3);
         $conv->fecha_fin = Carbon::now()->addDays(20);
         $conv->area_id = 2;
         $conv->facultad_id = 1;
@@ -113,9 +157,9 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->Carreras()->attach($c2);
 
         $conv= new Combocatoria;
-        $conv->titulo ='tercera combocatoria';
-        $conv->descripcion ='descripcion tercera combocatoria';
-        $conv->fecha_inicio = Carbon::now()->addDays(5);
+        $conv->titulo ='Tercera Convocatoria';
+        $conv->descripcion ='Descripcion tercera convocatoria';
+        $conv->fecha_inicio = Carbon::now()->subDays(5);
         $conv->fecha_fin = Carbon::now()->addDays(21);
         $conv->area_id = 1;
         $conv->facultad_id = 1;
@@ -124,9 +168,9 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->Carreras()->attach($c5);
 
         $conv= new Combocatoria;
-        $conv->titulo ='cuarta combocatoria';
-        $conv->descripcion ='descripcion cuarta combocatoria';
-        $conv->fecha_inicio = Carbon::now()->addDays(7);
+        $conv->titulo ='Cuarta Convocatoria';
+        $conv->descripcion ='Descripcion cuarta convocatoria';
+        $conv->fecha_inicio = Carbon::now()->subDays(7);
         $conv->fecha_fin = Carbon::now()->addDays(22);
         $conv->area_id = 2;
         $conv->facultad_id = 1;
@@ -135,9 +179,9 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->Carreras()->attach($c2);
 
         $conv= new Combocatoria;
-        $conv->titulo ='quinta combocatoria';
-        $conv->descripcion ='descripcion quinta combocatoria';
-        $conv->fecha_inicio = Carbon::now()->addDays(7);
+        $conv->titulo ='Quinta Convocatoria';
+        $conv->descripcion ='Descripcion quinta convocatoria';
+        $conv->fecha_inicio = Carbon::now()->subDays(7);
         $conv->fecha_fin = Carbon::now()->addDays(25);
         $conv->area_id = 3;
         $conv->facultad_id = 1;

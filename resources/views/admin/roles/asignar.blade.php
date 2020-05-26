@@ -2,12 +2,13 @@
 
 @section('header')
   <h1>
-    combocatoria
-    <small>Listado</small>
+    Roles 
+    <small>Asignar Rol</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
-    <li class="active">Roles</li>
+    <li><a href="{{ route('admin.roles.index') }}"><i class="fa fa-pencil"></i> Roles</a></li>
+    <li class="active">Asignar</li>
   </ol>
 @endsection
 

@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        personas::truncate();
+        
         Permission::truncate();
         User::truncate();
         Role::truncate();
@@ -77,17 +77,7 @@ class UsersTableSeeder extends Seeder
 
         $comite->assignRole($comiteRole);
 
-             $table = new personas;
-            $table->nombre ='esteban';
-            $table->apellidoP='sipe';
-            $table->apellidoM='gonzales';
-            $table->codigoSIS='201402299';
-            $table->carrera='Ingenieria de Sistemas';
-            $table->correo='esteban@gmail.com';
-            $table->telefono='77885423';
-            $table->facultad='Ciencias y Tecnologia';
-            $table->ocupacion='estudiante';
-            $table->save();
+            
     }
 
 

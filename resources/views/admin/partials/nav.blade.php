@@ -9,7 +9,7 @@
 	@can('ver convocatorias', new \Spatie\Permission\Models\Role)
 	<li class="treeview {{ request()->is('admin/combocatorias*') ? 'active' : ''}}">
 
-				<a href="#"><i class="fa fa-book"></i> <span>conbocatorias</span>
+				<a href="#"><i class="fa fa-book"></i> <span>Convocatorias</span>
 						<span class="pull-right-container">
 							<i class="fa fa-angle-left pull-right"></i>
 						</span>
@@ -17,13 +17,13 @@
 						<ul class="treeview-menu">
 							<li {{ request()->is('admin/combocatorias') ? 'class=active' : ''}} >
 								<a href="{{ route('admin.combocatorias.index') }}">
-									<i class="fa fa-eye"></i> Ver todos las combocatorias
+									<i class="fa fa-eye"></i> Ver todos las convocatorias
 								</a>
 							</li>
 							@can('crear convocatorias', new \Spatie\Permission\Models\Role)
 							<li {{ request()->is('admin/combocatorias/create') ? 'class=active' : ''}} >
 								<a href="{{route('admin.combocatorias.create')}}" >
-									<i class="fa fa-pencil"></i>Crear una combocatoria
+									<i class="fa fa-pencil"></i>Crear una convocatoria
 								</a>
 							</li>
 							@endcan
@@ -33,7 +33,7 @@
 	@can('ver roles', new \Spatie\Permission\Models\Role)
 	<li class="treeview  {{ request()->is('admin/roles*') ? 'active' : ''}} ">
 
-				<a href="#"><i class="fa fa-edit"></i> <span>roles</span>
+				<a href="#"><i class="fa fa-edit"></i> <span>Roles</span>
 						<span class="pull-right-container">
 							<i class="fa fa-angle-left pull-right"></i>
 						</span>
@@ -41,20 +41,20 @@
 						<ul class="treeview-menu">
 							<li {{ request()->is('admin/roles') ? 'class=active' : ''}} >
 								<a href="{{ route('admin.roles.index')}}">
-									<i class="fa fa-eye"></i> Ver todos los roles
+									<i class="fa fa-eye"></i> Ver todos los Roles
 								</a>
 							</li>
 							@can('crear roles', new \Spatie\Permission\Models\Role)
 							<li {{ request()->is('admin/roles/create') ? 'class=active' : ''}} >
 								<a href="{{ route('admin.roles.create')}}" >
-									<i class="fa fa-pencil"></i>Crear un rol
+									<i class="fa fa-pencil"></i>Crear un Rol
 								</a>
 							</li>
 							@endcan
 							@can('asignar roles', new \Spatie\Permission\Models\Role)
 							<li {{ request()->is('admin/roles/asignar') ? 'class=active' : ''}} >
 								<a href="{{ route('admin.roles.asignar')}}" >
-									<i class="fa fa-list"></i>Asignar un rol a Usuarios
+									<i class="fa fa-list"></i>Asignar un Rol a Usuarios
 								</a>
 							</li>
 							@endcan
@@ -64,7 +64,7 @@
 	@can('ver usuarios', new \Spatie\Permission\Models\Role)
 	<li class="treeview  {{ request()->is('admin/personas*') ? 'active' : ''}} ">
 
-	    	<a href="#"><i class="fa fa-users"></i> <span>ususarios</span>
+	    	<a href="#"><i class="fa fa-users"></i> <span>Usuarios</span>
 				<span class="pull-right-container">
 					<i class="fa fa-angle-left pull-right"></i>
 				</span>
@@ -72,7 +72,7 @@
 				<ul class="treeview-menu">
 					<li {{ request()->is('admin/personas') ? 'class=active' : ''}}  >
 						<a href="{{ url('admin/personas') }}">
-							<i class="fa fa-eye"></i> Ver todos los ususarios
+							<i class="fa fa-eye"></i> Ver todos los Usuarios
 						</a>
 					</li>
 					@can('crear usuarios', new \Spatie\Permission\Models\Role)

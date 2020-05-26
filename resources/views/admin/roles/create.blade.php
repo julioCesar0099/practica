@@ -1,6 +1,16 @@
 @extends('admin.layout')
  
-
+@section('header')
+  <h1>
+    Roles 
+    <small>crear un rol</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    <li><a href="{{ route('admin.roles.index') }}"><i class="fa fa-pencil"></i> Roles</a></li>
+    <li class="active">Crear</li>
+  </ol>
+@endsection
  @section('content')
  <div class="row">
         <div class="col-md-3">
