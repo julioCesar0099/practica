@@ -2,26 +2,22 @@
 <html>
  <head>
   <title>Message</title>
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+ 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <!-- Styles -->
-  <style>
-      html, body {
-          background-color: #fff;
-          color: #636b6f;
-          font-family: 'Nunito', sans-serif;
-          font-weight: 200;
-          height: 100vh;
-          margin: 0;
-      }
-      .content { text-align: center; }
-      .title { font-size: 84px; }
-  </style>
+  
+ 
  </head>
  <body>
   <br />
-  <div class="container box" style="width: 970px;">
-   <h1 style="text-align:center;"> Cliente</h1>-->
-   <h3 align="center">{{ $data['message'] }}</h3>
-  </div>
+  
+   <h1 class="display-4" align="center"> Estudiante:</h1>
+   <h3 class="font-weight-light"  align="center">{{ $data['message'] }}</b3>
+  
  </body>
 </html>

@@ -72,7 +72,7 @@
       </div>
       <div id="collapseOne" class="collapse" data-parent="#accordion">
         <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Los estudiantes deberán registrar su postulación a través del portal web , dentro del plazo establecido en el cronograma de la convocatoria, siendo la inscripción virtual un requisito indispensable para ser considerado en el proceso de selección.
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@
       </div>
       <div id="collapseTwo" class="collapse" data-parent="#accordion">
         <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Veras boton "Postular" en Inicio, ingresa a tu CodSIS, llenas a la formulario de Registro de Postulante y finalizar boton "Generar Rotulo"
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@
       </div>
       <div id="collapseThree" class="collapse" data-parent="#accordion">
         <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Después de completar examen evaluadas en un curso, tu nota se mostrará en la pestaña de Progreso.Ahí verás una lista de todas las notas.
         </div>
       </div>
     </div>

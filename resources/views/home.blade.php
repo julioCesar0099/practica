@@ -64,9 +64,7 @@
          @include('carrusel.carrusel')
       </div>
       <div class="container">
-
-       @yield('content')
-
+        @yield('content')
       </div>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
