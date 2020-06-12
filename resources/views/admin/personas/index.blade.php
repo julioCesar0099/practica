@@ -35,9 +35,9 @@
                 </thead>
                 <tbody>
                     @foreach($personas as $personas)
-                    <tr>
+                      <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{ $personas->ocupacion}}</td>
+                        <td>{{ $personas->ocunombre}}</td>
                         <td>{{ $personas->nombre}}</td>
                         <td>{{ $personas->apellidoP}}</td>
                         <td>{{ $personas->apellidoM}}</td>
@@ -46,6 +46,9 @@
                         <td>
                         @can('editar usuarios',new \Spatie\Permission\Models\Role)   
                         <a href="{{ url('/admin/personas/'.$personas->id.'/edit')}}"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a> 
+                        @if($personas->ocunombre == 'docente')
+                        <a href="{{ url('/admin/'.$personas->id.'/agregar/')}}"class="btn btn-xs btn-info"><i class="">agregar</i></a>
+                        @endif
                         @endcan
                         @can('eliminar usuarios',new \Spatie\Permission\Models\Role)
                         <form method="post" action="{{ url('/admin/personas/'.$personas->id)}}" style="display: inline">
@@ -53,7 +56,11 @@
                             {{method_field('DELETE')}}
                             <button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar este dato?')"><i class="fa fa-times"></i></button>
                         </form>
+
+                        
                         @endcan
+
+
                         </td>
                     </tr>
                     
@@ -61,8 +68,10 @@
                 </tbody>
               </table>
             </div>
+            
     <!-- /.box-body -->
   </div>
+  
 @endsection
 
 @push('styles')

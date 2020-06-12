@@ -31,7 +31,7 @@
     </li>
 	@endcan
 	@can('ver roles', new \Spatie\Permission\Models\Role)
-	<li class="treeview  {{ request()->is('admin/roles*') ? 'active' : ''}} ">
+		<li class="treeview  {{ request()->is('admin/roles*') ? 'active' : ''}} ">
 
 				<a href="#"><i class="fa fa-edit"></i> <span>Roles</span>
 						<span class="pull-right-container">
@@ -59,38 +59,32 @@
 							</li>
 							@endcan
 						</ul>
-    </li>
+    	</li>
     @endcan
 	@can('ver usuarios', new \Spatie\Permission\Models\Role)
-	<li class="treeview  {{ request()->is('admin/personas*') ? 'active' : ''}} ">
+		<li class="treeview  {{ request()->is('admin/personas*') ? 'active' : ''}} ">
 
 	    	<a href="#"><i class="fa fa-users"></i> <span>Usuarios</span>
 				<span class="pull-right-container">
 					<i class="fa fa-angle-left pull-right"></i>
 				</span>
 			</a>
-				<ul class="treeview-menu">
-					<li {{ request()->is('admin/personas') ? 'class=active' : ''}}  >
-						<a href="{{ url('admin/personas') }}">
-							<i class="fa fa-eye"></i> Ver todos los Usuarios
-						</a>
-					</li>
-					@can('crear usuarios', new \Spatie\Permission\Models\Role)
-					<li {{ request()->is('#') ? 'class=active' : ''}}>
-						<a href="#" >
-							<i class="fa fa-pencil"></i>Registrar Usuarios
-						</a>
-					</li>
-					@endcan
-					@can('registrar estudiantes especiales', new \Spatie\Permission\Models\Role)
-					<li {{ request()->is('admin/personas/create') ? 'class=active' : ''}}>
-						<a href="{{ url('admin/personas/create')}}" >
-							<i class="fa fa-pencil"></i>Registrar estudiantes Especiales
-						</a>
-					</li>
-					@endcan
-				</ul>
-	</li>
+			<ul class="treeview-menu">
+				<li {{ request()->is('admin/personas') ? 'class=active' : ''}}  >
+					<a href="{{ url('admin/personas') }}">
+						<i class="fa fa-eye"></i> Ver todos los Usuarios
+					</a>
+				</li>
+				
+				@can('registrar estudiantes especiales', new \Spatie\Permission\Models\Role)
+				<li {{ request()->is('admin/personas/create') ? 'class=active' : ''}}>
+					<a href="{{ url('admin/personas/create')}}" >
+						<i class="fa fa-pencil"></i>Registrar estudiantes Especiales
+					</a>
+				</li>
+				@endcan
+			</ul>
+		</li>
 	@endcan
 
 	

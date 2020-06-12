@@ -20,12 +20,12 @@ class CreatePersonasTable extends Migration
             $table->string('apellidoP');
             $table->string('apellidoM');
             $table->integer('codigoSIS');
-            $table->string('carrera');
+            $table->unsignedInteger('carrera_id');
             $table->string('correo')->unique();
             $table->integer('telefono');
-            $table->string('facultad');
-            $table->string('ocupacion');
-
+            $table->unsignedInteger('facultad_id');
+            $table->unsignedInteger('ocupacion_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

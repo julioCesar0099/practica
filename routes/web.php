@@ -17,6 +17,7 @@ Route::get('/ayuda', 'ControllerMail@index');
 Route::post('/send', 'ControllerMail@send');
 Route::get('/login','Auth\LoginController@showLoginForm');
 
+
 Route::group([
    'prefix'=> 'admin',
    'namespace'=> 'Admin',
@@ -47,9 +48,13 @@ Route::group([
        Route::delete('roles/{role}','RolesController@destroy')->name('admin.roles.destroy');
 
        Route::resource('personas', 'PersonasController');
-       
-       
+       Route::get('/{id}/agregar','PersonasController@index3');
+       Route::get('notas',function(){
+           return view('admin.notas.index');
+       });
    });
+   
+
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
 
@@ -59,3 +64,4 @@ Route::get('/registroPost','PostulantController@registroPost')->name('registroPo
 Route::get('/regPostulante/{id}','PostulantController@regPostulante')->name('regPostulante');
 Route::post('/regPostulante', 'PostulantController@crear')->name('postulantes.crear');
 Route::post('/registroPost', 'PostulantController@identificacion')->name('postulantes.identificacion');
+

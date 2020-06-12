@@ -22,15 +22,44 @@ class PersonasSeeder extends Seeder
         personas::truncate();
         
         Personas::create([
+            'nombre'=>'julio',
+            'apellidoP'=>'Perez',
+            'apellidoM'=>'Ayoroa',
+            'codigoSIS'=>'201409412',
+            'carrera_id'=>'2',
+            'correo'=>'julio@gmail.com',
+            'telefono'=>'68757554',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'2',
+            'user_id'=>'1',
+            //'ocupacion_id'=> $ocupacion2,
+       ]);
+
+        Personas::create([
+            'nombre'=>'cesar',
+            'apellidoP'=>'Flores',
+            'apellidoM'=>'Galindo',
+            'codigoSIS'=>'201412458',
+            'carrera_id'=>'2',
+            'correo'=>'cesar@gmail.com',
+            'telefono'=>'78540754',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'2',
+            'user_id'=>'1',
+            //'ocupacion_id'=> $ocupacion2,
+       ]);
+
+        Personas::create([
              'nombre'=>'rudy',
              'apellidoP'=>'Veizaga',
              'apellidoM'=>'Zamudio',
              'codigoSIS'=>'201409412',
-             'carrera'=>'sistemas',
+             'carrera_id'=>'2',
              'correo'=>'rud@gmail.com',
              'telefono'=>'61607554',
-             'facultad'=>'FCYT',
-             'ocupacion'=>'estudiante',
+             'facultad_id'=>'1',
+             'ocupacion_id'=>'1',
+             'user_id'=>'0',
              //'ocupacion_id'=> $ocupacion2,
         ]);
 
@@ -39,11 +68,12 @@ class PersonasSeeder extends Seeder
             'apellidoP'=>'Galindo',
             'apellidoM'=>'Juas',
             'codigoSIS'=>'201509412',
-            'carrera'=>'sistemas',
+            'carrera_id'=>'1',
             'correo'=>'jua@gmail.com',
             'telefono'=>'61257554',
-            'facultad'=>'FCYT',
-            'ocupacion'=>'estudiante',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0',
             //'ocupacion_id'=> $ocupacion2,
        ]);
 
@@ -52,11 +82,12 @@ class PersonasSeeder extends Seeder
         'apellidoP'=>'Uruña',
         'apellidoM'=>'Caem',
         'codigoSIS'=>'201545812',
-        'carrera'=>'informatica',
+        'carrera_id'=>'1',
         'correo'=>'urus@gmail.com',
         'telefono'=>'61247554',
-        'facultad'=>'FCYT',
-        'ocupacion'=>'docente',
+        'facultad_id'=>'1',
+        'ocupacion_id'=>'2',
+        'user_id'=>'0',
         //'ocupacion_id'=> $ocupacion1,
         ]);
         
@@ -65,11 +96,12 @@ class PersonasSeeder extends Seeder
         'apellidoP'=>'Gutierrez',
         'apellidoM'=>'Fuente',
         'codigoSIS'=>'201578912',
-        'carrera'=>'sistemas',
+        'carrera_id'=>'2',
         'correo'=>'gut@gmail.com',
         'telefono'=>'71247554',
-        'facultad'=>'FCYT',
-        'ocupacion'=>'docente',
+        'facultad_id'=>'1',
+        'ocupacion_id'=>'2',
+        'user_id'=>'0',
         //'ocupacion_id'=> $ocupacion1,
         ]);
 

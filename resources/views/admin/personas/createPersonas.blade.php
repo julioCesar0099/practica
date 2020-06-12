@@ -1,7 +1,10 @@
 @extends('admin.layout')
  
  
- @section('content')
+@section('content')
+@inject('facultades','App\Services\Facultades')
+@inject('ocupaciones','App\Services\Ocupaciones')
+@inject('carreras','App\Services\Carreras')
 
 <form action="{{ url('/admin/personas')}}" method="post" enctype="multipart/form-data">
     <div class="container ">
@@ -45,14 +48,36 @@
                     <div class="panel panel-heading">
                         <label>{{'INFORMACIÓN ACADEMICA'}}</label>
                         </br>
-                        <label form="carrera">{{'Carrera'}}</label>
-                        <input class="form-control" type="text" name="carrera" id="carrera" value="" Placeholder="Ingrese su carrera">
-
-                        <label form="facultad">{{'Facultad'}}</label>
-                        <input class="form-control" type="text" name="facultad" id="facultad" value="" Placeholder="Ingrese su facultad">
+                        <label form="facultades">{{'Facultades'}}</label>
+                        <select id="facultad" name="facultad_id" class="form-control">
+                            @foreach($facultades->get() as $index => $facultad)
+                            <option value="{{$index}}" {{old('facultad_id') == $index ? 'selected' : ''}} >
+                                {{$facultad}}
+                            </option>
+                            @endforeach
+                        </select>   
+                        </br>
                         
-                        <label form="ocupacion">{{'Ocupacion'}}</label>
-                        <input class="form-control" type="text" name="ocupacion" id="ocupacion" value="" Placeholder="Ingrese su ocupacion">
+                        <label form="carreras">{{'Carreras'}}</label>
+                        <select id="carrera" data-old="{{old( "carrera_id" )}}" name="carrera_id" class="form-control">
+                            @foreach($carreras->getCar() as $index => $carrera)
+                            <option value="{{$index}}" {{old('carrera_id') == $index ? 'selected' : ''}}>
+                                {{$carrera}}
+                            </option>
+                            @endforeach
+                        </select>
+                        
+                        </br>
+                        <label form="ocupaciones">{{'Ocupaciones'}}</label>
+                        <select id="ocupacion" name="ocupacion_id" class="form-control">
+                            @foreach($ocupaciones->getOp() as $index => $ocupacion)
+                            <option value="{{$index}}" {{old('ocupacion_id') == $index ? 'selected' : ''}}>
+                                {{$ocupacion}}
+                            </option>
+                            @endforeach
+                        </select>
+                        </br>
+                        
                         <div class="form-group">
                         <input type="submit" class="btn btn-primary my-2 my-sm-0" value="Agregar">
                         <a href="{{ url('/admin/personas')}}" class="btn btn-primary my-2 my-sm-0">Regresar</a>
