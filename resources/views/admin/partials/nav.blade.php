@@ -29,6 +29,29 @@
 							@endcan
 						</ul>
     </li>
+	<li class="treeview  {{ request()->is('admin/tablas*') ? 'active' : ''}} ">
+
+				<a href="#"><i class="fa fa-edit"></i> <span>Tablas de Meritos</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+				</a>
+						<ul class="treeview-menu">
+							<li {{ request()->is('admin/tablas/asignatura') ? 'class=active' : ''}} >
+								<a href="{{ route('admin.tablas.indexAsig')}}">
+									<i class="fa fa-eye"></i> Auxiliatura de Docencia
+								</a>
+							</li>
+			
+							<li {{ request()->is('admin/tablas/laboratorio') ? 'class=active' : ''}} >
+								<a href="{{ route('admin.tablas.indexLab')}}" >
+									<i class="fa fa-eye"></i>Auxiliatura de Laboratorios
+								</a>
+							</li>
+					
+							
+						</ul>
+    </li>
 	@endcan
 	@can('ver roles', new \Spatie\Permission\Models\Role)
 		<li class="treeview  {{ request()->is('admin/roles*') ? 'active' : ''}} ">

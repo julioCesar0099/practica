@@ -39,8 +39,7 @@ class ConvocatoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-       // $datosConvocatoria=request()->all();
+
        $datosConvocatoria=request()->except('_token');
 
        Convocatorias::insert($datosConvocatoria);

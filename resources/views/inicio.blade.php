@@ -9,26 +9,46 @@
 </head>
 <body>
 @section('content')
-                <h1 class="display-4 " align="center" >Lista de Convocatorias  </h1>
+
+
+
+<section class="posts container">
+				<h1 class="display-4 " align="center" >Lista de Convocatorias  </h1>
                     <p class="lead" align="center">Universidad Mayor de San Simón - Facultad de Ciencias y Tecnologia </p>
-                
-                @foreach($convocatorias as $convocatoria)
                 <hr class="my-4">
-                  <div class="card  mb-3" >
-                           <div class="card-header text-white bg-dark">{{ $convocatoria->titulo }}</div>
-                                  <div class="card-body">
-                                      <h5 class="card-title">Area: {{ $convocatoria->area->nombre }}</h5>
-                                      <p class="card-text">{{ $convocatoria->descripcion }}</p>
-                                      <p class="card-text"><small class="text-muted">{{ $convocatoria->fecha_inicio->format('d , M , Y') }}</small></p>
-                                    <div class="float-right">
-                                  <a href="#" class="btn btn btn btn-info ">Mostrar PDF</a>
-                                  <a href="{{ url('/registroPost') }}" class="btn btn btn btn-info ">Postular</a>    
-                                  </div>
-                           </div>
-                  </div>
-                  @endforeach
+		@foreach ($convocatorias as $convocatoria)
+			<article class="post no-imag">
+			<div class="card-header text-white bg-primary"></div>
+				<div class="content-post">
+						<header class="container-flex space-between">
+							<div class="date">
+								<span class="c-gray-1">{{ $convocatoria->fecha_inicio->format('d , M , Y')}}</span>
+							</div>
+							<div class="post-category">
+								<span class="category text-capitalize">{{ $convocatoria->facultad->nombre }}</span>
+							</div>
+						</header>
+						<h1>{{ $convocatoria->titulo }}</h1>
+						<div class="divider"></div>
+						<p>{{ $convocatoria->descripcion }}</p>
+						<footer class="container-flex space-between">
+							<div class="read-more">
+								<a  class="text-uppercase " style="color:#164488">Area de : {{ $convocatoria->area->nombre}}</a>
+							</div>
+							<div class="tags container-flex">
+								@foreach ($convocatoria->carreras as $carrera)
+									<span class="tag c-gray-1 text-capitalize" style="opacity: 0.5">{{ $carrera->nombre }}</span>
+								@endforeach
+							</div>
+						</footer>
+						<hr class="my-4">
+						<div class="float-right">
+							  <a href="#" class="btn btn-info " style="font-size: inherit">Mostrar PDF</a>
+							  <a href="{{ url('/registroPost') }}" class="btn  btn-info " style="font-size: inherit ">Postular</a>    
+					   </div>
+					</div>
+			</article>
+		@endforeach
+	</section>
+	
 @endsection
-
-</body>
-</html>
-

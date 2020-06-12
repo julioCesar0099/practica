@@ -5,6 +5,7 @@ use App\Facultad;
 use App\Area;
 use App\Item;
 use App\Carrera;
+use App\Tabla;
 use App\Area_Post;
 use App\Item_Post;
 use Carbon\Carbon;
@@ -25,6 +26,37 @@ class CombocatoriasTbleSeeder extends Seeder
         Item::truncate();
         Area_Post::truncate();
         Item_Post::truncate();
+        Tabla::truncate();
+
+        $c= new Tabla;
+        $c->nombre="tabla de meritos Asignatura por defecto";
+        $c->tipo ="Asignatura";
+        $c->valor= 20;
+        $c->save();
+
+        $c= new Tabla;
+        $c->nombre="tabla de meritos Asignatura 2-19";
+        $c->tipo ="Asignatura";
+        $c->valor= 20;
+        $c->save();
+        
+        $c= new Tabla;
+        $c->nombre="tabla de meritos Asignatura 2-129";
+        $c->tipo ="Asignatura";
+        $c->valor= 20;
+        $c->save();
+
+        $c= new Tabla;
+        $c->nombre="tabla de meritos Laboratorios por defecto";
+        $c->tipo ="Laboratorios";
+        $c->valor= 20;
+        $c->save();
+
+        $c= new Tabla;
+        $c->nombre="tabla de meritos Laboratorios 1-20";
+        $c->tipo ="Laboratorios";
+        $c->valor= 20;
+        $c->save();
 
         $c= new Area_Post;
         $c->nombre="area1";
@@ -135,6 +167,7 @@ class CombocatoriasTbleSeeder extends Seeder
 
         $conv= new Combocatoria;
         $conv->titulo ='Primera Convocatoria';
+        $conv->tipo = 'Asignatura';
         $conv->descripcion ='Descripcion primera convocatoria';
         $conv->fecha_inicio = Carbon::now();
         $conv->fecha_fin = Carbon::now()->addDays(15);
@@ -147,6 +180,7 @@ class CombocatoriasTbleSeeder extends Seeder
 
         $conv= new Combocatoria;
         $conv->titulo ='Segunda Convocatoria';
+        $conv->tipo = 'Asignatura';
         $conv->descripcion ='Descripcion segunda convocatoria';
         $conv->fecha_inicio = Carbon::now()->subDays(3);
         $conv->fecha_fin = Carbon::now()->addDays(20);
@@ -158,6 +192,7 @@ class CombocatoriasTbleSeeder extends Seeder
 
         $conv= new Combocatoria;
         $conv->titulo ='Tercera Convocatoria';
+        $conv->tipo = 'Laboratorios';
         $conv->descripcion ='Descripcion tercera convocatoria';
         $conv->fecha_inicio = Carbon::now()->subDays(5);
         $conv->fecha_fin = Carbon::now()->addDays(21);
@@ -169,6 +204,7 @@ class CombocatoriasTbleSeeder extends Seeder
 
         $conv= new Combocatoria;
         $conv->titulo ='Cuarta Convocatoria';
+        $conv->tipo = 'Asignatura';
         $conv->descripcion ='Descripcion cuarta convocatoria';
         $conv->fecha_inicio = Carbon::now()->subDays(7);
         $conv->fecha_fin = Carbon::now()->addDays(22);
@@ -180,6 +216,7 @@ class CombocatoriasTbleSeeder extends Seeder
 
         $conv= new Combocatoria;
         $conv->titulo ='Quinta Convocatoria';
+        $conv->tipo = 'Laboratorios';
         $conv->descripcion ='Descripcion quinta convocatoria';
         $conv->fecha_inicio = Carbon::now()->subDays(7);
         $conv->fecha_fin = Carbon::now()->addDays(25);

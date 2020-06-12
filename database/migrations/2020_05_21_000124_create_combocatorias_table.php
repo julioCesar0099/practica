@@ -17,6 +17,7 @@ class CreateCombocatoriasTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->mediumText('descripcion');
+            $table->string('tipo');
             $table->timestamp('fecha_inicio')->nullable();
             $table->timestamp('fecha_fin')->nullable();
             $table->unsignedInteger('area_id');

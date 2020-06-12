@@ -11,12 +11,12 @@ class Carrera extends Model
     protected $table = 'carreras';
     protected $fillable =['nombre'];
 
-    public function Facultad($value='')
+    public function Facultad()  
     {
             return $this->belongsTo(Facultad::class);
     }
 
-    public function Area($value='')
+    public function Area()
     {
             return $this->belongsTo(Area::class);
     }
