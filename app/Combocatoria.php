@@ -27,18 +27,33 @@ class Combocatoria extends Model
     }
 
     public function Documentos()
-	{
-		return $this->hasMany(Documento_combocatoria::class);
-        }
+   {
+        return $this->hasMany(Documento_combocatoria::class);
+   }
 
-        public function Requisitos()
-         {
-                return $this->hasMany(Requisito_combocatoria::class);
-        }
+   public function Requisitos()
+   {
+         return $this->hasMany(Requisito_combocatoria::class);
+   }
 
-        public function Items()
-        {
-                return $this->hasMany(Item::class);
-        }
+    public function Items()
+    {
+        return $this->hasMany(Item::class);
+    }
+    public function Itemlabs()
+    {
+        return $this->hasMany(Itemlab::class);
+    }
+
+    public function Tabla()
+    {
+            return $this->belongsTo(Tabla::class);
+    }
+
+    public function Tablalab()
+    {
+            return $this->belongsTo(Tablalab::class);
+    }
+
    
 }

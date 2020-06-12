@@ -8,6 +8,6 @@ use App\Combocatoria;
 class InicioController extends Controller
 {
     public function index(){
-        return view('inicio', ['convocatorias'=>Combocatoria::all()]);
+        return view('inicio', ['convocatorias'=>Combocatoria::latest('fecha_inicio')->get()]);
     }
 }

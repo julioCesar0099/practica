@@ -38,17 +38,24 @@ Route::group([
        route::put('roles/asignar/{user}','RolesController@asignar3')->name('admin.roles.asignar3');
        route::put('roles/quitar/{user}','RolesController@quitar')->name('admin.roles.quitar');
 
-
-
-
        Route::post('roles','RolesController@store')->name('admin.roles.store');
        Route::get('roles/{role}','RolesController@edit')->name('admin.roles.edit');
        Route::put('roles/{role}','RolesController@update')->name('admin.roles.update');
        Route::delete('roles/{role}','RolesController@destroy')->name('admin.roles.destroy');
-
        Route::resource('personas', 'PersonasController');
        
        
+       Route::get('tablas','TablaController@indexAsig')->name('admin.tablas.indexAsig');
+       Route::get('tablas/laboratorio','TablaController@indexLab')->name('admin.tablas.indexLab');
+       Route::delete('tablas/{tabla}','TablaController@destroy')->name('admin.tablas.destroy');
+       Route::delete('tablas/{tabla}/{inciso}','TablaController@destroy2')->name('admin.tablas.destroy2');
+       Route::get('tablas/create','TablaController@create')->name('admin.tablas.create');
+       Route::post('tablas','TablaController@store')->name('admin.tablas.store');
+       Route::get('tablas/{tabla}','TablaController@edit')->name('admin.tablas.edit');
+       Route::put('tablas/{tabla}','TablaController@update')->name('admin.tablas.update');
+       Route::put('tablas/{tabla}','TablaController@update2')->name('admin.tablas.update2');
+
+
    });
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -59,3 +66,5 @@ Route::get('/registroPost','PostulantController@registroPost')->name('registroPo
 Route::get('/regPostulante/{id}','PostulantController@regPostulante')->name('regPostulante');
 Route::post('/regPostulante', 'PostulantController@crear')->name('postulantes.crear');
 Route::post('/registroPost', 'PostulantController@identificacion')->name('postulantes.identificacion');
+
+Route::get('/carreras', 'Admin\CombocatoriaController@getCarreras');

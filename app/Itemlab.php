@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Carrera extends Model
+class Itemlab extends Model
 {
-    //
-    public function Facultad()
+    
+    public function Combocatoria()
     {
-            return $this->belongsTo(Facultad::class);
+            return $this->belongsTo(Combocatoria::class);
     }
 
     public function Area()

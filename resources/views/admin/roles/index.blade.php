@@ -42,7 +42,6 @@
                           <td>{{ $role->permissions->pluck('name')->implode(' , ') }} </td>
                           @endif
                           <td>
-                            
                               @if ($role->id !==1)
                                     @can('editar roles',$role)
                                     <a href="{{ route('admin.roles.edit', $role )}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
