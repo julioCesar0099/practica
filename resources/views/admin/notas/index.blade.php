@@ -16,6 +16,9 @@
   <div class="box box-primary">
             <div class="box-header ">
                   <h3 class="box-title">Lista de Notas</h3>
+                  </br>
+                  </br>
+                  <li><a href="#" class="btn btn-xs btn-info"><i class=""></i>Publicar Notas</a></li>
             </div>
             <div class="box-body">
               <table id="combocatoria-table" class="table table-bordered table-striped">

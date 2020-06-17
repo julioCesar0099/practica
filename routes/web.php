@@ -75,3 +75,5 @@ Route::post('/regPostulante', 'PostulantController@crear')->name('postulantes.cr
 Route::post('/registroPost', 'PostulantController@identificacion')->name('postulantes.identificacion');
 
 Route::get('/carreras', 'Admin\CombocatoriaController@getCarreras');
+
+Route::get('/{id}/notas', 'InicioController@mostrar');
