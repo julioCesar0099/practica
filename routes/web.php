@@ -77,3 +77,10 @@ Route::post('/registroPost', 'PostulantController@identificacion')->name('postul
 Route::get('/carreras', 'Admin\CombocatoriaController@getCarreras');
 
 Route::get('/{id}/notas', 'InicioController@mostrar');
+//Route::get('/show', 'PDFController@show');
+//Route::get('/download', 'PDFController@download');
+Route::get('/index/{id}', 'PDFController@index');
+
+   
+
+

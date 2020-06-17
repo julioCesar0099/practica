@@ -43,9 +43,14 @@
 						</footer>
 						<hr class="my-4">
 						<div class="float-right">
+<<<<<<< HEAD
 							  <a href="#" class="btn btn-info " style="font-size: inherit">Mostrar PDF</a>
 							  <a href="{{ url('/registroPost') }}" class="btn  btn-info " style="font-size: inherit ">Postular</a> 
 							  <a href="{{url($convocatoria->id.'/notas')}}" class="btn  btn-info " style="font-size: inherit ">Notas</a>   
+=======
+							  <a href="{{ url('/index/'.$convocatoria->id)}}" class="btn btn-info " style="font-size: inherit">Ver mas...</a>
+							  <a href="{{ url('/registroPost') }}" class="btn  btn-info " style="font-size: inherit ">Postular</a>    
+>>>>>>> 29e07ce01419d3a311ae08539a96e2bcf3e42021
 					   </div>
 					   	
 					</div>
