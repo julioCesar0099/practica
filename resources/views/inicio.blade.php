@@ -36,7 +36,7 @@
 						</footer>
 						<hr class="my-4">
 						<div class="float-right">
-							  <a href="#" class="btn btn-info " style="font-size: inherit">Mostrar PDF</a>
+							  <a href="{{ url('/index/'.$convocatoria->id)}}" class="btn btn-info " style="font-size: inherit">Ver mas...</a>
 							  <a href="{{ url('/registroPost') }}" class="btn  btn-info " style="font-size: inherit ">Postular</a>    
 					   </div>
 					</div>

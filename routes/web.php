@@ -68,3 +68,10 @@ Route::post('/regPostulante', 'PostulantController@crear')->name('postulantes.cr
 Route::post('/registroPost', 'PostulantController@identificacion')->name('postulantes.identificacion');
 
 Route::get('/carreras', 'Admin\CombocatoriaController@getCarreras');
+//Route::get('/show', 'PDFController@show');
+//Route::get('/download', 'PDFController@download');
+Route::get('/index/{id}', 'PDFController@index');
+
+   
+
+
