@@ -23,6 +23,7 @@
                     <th>ID</th>
                     <th>Título</th>
                     <th>Descripcion</th>
+                    <th>Tipo</th>
                     <th>Fecha publicacion</th>
                     <th>Fecha finalizacion</th>
                     <th>Area </th>
@@ -37,13 +38,13 @@
                       <td>{{ $combocatoria->id }}</td>
                       <td>{{ $combocatoria->titulo }}</td>
                       <td>{{ $combocatoria->descripcion }}</td>
+                      <td>{{ $combocatoria->tipo}}</td>
                       <td>{{ $combocatoria->fecha_inicio->format('d - M - Y') }}</td>
                       <td>{{ $combocatoria->fecha_fin->format('d - M - Y')  }}</td>
                       <td>{{ $combocatoria->area->nombre }}</td>
                       <td>{{ $combocatoria->carreras->pluck('nombre')->implode(' , ')}}</td>
                       <td>
                           <a href="#"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
-                          <a href="#"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
 	                        @can('eliminar convocatorias', new \Spatie\Permission\Models\Role)
                           <form  method="POST" action="{{ route('admin.combocatorias.destroy', $combocatoria) }}"  style="display: inline">
                                   {{ csrf_field() }} {{ method_field('DELETE')}}

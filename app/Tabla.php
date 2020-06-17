@@ -6,14 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tabla extends Model
 {
-   
-    public function incisos()
+    public function secciones()
     {
-         return $this->hasMany(Inciso_tabla::class);
-    } 
-    
-    public function subincisos()
-    {
-         return $this->hasMany(Subinciso_tabla::class);
+         return $this->hasMany(Seccion::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIncisoTablasTable extends Migration
+class CreateSubseccionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateIncisoTablasTable extends Migration
      */
     public function up()
     {
-        Schema::create('inciso_tablas', function (Blueprint $table) {
+        Schema::create('subseccions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->unsignedInteger('tabla_id');
             $table->unsignedInteger('puntaje');
+            $table->unsignedInteger('seccion_id');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateIncisoTablasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inciso_tablas');
+        Schema::dropIfExists('subseccions');
     }
 }

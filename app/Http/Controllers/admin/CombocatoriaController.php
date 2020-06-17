@@ -42,8 +42,8 @@ class CombocatoriaController extends Controller
                 $carreras= Carrera::all();
                 $facultades = Facultad::all();
                 $areas = Area::all();
-                $tablasDoc = Tabla::where('tipo','Asignatura')->get();
-                $tablasLab = Tabla::where('tipo','Laboratorios')->get();
+                $tablasDoc = Tabla::all();
+                $tablasLab = Tabla::all();
                 return view ('admin.combocatorias.create',compact('facultades','areas','carreras','tablasDoc','tablasLab')); 
             }
     
@@ -223,10 +223,11 @@ class CombocatoriaController extends Controller
         
        
     }
+    
+
 
     public function getCarreras($id)
     {
-
 
         if($request->ajax()){
 
@@ -237,7 +238,6 @@ class CombocatoriaController extends Controller
             }
             return response()->json($carrerasArray);
         }
-
 
     }
 }

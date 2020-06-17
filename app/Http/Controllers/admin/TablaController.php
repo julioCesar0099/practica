@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Tabla;
-use App\Inciso_tabla;
+use App\Inciso;
+use App\Subinciso;
+use App\Subseccion;
+use App\Seccion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,14 +19,9 @@ class TablaController extends Controller
      */
     public function indexAsig()
     {
-        $tablasDoc = Tabla::where('tipo','Asignatura')->get();
+        $tablas = Tabla::all();
         
-        return view ('admin.tablas.tablaDoc',compact('tablasDoc')); 
-    }
-
-    public function indexLab()
-    {
-        $tablasLab = Tabla::where('tipo','Laboratorios')->get();
+        return view ('admin.tablas.tablaDoc',compact('tablas')); 
     }
 
     /**
@@ -31,11 +29,10 @@ class TablaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $titulos=Titulo_tabla::all();
-        return view('admin.tablas.create',compact('titulos'));
-    }
+   
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -45,12 +42,11 @@ class TablaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate( $request,['nombreDoc' => 'required']);
+        $this->validate( $request,['nombre' => 'required']);
 
         $tabla=new Tabla;
-        $tabla->nombre = $request->get('nombreDoc');
-        $tabla->tipo ='Asignatura';
-        $tabla->valor =20;
+        $tabla->nombre = $request->get('nombre');
+        $tabla->valor =$request->get('valor') ;
         $tabla->save();
         
       
@@ -77,11 +73,8 @@ class TablaController extends Controller
      */
     public function edit(Tabla $tabla)
     {
-        $id = $tabla->id;
-    
-        $incisos = Inciso_tabla::where('tabla_id', $id )->get();
-      
-       return view('admin.tablas.create',compact('tabla','incisos'));
+        
+       return view('admin.tablas.create',compact('tabla'));
     }
 
     /**
@@ -93,34 +86,16 @@ class TablaController extends Controller
      */
     public function update(Request $request, Tabla $tabla)
     {
-       
-        $this->validate( $request,['nombreDoc' => 'required']);
+        $this->validate( $request,['nombre' => 'required']);
 
-        $tabla->nombre = $request->get('nombreDoc');
-        $tabla->tipo ='Asignatura';
-        $tabla->valor =20;
+        $tabla->nombre = $request->get('nombre');
+        $tabla->valor =$request->get('valor');
         $tabla->save();
 
         return redirect()->route('admin.tablas.indexAsig')->with('flash','Tabla de meritos creada');
     }
 
-    public function update2(Request $request,Tabla $tabla)
-    {
-      
-        $this->validate( $request,['inciso' => 'required',
-                                    'puntaje'=> 'required']);
-
-        $in = new Inciso_tabla;
-        $in->nombre = $request->inciso;
-        $in->tabla_id= $tabla->id;
-        $in->puntaje= $request->puntaje;
-        $in->save();
-
-     
-
-        return redirect()->route('admin.tablas.edit',compact('tabla'));
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -129,21 +104,12 @@ class TablaController extends Controller
      */
     public function destroy(Tabla $tabla )
     {
-      
-        $tabla->Incisos()->delete();
-        $tabla->Subincisos()->delete();
-       
-
+        
+        $tabla->secciones()->delete();
         $tabla->delete();
 
         return redirect()->route('admin.tablas.indexAsig')->with('flash','la tabla ha sido eliminado');
     }
 
-    public function destroy2(Tabla $tabla,Inciso_tabla $inciso)
-    {
-      
-        $inciso->delete();
-
-        return  redirect()->route('admin.tablas.edit',compact('tabla'));
-    }
+   
 }

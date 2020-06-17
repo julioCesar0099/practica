@@ -46,17 +46,34 @@ Route::group([
        
        
        Route::get('tablas','TablaController@indexAsig')->name('admin.tablas.indexAsig');
-       Route::get('tablas/laboratorio','TablaController@indexLab')->name('admin.tablas.indexLab');
        Route::delete('tablas/{tabla}','TablaController@destroy')->name('admin.tablas.destroy');
-       Route::delete('tablas/{tabla}/{inciso}','TablaController@destroy2')->name('admin.tablas.destroy2');
-       Route::get('tablas/create','TablaController@create')->name('admin.tablas.create');
+   
        Route::post('tablas','TablaController@store')->name('admin.tablas.store');
-       Route::get('tablas/{tabla}','TablaController@edit')->name('admin.tablas.edit');
        Route::put('tablas/{tabla}','TablaController@update')->name('admin.tablas.update');
-       Route::put('tablas/{tabla}','TablaController@update2')->name('admin.tablas.update2');
+       Route::get('tablas/{tabla}','TablaController@edit')->name('admin.tablas.edit');
+       
+       
 
-
-   });
+       
+       Route::get('tablas/titulo/{tabla}','TituloController@titulo')->name('admin.tablas.titulo');
+       Route::post('tablas/titulo/{tabla}','TituloController@tituloStore')->name('admin.tablas.titulo.store');
+       Route::delete('tablas/titulo/{tabla}/{seccion}','TituloController@tituloDestroy')->name('admin.tablas.titulo.destroy');
+       
+       Route::get('tablas/subtitulo/{tabla}/{seccion}','TituloController@subtitulo')->name('admin.tablas.subtitulo');
+       Route::delete('tablas/subtitulo/{tabla}/{subseccion}','TituloController@subtituloDestroy')->name('admin.tablas.subtitulo.destroy');
+       Route::post('tablas/subtitulo/{tabla}/{seccion}','TituloController@subtituloStore')->name('admin.tablas.subtitulo.store');
+       
+       Route::get('tablas/inciso/{tabla}/{subseccion}','TituloController@inciso')->name('admin.tablas.inciso');
+       Route::delete('tablas/inciso/{tabla}/{inciso}','TituloController@incisoDestroy')->name('admin.tablas.inciso.destroy');
+       Route::post('tablas/inciso/{tabla}/{subseccion}','TituloController@incisoStore')->name('admin.tablas.inciso.store');
+       
+       Route::get('tablas/subinciso/{tabla}/{inciso}','TituloController@subinciso')->name('admin.tablas.subinciso');
+       Route::delete('tablas/subinciso/{tabla}/{subinciso}','TituloController@subincisoDestroy')->name('admin.tablas.subinciso.destroy');
+       Route::post('tablas/subinciso/{tabla}/{inciso}','TituloController@subincisoStore')->name('admin.tablas.subinciso.store');
+       
+       
+       
+    });
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
 

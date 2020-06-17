@@ -1,15 +1,6 @@
 @extends('admin.layout')
  
-@section('header')
-  <h1>
-        Tabla de meritos
-    <small>crear una Tabla de Meritos</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
-    <li class="active">Crear Tabla</li>
-  </ol>
-@endsection
+
  @section('content')
  <div class="row">
         <div class="col-md-2">
@@ -20,131 +11,236 @@
                                 <div class="box-header with-border ">
                                     <h3 class="box-title">Datos de la Nueva Tabla</h3>
                                 </div>
-                    <div class="box-body">
-               
-                                 <div class="form-group {{ $errors->has('nombreDoc') ? 'has-error' : '' }}">
-                                        <label > Nombre  </label>
-                                        <input name="nombreDoc" class="form-control" value="{{old('nombreDoc',$tabla->nombre)}}" >
-                                        {!! $errors->first('nombreDoc','<span class=help-block>:message</span>') !!}
-                                </div>
-                               
-                    </div>
-                    <div class="box box-primary">
-                                <div class="box-header with-border ">
-                                    <h3 name="titulo" class="box-title">Rendimiento Academico </h3>
-                                           <div class="form-group {{ $errors->has('valor') ? 'has-error' : '' }} pull-right">
-                                                <input  type="number" name="valor" class="form-control" placeholder="Valor" value="{{old('valor')}}" >
-                                                {!! $errors->first('valor','<span class=help-block>:message</span>') !!}
-                                          </div>
-                                </div>
-                    <div class="box-body">
-                            <div class="form-group">
-                                <a  class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal" ><i class="fa fa-plus"></i> Añadir inciso</a>
-                            </div>
-                            <div class="form-group">
-                                <div class="table-responsive">
-                                        <table class="table table-bordered" >
-                                            <tr>
-                                                <td>Inciso</td>
-                                                <td>Puntaje</td>
-                                                <td>cacciones</td>
-
-                                            
-                                            </tr>
-                                            @foreach($incisos as $inciso)
-                                            <tr>
-                                                <td> {{ $inciso->nombre }}</td>
-                                                <td> {{ $inciso->puntaje }} </td>
-                                                <td> 
-                                                    <form method="POST" action="{{ route('admin.tablas.destroy2', [$tabla,$inciso]) }}" style="display:inline">
-                                                        {{csrf_field()}} {{ method_field('DELETE') }}
-                                                            <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </table>
-                                </div>
-                             </div>
-
-                    </div>
-
-                    <div class="box box-primary">
-                                <div class="box-header with-border ">
-                                    <h3 name="titulo" class="box-title">Experiencia General </h3> 
-                                          <div class="form-group {{ $errors->has('valor') ? 'has-error' : '' }} pull-right">
-                                                        <input  type="number" name="valor" class="form-control" placeholder="Valor" value="{{old('valor')}}" >
-                                                        {!! $errors->first('valor','<span class=help-block>:message</span>') !!}
-                                          </div>
-                                </div>
-                    <div class="box-body">
-                                <div class="box-header with-border ">
-                                                <h3 name="titulo" class="box-title">Documentos de experiencia universitaria </h3> 
-                                                      <div class="form-group {{ $errors->has('valor') ? 'has-error' : '' }} pull-right">
-                                                                    <input  type="number" name="valor" class="form-control" placeholder="Valor" value="{{old('valor')}}" >
-                                                                    {!! $errors->first('valor','<span class=help-block>:message</span>') !!}
-                                                      </div>
-                                                  <div class="form-group">
-                                                  
-                                                  
+                    <form method="POST" action="{{route('admin.tablas.update',$tabla)}}">
+                        {{csrf_field()}}  {{ method_field('PUT') }}
+                                <div class="box-body">
+                                            <div class="table-responsive col-md-6  ">
+                                                 <table class="table table " >
+                                                            <tr>
+                                                            <td>  <div class="form-group {{ $errors->has('nombre') ? 'has-error' : '' }}">
+                                                                        <label > Nombre  </label>
+                                                                        <input name="nombre" class="form-control" value="{{old('nombre',$tabla->nombre)}}" >
+                                                                        {!! $errors->first('nombre','<span class=help-block>:message</span>') !!}
+                                                                </div> 
+                                                             </td>
+                                                             </tr> 
+                                                 </table>
+                                            </div>
+                                            <div class="table-responsive col-md-6 ">
+                                                    <table class="table table pull-right " >
+                                                            <tr>
+                                                                <td class="col-md-5">    <label > Valor en la convocatoria</label> 
+                                                                        <div class="form-group {{ $errors->has('valor') ? 'has-error' : '' }} pull-right">
+                                                                            <input  type="number" name="valor" max="100" class="form-control" placeholder="Valor" value="{{old('valor',$tabla->valor)}}" >
+                                                                            {!! $errors->first('valor','<span class=help-block>:message</span>') !!}
+                                                                        </div>
+                                                                        
+                                                                </td>
+                                                                <td>    <label >Añadir titulo </label>
+                                                                    <div class="form-group">
+                                                                        <a href="{{route('admin.tablas.titulo',$tabla)}}" class="btn btn-primary " ><i class="fa fa-plus"></i> </a>
+                                                                    </div>
+                                                                </td>
+                                                                </tr>
+                                                        </table>
+                                            </div> 
+                                                <div class="table-responsive col-md-6  ">
+                                                        <table class="table table " >
+                                                                    <tr>
+                                                                        <td> 
+                                                                            <button class="btn btn-primary"> GUARDAR TABLA </button>
+                                                                        </td> 
+                                                                    </tr> 
+                                                        </table>
                                                   </div>
-
+                                                  <div class="table-responsive col-md-6 ">
+                                                    <table class="table table pull-right " >
+                                                            <tr>
+                                                                <td>  
+                                                                <a href="{{ route('admin.tablas.indexAsig')}}" class="btn btn-xm btn-primary pull-right">cancelar</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                            </div> 
+                                           
                                 </div>
-                                <div class="box-header with-border ">
-                                                <h3 name="titulo" class="box-title">Documentos de experiencia extra-universitaria </h3> 
-                                                      <div class="form-group {{ $errors->has('valor') ? 'has-error' : '' }} pull-right">
-                                                                    <input  type="number" name="valor" class="form-control" placeholder="Valor" value="{{old('valor')}}" >
-                                                                    {!! $errors->first('valor','<span class=help-block>:message</span>') !!}
-                                                      </div>
-                                </div>
-
+                        </form>
                     </div>
-                     <div class="form-group">
+                    <template>
+                        {{$titulo=1}}
+                   </template>
+                    @foreach( $tabla->secciones as $seccion)
+                    <div class="box box-primary">
+                        <div class="box-header with-border ">
+                                            <div class="table-responsive col-md-6 ">
+                                                 <table class="table table " >
+                                                            <tr>
+                                                            <td> <p class="box-title text-red" style="font-size:20px">{{$titulo}}.{{$seccion->nombre}} </p></td>
+                                                            </tr>
+                                                 </table>
+                                            </div>
+                                            <div class="table-responsive col-md-4 pull-right">
+                                                    <table class="table table  " >
+                                                            <tr>
+                                                                <td> <div class="form-group  pull-right">
+                                                                            <input  type="number"   class="form-control" placeholder="Valor" value="{{old('valor',$seccion->valor)}}" disabled >
+                                                                        </div>
+                                                                </td>
+                                                                <td>
+                                                                <form method="POST" action="{{route('admin.tablas.titulo.destroy', [$tabla ,$seccion])}}" style="display:inline">
+                                                                     {{csrf_field()}} {{ method_field('DELETE') }}
+                                                                            <button class="btn btn-sm btn-danger"  onclick="return confirm('¿Esta seguro de eliminar este titulo? ')"><i class="fa fa-times"></i></button>
+                                                                 </form>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <a href="{{route('admin.tablas.subtitulo',[$tabla,$seccion])}}" class="btn  btn-primary "  ><i class="fa fa-plus"></i>  Subtitulo</a>
+                                                                    </div>
+                                                                </td>
+                                                                </tr>
+                                                        </table>
+                                            </div>
+                        </div>
+                        <div class="box-body">
+                                    <template>
+                                    {{$subtitulo=1}}
+                                    </template>   
+                                    @foreach( $seccion->subsecciones as $subseccion)
+                                                     <div class="box-header with-border ">
+                                                            <div class="table-responsive col-md-8 ">
+                                                                <table class="table table " >
+                                                                            <tr>
+                                                                            <td><p class="text-light-blue "  style="font-size:19px" >{{$titulo}}.{{$subtitulo}}.- {{$subseccion->nombre}}</p> </td>
+                                                                            </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class="table-responsive col-md-4 pull-right">
+                                                                    <table class="table table-bordered " >
+                                                                            <tr>
+                                                                                <td> <div class="form-group  pull-right">
+                                                                                            <input  type="number"  class="form-control" placeholder="Valor" value="{{old('valor',$subseccion->puntaje)}}" disabled>
+                                                                                               
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                <form method="POST" action="{{route('admin.tablas.subtitulo.destroy', [$tabla ,$subseccion])}}" style="display:inline">
+                                                                                        {{csrf_field()}} {{ method_field('DELETE') }}
+                                                                                                <button class="btn btn-sm btn-danger"  onclick="return confirm('¿Esta seguro de eliminar este subtitulo? ')"><i class="fa fa-times"></i></button>
+                                                                                        </form>
+                                                                                 </td>
+                                                                                <td>
+                                                                                    <div class="form-group">
+                                                                                        <a href=" {{ route('admin.tablas.inciso',[$tabla,$subseccion]) }}" class="btn btn-primary pull-right"  ><i class="fa fa-plus"></i>inciso</a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                    </table>
+                                                            </div>
+                                                     </div>
+                                                    <div class="box-body">
+                                                                    <template>
+                                                                        {{$in=1}}
+                                                                    </template>
+                                                                        @foreach($subseccion->incisos as $inciso )
+                                                                                        <div class="box-header  ">
+                                                                                                <div class="table-responsive col-md-7 ">
+                                                                                                    <table class="table table " >
+                                                                                                                <tr>
+                                                                                                                <td><p  style="font-size:18px ">{{$titulo}}.{{$subtitulo}}.{{$in}}.- {{$inciso->nombre}}</p> </td>
+                                                                                                                </tr>
+                                                                                                    </table>
+                                                                                                </div>
+                                                                                                <div class="table-responsive col-md-4 pull-right">
+                                                                                                        <table class="table table-bordered " >
+                                                                                                                <tr>
+                                                                                                                    <td> <div class="form-group  pull-right">
+                                                                                                                                <input  type="number" class="form-control" placeholder="Valor" value="{{old('valor',$inciso->puntaje)}}" disabled>
+                                                                                                                                   
+                                                                                                                        </div>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                    <form method="POST" action="{{route('admin.tablas.inciso.destroy', [$tabla ,$inciso])}}" style="display:inline">
+                                                                                                                            {{csrf_field()}} {{ method_field('DELETE') }}
+                                                                                                                                    <button class="btn btn-sm btn-danger"  onclick="return confirm('¿Esta seguro de eliminar este inciso? ')"><i class="fa fa-times"></i></button>
+                                                                                                                            </form>
+                                                                                                                    </td>
+                                                                                                                    <td>
+                                                                                                                            <a href="{{ route('admin.tablas.subinciso',[$tabla,$inciso]) }}" class="btn btn-primary pull-right"  ><i class="fa fa-plus"></i> subinciso</a>
+                                                                                                                            </td>
+                                                                                                                </tr>
+                                                                                                        </table>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="box-body">
+                                                                                                <template>
+                                                                                                    {{$subin=1}}
+                                                                                                </template>
+                                                                                                @foreach($inciso->subincisos as $subinciso )
+                                                                                                         <div class="box-header  ">
+                                                                                                                <div class="table-responsive col-md-6">
+                                                                                                                    <table class="table table " >
+                                                                                                                                <tr>
+                                                                                                                                <td><p class="text-muted" style="font-size:17px">{{$titulo}}.{{$subtitulo}}.{{$in}}.{{$subin}}.- {{$subinciso->nombre}}</p> </td>
+                                                                                                                                </tr>
+                                                                                                                    </table>
+                                                                                                                </div>
+                                                                                                                <div class="table-responsive col-md-3 ">
+                                                                                                                        <table class="table table-bordered " >
+                                                                                                                                <tr>
+                                                                                                                                    <td> <div class="form-group  pull-right">
+                                                                                                                                                <input  type="number"  class="form-control" placeholder="Valor" value="{{old('valor',$subinciso->puntaje)}}" disabled >
+                                                                                                                                                   
+                                                                                                                                        </div>
+                                                                                                                                    </td>
+                                                                                                                                    <td>
+                                                                                                                                        <div class="form-group">
+                                                                                                                                        <form method="POST" action="{{route('admin.tablas.subinciso.destroy', [$tabla ,$subinciso])}}" style="display:inline">
+                                                                                                                                        {{csrf_field()}} {{ method_field('DELETE') }}
+                                                                                                                                                <button class="btn btn-sm btn-danger"  onclick="return confirm('¿Esta seguro de eliminar este subinciso? ')"><i class="fa fa-times"></i></button>
+                                                                                                                                        </form>
+                                                                                                                                        </div>
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                        </table>
+                                                                                                                </div>
+                                                                                                        </div>
+                                                                                                <template>
+                                                                                                    {{$subin++}}
+                                                                                                </template>
+                                                                                                @endforeach
 
-                             <button class="btn btn-primary btn-block"> Crear Tabla</button>
-                     </div>
-          
-        </div>
- </div>
+                                                                                        </div>
+                                                                                                <template>
+                                                                                                    {{$in++}}
+                                                                                                </template>
+                                                                        @endforeach
+                                                     </div>       
+                                        
+                                           <template>
+                                           {{$subtitulo++}}
+                                          </template>            
+                                      @endforeach
+                         
+                                <template>
+                                    {{$titulo++}}
+                                </template>     
+                        </div>
+                    </div>
+                    
+                    @endforeach
+                   
+                
+         </div>  
+   
+  </div>
+
+                   
 
 
  @endsection
  @push('scripts')
 
-        <script>
-                     
-                   
+ 
 
-        </script>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <form method="POST" action="{{route('admin.tablas.update2',$tabla)}}">
-      {{csrf_field()}}  {{ method_field('PUT') }}
-
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">agregar inciso </h4>
-              </div>
-              <div class="modal-body">
-                                <div class="form-group {{ $errors->has('inciso') ? 'has-error' : '' }}">
-                                        <input autocomplete="off" name="inciso" class="form-control" value="{{old('inciso')}}" placeholder="Ingresa un inciso">
-                                        {!! $errors->first('inciso','<span class=help-block>:message</span>') !!}
-                                </div> 
-                                <div class="form-group {{ $errors->has('puntaje') ? 'has-error' : '' }}">
-                                        <input autocomplete="off" type="number" name="puntaje" class="form-control" value="{{old('puntaje')}}" placeholder="Ingresa un puntaje">
-                                        {!! $errors->first('puntaje','<span class=help-block>:message</span>') !!}
-                                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary">Añadir</button>
-              </div>
-            </div>
-          </div>
-
-      </form>
-</div>
 @endpush
