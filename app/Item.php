@@ -8,12 +8,12 @@ class Item extends Model
 {
 
 
-    public function Combocatoria($value='')
+    public function Combocatoria()
     {
             return $this->belongsTo(Combocatoria::class);
     }
 
-    public function Area($value='')
+    public function Area()
     {
             return $this->belongsTo(Area::class);
     }

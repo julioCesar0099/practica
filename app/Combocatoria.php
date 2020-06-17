@@ -50,10 +50,5 @@ class Combocatoria extends Model
             return $this->belongsTo(Tabla::class);
     }
 
-    public function Tablalab()
-    {
-            return $this->belongsTo(Tablalab::class);
-    }
-
    
 }

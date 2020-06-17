@@ -30,31 +30,26 @@ class CombocatoriasTbleSeeder extends Seeder
 
         $c= new Tabla;
         $c->nombre="tabla de meritos Asignatura por defecto";
-        $c->tipo ="Asignatura";
         $c->valor= 20;
         $c->save();
 
         $c= new Tabla;
         $c->nombre="tabla de meritos Asignatura 2-19";
-        $c->tipo ="Asignatura";
         $c->valor= 20;
         $c->save();
         
         $c= new Tabla;
         $c->nombre="tabla de meritos Asignatura 2-129";
-        $c->tipo ="Asignatura";
         $c->valor= 20;
         $c->save();
 
         $c= new Tabla;
         $c->nombre="tabla de meritos Laboratorios por defecto";
-        $c->tipo ="Laboratorios";
         $c->valor= 20;
         $c->save();
 
         $c= new Tabla;
         $c->nombre="tabla de meritos Laboratorios 1-20";
-        $c->tipo ="Laboratorios";
         $c->valor= 20;
         $c->save();
 

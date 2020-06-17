@@ -1,15 +1,6 @@
 @extends('admin.layout')
 
-@section('header')
-  <h1>
-    Roles
-    <small>Listado de Tablas de Meritos</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
-    <li class="active">Tablas</li>
-  </ol>
-@endsection
+
 
 @section('content')
 <div class="row">
@@ -27,17 +18,19 @@
                       <tr>
                         <th>ID</th>
                         <th>Nombre Tabla</th>
+                        <th>Valor en la convocatoria</th>
                         <th>Acciones</th>
-
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($tablasDoc as $tabla)
+                      @foreach ($tablas as $tabla)
                         <tr>
                           <td>{{ $tabla->id }}</td>
                           <td>{{ $tabla->nombre}}</td>
+                          <td>{{ $tabla->valor}} %</td>
                           <td>
-
+                          
+                                    <a href="{{ route('admin.tablas.edit', $tabla )}}" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>
                                     <form method="POST" action="{{route('admin.tablas.destroy', $tabla )}}" style="display:inline">
                                     {{csrf_field()}} {{ method_field('DELETE') }}
                                             <button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar esta tabla?')"><i class="fa fa-times"></i></button>
@@ -47,6 +40,10 @@
                       @endforeach
                     </tbody>
                   </table>
+                  <hr class="my-4">
+                  <div class="form-group">
+                    <a href="{{ route('admin.combocatorias.create')}}" class="btn btn-xm btn-primary pull-right">Atras</a>
+                  </div>
                 </div>
         <!-- /.box-body -->
       </div>
@@ -90,10 +87,17 @@
                 <h4 class="modal-title" id="myModalLabel">Titulo de la tabla </h4>
               </div>
               <div class="modal-body">
-                           <div class="form-group {{ $errors->has('nombreDoc') ? 'has-error' : '' }}">
-                                        <input autocomplete="off" name="nombreDoc" class="form-control" value="{{old('nombreDoc')}}" placeholder="Ingresa el titulo de la tabla">
-                                        {!! $errors->first('nombreDoc','<span class=help-block>:message</span>') !!}
+                                <label > Nombre de la tabla</label> 
+                                <div class="form-group {{ $errors->has('nombre') ? 'has-error' : '' }}">
+                                        <input autocomplete="off" name="nombre" class="form-control" value="{{old('nombre')}}" placeholder="Ingresa el titulo de la tabla">
+                                        {!! $errors->first('nombre','<span class=help-block>:message</span>') !!}
                                 </div>
+
+                                <label > Valor en la Convocatoria</label> 
+                                <div class="form-group {{ $errors->has('valor') ? 'has-error' : '' }} ">
+                                      <input  type="number" name="valor" max="100"class="form-control " placeholder="Valor" value="{{old('valor')}}" >
+                                      {!! $errors->first('valor','<span class=help-block>:message</span>') !!}
+                                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

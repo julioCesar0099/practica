@@ -51,6 +51,10 @@
                                                                             </select>
                                                                             {!! $errors->first('tabla','<span class=help-block>:message</span>') !!}
                                                                         </div>
+                                                                        <div class="form-group">
+
+                                                                        <a href="{{ route('admin.tablas.indexAsig')}}" class="btn btn-xm btn-primary"> inspeccionar</a>
+                                                                        </div>
                                                         </div>
                                             </div>
                                     </div>
@@ -219,10 +223,8 @@
                                                                                 {!! $errors->first('tabla','<span class=help-block>:message</span>') !!}
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                    <a href="#" class="btn btn-primary">Inspeccionar</a>
-                                                                
+                                                                                <a href="{{ route('admin.tablas.indexAsig')}}" class="btn btn-xm btn-primary"> inspeccionar</a>
                                                                             </div>
-
                                                                               
                                                             </div>
                                                 </div>
