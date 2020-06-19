@@ -24,8 +24,7 @@ class CombocatoriasTbleSeeder extends Seeder
         Facultad::truncate();
         Area::truncate();
         Item::truncate();
-        Area_Post::truncate();
-        Item_Post::truncate();
+
         Tabla::truncate();
 
         $c= new Tabla;
@@ -53,45 +52,6 @@ class CombocatoriasTbleSeeder extends Seeder
         $c->valor= 20;
         $c->save();
 
-        $c= new Area_Post;
-        $c->nombre="area1";
-        $c->save();
-
-        $c= new Area_Post;
-        $c->nombre="area2";
-        $c->save();
-
-        $c= new Area_Post;
-        $c->nombre="area3";
-        $c->save();
-
-        $c= new Area_Post;
-        $c->nombre="area4";
-        $c->save();
-
-        $c= new Area_Post;
-        $c->nombre="area5";
-        $c->save();
-
-        $c= new Item_Post;
-        $c->nombre="Item1";
-        $c->save();
-
-        $c= new Item_Post;
-        $c->nombre="Item2";
-        $c->save();
-
-        $c= new Item_Post;
-        $c->nombre="Item3";
-        $c->save();
-
-        $c= new Item_Post;
-        $c->nombre="Item4";
-        $c->save();
-
-        $c= new Item_Post;
-        $c->nombre="Item5";
-        $c->save();
 
         $a= new Area;
         $a->nombre='Informatica';

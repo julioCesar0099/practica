@@ -15,8 +15,10 @@ class CreatePostulantesTable extends Migration
     {
         Schema::create('postulantes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('area_nombre');
+            $table->string('convocatoria_id');
             $table->string('item_nombre');
+            $table->string('estado');
+            $table->string('observacion')->nullable();
             $table->integer('persona_id')->unsigned();
             $table->foreign('persona_id')->references('id')->on('personas')->onDelete("cascade");
             $table->timestamps();

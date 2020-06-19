@@ -105,5 +105,30 @@ class PersonasSeeder extends Seeder
         //'ocupacion_id'=> $ocupacion1,
         ]);
 
+        Personas::create([
+            'nombre'=>'fernando',
+            'apellidoP'=>'Milan',
+            'apellidoM'=>'Herbas',
+            'codigoSIS'=>'201422236',
+            'carrera'=>'sistemas',
+            'correo'=>'nando@gmail.com',
+            'telefono'=>'61607888',
+            'facultad'=>'FCYT',
+            'ocupacion'=>'estudiante',
+        ]);
+
+        Personas::create([
+            'nombre'=>'julio',
+            'apellidoP'=>'Hugarte',
+            'apellidoM'=>'Camacho',
+            'codigoSIS'=>'201288236',
+            'carrera'=>'sistemas',
+            'correo'=>'julito@gmail.com',
+            'telefono'=>'71607488',
+            'facultad'=>'FCYT',
+            'ocupacion'=>'estudiante',
+        ]);
+
+
     }
 }

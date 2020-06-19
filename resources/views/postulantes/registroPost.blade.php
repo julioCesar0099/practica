@@ -11,7 +11,7 @@
 <body>
     <h1>Registro de postulantes</h1>
         <br><br><br><br>
-        <form action="{{route('postulantes.identificacion')}}" method="POST">
+        <form action="{{route('postulantes.identificacion',$convocatoria)}}" method="POST">
             {{csrf_field()}}
             @if(session('mensaje'))
             <div class="aler alert-success">
@@ -31,7 +31,8 @@
                         <input type="number" class="btn-block" name="codigo" value="CodSis" placeholder="ingrese su codsis">
                     </div>
                     <div class="form-group">
-                        <button class=" btn btn-primary btn-block" type="submit" >Ingresar</button>
+                        <a href="{{ url('/') }}" class="btn btn-primary my-2 my-sm-0">Cancelar</a>
+                        <button class=" btn btn-primary" type="submit" >Ingresar</button>
                     </div>
                 </div>
             </div>

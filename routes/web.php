@@ -84,10 +84,6 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/registroPost','PostulantController@registroPost')->name('registroPost');
-Route::get('/regPostulante/{id}','PostulantController@regPostulante')->name('regPostulante');
-Route::post('/regPostulante', 'PostulantController@crear')->name('postulantes.crear');
-Route::post('/registroPost', 'PostulantController@identificacion')->name('postulantes.identificacion');
 
 Route::get('/carreras', 'Admin\CombocatoriaController@getCarreras');
 
@@ -98,4 +94,13 @@ Route::get('/index/{id}', 'PDFController@index');
 
    
 
+Route::get('/registroPost/{convocatoria}','PostulantController@registroPost')->name('registroPost');
+Route::get('/regPostulante/{codigoS}/{convocatoria}','PostulantController@regPostulante')->name('regPostulante');
+Route::post('/regPostulante/{codigoS}/{convocatoria}','PostulantController@crear')->name('postulantes.crear');
+Route::post('/registroPost/{convocatoria}', 'PostulantController@identificacion')->name('postulantes.identificacion');
+Route::get('/habPostulante','PostulantController@habPostulante')->name('postulantes.habPostulante');
+Route::get('{id}/habilitacion','PostulantController@habilitar');
+Route::get('{id}/deshabilitacion','PostulantController@deshabilitar');
+Route::get('/listaHab','PostulantController@listaHab')->name('postulantes.listaHab');
+Route::put('postulante/{listaP}','PostulantController@observacion')->name('postulante.observacion');
 
