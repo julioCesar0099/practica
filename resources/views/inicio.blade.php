@@ -21,8 +21,10 @@
                                       <p class="card-text">{{ $convocatoria->descripcion }}</p>
                                       <p class="card-text"><small class="text-muted">{{ $convocatoria->fecha_inicio->format('d , M , Y') }}</small></p>
                                     <div class="float-right">
+                                    <a href="{{ url ('/listaHab')}}" class="btn btn btn btn-info ">Lista de habilitados</a>
                                   <a href="#" class="btn btn btn btn-info ">Mostrar PDF</a>
-                                  <a href="{{ url('/registroPost') }}" class="btn btn btn btn-info ">Postular</a>    
+                                  <a href="{{ url('/registroPost', $convocatoria) }}" class="btn btn btn btn-info ">Postular</a>
+               
                                   </div>
                            </div>
                   </div>

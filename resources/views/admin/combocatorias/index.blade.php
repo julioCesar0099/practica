@@ -27,6 +27,7 @@
                     <th>Fecha finalizacion</th>
                     <th>Area </th>
                     <th>Carreras</th>
+                    <th>Postulantes</th>
                     <th>Acciones</th>
 
                   </tr>
@@ -41,6 +42,7 @@
                       <td>{{ $combocatoria->fecha_fin->format('d - M - Y')  }}</td>
                       <td>{{ $combocatoria->area->nombre }}</td>
                       <td>{{ $combocatoria->carreras->pluck('nombre')->implode(' , ')}}</td>
+                      <td> <a href="{{ url('/habPostulante') }}" class="btn btn-default">Auxiliatura Docencia</a></td>
                       <td>
                           <a href="#"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
                           <a href="#"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>

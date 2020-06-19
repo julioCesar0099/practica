@@ -17,6 +17,7 @@ class CreateDocumentoPostsTable extends Migration
             $table->increments('id');
             $table->string('Doc_Ent');
             $table->integer('num_Hojas');
+            $table->unsignedInteger('postulantes_id');
             $table->timestamps();
         });
     }
