@@ -35,23 +35,34 @@
     <div class="box-body">
               <table id="user-table" class="table table-bordered table-striped">
                 <thead>
+                    
                     <tr>
                         <th>Item</th>
                         <th>Cantidad</th>
                         <th>Hrs. Academicas</th>
-                        <th>Destino</th>
+                        <th>Destino</th>  
+                        <th>codigo</th>
                     </tr>
-                 
+                
                 </thead>
                 <tbody>
-                    @foreach($doc->items as $item)
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$item->cantidad_aux}}</td>
-                            <td>{{ $item->horas}}</td>
-                            <td>{{ $item->destino}}</td>
-                        </tr>
-                    @endforeach
+                        @foreach($doc->items as $item)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$item->cantidad_aux}}</td>
+                                <td>{{ $item->horas}}</td>
+                                <td>{{ $item->destino}}</td>
+                            </tr>
+                        @endforeach
+                        @foreach($doc->itemlabs as $itemlab)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$itemlab->cantidad_aux}}</td>
+                                <td>{{ $itemlab->horas}}</td>
+                                <td>{{ $itemlab->nombre}}</td>
+                                <td>{{ $itemlab->codigo}}</td>
+                            </tr>
+                        @endforeach
                 </tbody>
               </table>
             </div>
@@ -106,8 +117,8 @@
                                         <td>{{$inciso->puntaje}}</td>
                                         @foreach ($inciso->subincisos as $subinciso)
                                             <tr>
-                                                <td>{{$subinciso->nombre}}...........{{$subinciso->puntaje}}</td>
-                                                
+                                                <td style="border:0;">{{$subinciso->nombre}}...........{{$subinciso->puntaje}}</td>
+                                                <td style="border:0;"></td>
                                             </tr>
                                         @endforeach
                                     </tr>
