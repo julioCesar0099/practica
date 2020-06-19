@@ -23,9 +23,13 @@ Route::group([
    'middleware'=>'auth'],
 
    function(){
+
        Route::get('/','DashboardController@index')->name('dashboard');
        Route::get('/combocatorias','CombocatoriaController@index')->name('admin.combocatorias.index');
+       Route::put('combocatorias/{combocatoria}','CombocatoriaController@update')->name('admin.combocatorias.update');
        Route::get('combocatorias/create','CombocatoriaController@create')->name('admin.combocatorias.create');
+       Route::get('combocatorias/{combocatoria}','CombocatoriaController@edit')->name('admin.combocatorias.edit');
+
        Route::post('combocatorias','CombocatoriaController@store')->name('admin.combocatorias.store');
        Route::delete('combocatorias/{combocatoria}','CombocatoriaController@destroy')->name('admin.combocatorias.destroy');
        
