@@ -10,4 +10,5 @@ class Tabla extends Model
     {
          return $this->hasMany(Seccion::class);
     }
+    
 }

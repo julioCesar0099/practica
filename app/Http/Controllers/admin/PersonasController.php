@@ -117,9 +117,23 @@ class PersonasController extends Controller
     public function store(Request $request)
     {
         //$datosPersona=request()->all();
-
+        $campos=[
+            'codigoSIS'=>'required',
+            'nombre'=>'required',
+            'apellidoP'=>'required',
+            'apellidoM'=>'required',
+            'correo'=>'required',
+            'telefono'=>'required'
+        ];
+        $Mensaje=["required"=>'El :attribute es requerido'];
+        $this->validate($request,$campos,$Mensaje);
         $datosPersona=request()->except('_token');
+        $datosPersona['user_id']='0';
         
+        
+
+
+
         Personas::insert($datosPersona);
         //$ocupacion=$datosPersona->ocupacion;
         //return response()->json($ocupacion);
@@ -193,3 +207,4 @@ class PersonasController extends Controller
         return redirect('/admin/personas');
     }
 }
+

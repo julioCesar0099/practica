@@ -6,8 +6,14 @@
 @inject('ocupaciones','App\Services\Ocupaciones')
 @inject('carreras','App\Services\Carreras')
 
+@if(count($errors)>0)
+
+@endif
+
 <form action="{{ url('/admin/personas')}}" method="post" enctype="multipart/form-data">
     <div class="container ">
+
+
 
         {{csrf_field()}}
         <br/>
@@ -17,29 +23,35 @@
                     <div class="panel panel-heading">
                         <h2>Agregar</h2>
                         <label form="prueba">{{'codigo SIS'}}</label>
-                        <input class="form-control" type="number" name="codigoSIS" id="codigoSIS" value="" Placeholder="Ingrese su codigo sis">
+                        <input class="form-control" type="number" name="codigoSIS" id="codigoSIS" value="{{isset($persona->codigoSIS)?$persona->codigoSIS:old('codigoSIS')}}" Placeholder="Ingrese su codigo sis">
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="box box-primary"> 
+                <div class="box box-primary">
                     <div class="panel panel-heading">
                         <label>{{'INFORMACIÓN PERSONAL'}}</label>
                         </br>
                         <label form="nombre">{{'Nombre'}}</label>
-                        <input class="form-control" type="text" name="nombre" id="nombre" value="" Placeholder="Ingrese su nombre">
-                        
+                        <input class="form-control" type="text" name="nombre" id="nombre" value="{{isset($persona->nombre)?$persona->nombre:old('nombre')}}" Placeholder="Ingrese su nombre">
+                        {!! $errors->first('nombre','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
+
                         <label form="apellidoP">{{'Apellido Paterno'}}</label>
-                        <input class="form-control" type="text" name="apellidoP" id="apellidoP" value="" Placeholder="Ingrese su apellido paterno">
-                        
+                        <input class="form-control" type="text" name="apellidoP" id="apellidoP" value="{{isset($persona->apellidP)?$persona->apellidP:old('apellidoP')}}" Placeholder="Ingrese su apellido paterno">
+                        {!! $errors->first('apellidoP','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
+
                         <label form="apellidoM">{{'Apellido Materno'}}</label>
-                        <input class="form-control" type="text" name="apellidoM" id="apellidoM" value="" Placeholder="Ingrese su apellido materno">
-                        
+                        <input class="form-control" type="text" name="apellidoM" id="apellidoM" value="{{isset($persona->apellidM)?$persona->apellidoM:old('apellidoM')}}" Placeholder="Ingrese su apellido materno">
+                        {!! $errors->first('apellidoM','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
+
                         <label form="correo">{{'Correo'}}</label>
-                        <input class="form-control" type="email" name="correo" id="correo" value="" Placeholder="Ingrese su correo">
-                        
+                        <input class="form-control" type="email" name="correo" id="correo" value="{{isset($persona->correo)?$persona->correo:old('correo')}}" Placeholder="Ingrese su correo">
+                        {!! $errors->first('correo','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
+
                         <label form="telefono">{{'Telefono'}}</label>
-                        <input class="form-control" type="text" name="telefono" id="telefono" value="" Placeholder="Ingrese su telefono">
+                        <input class="form-control" type="text" name="telefono" id="telefono" value="{{isset($persona->telefono)?$persona->telefono:old('telefono')}}" Placeholder="Ingrese su telefono">
+                        {!! $errors->first('telefono','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
+
                     </div>
                 </div>
             </div>

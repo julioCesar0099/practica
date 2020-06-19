@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use \PDF;
 use Carbon\Carbon;
 use App\Combocatoria;
-
+use App\tabla;
+use App\seccion;
 class PDFController extends Controller
 {
     public function show(){
@@ -20,7 +21,10 @@ class PDFController extends Controller
     }
 	public function index($id){
 		$doc = Combocatoria::findOrFail($id);
-		$pdf = PDF::loadview('docPDF',compact('doc'));
+		$idT=$doc->tabla_id;
+		$tabla = Tabla::findOrFail($idT);
+		
+		$pdf = PDF::loadview('docPDF',compact('doc','tabla'));
 		return $pdf->stream();
 	}
 }
