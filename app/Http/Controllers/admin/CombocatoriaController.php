@@ -19,6 +19,167 @@ class CombocatoriaController extends Controller
 {
     //
 
+    public function edit(Combocatoria $combocatoria){
+        $carreras= Carrera::all();
+        $facultades = Facultad::all();
+        $areas = Area::all();
+        $tablasDoc = Tabla::all();
+        $tablasLab = Tabla::all();
+
+        if( $combocatoria->tipo == 'Asignatura' ){
+
+            return view ('admin.combocatorias.edit',compact('facultades','areas','carreras','tablasDoc','tablasLab','combocatoria')); 
+
+        }else{
+
+            return view ('admin.combocatorias.edit2',compact('facultades','areas','carreras','tablasDoc','tablasLab','combocatoria')); 
+
+        }
+
+    }
+
+    public function update(Request $request , Combocatoria $combocatoria){
+
+       
+       
+        if($request->tituloDoc)
+        {
+         
+        $this->validate($request, [
+            'tituloDoc'=> 'required',
+            'descripcion'=> 'required',
+            'fecha_fin'=> 'required',
+            'facultad'=> 'required',
+            'area'=> 'required',
+            
+
+
+        ]);
+       
+        $combocatoria->titulo = $request->get('tituloDoc');
+
+        $combocatoria->descripcion = $request->get('descripcion');
+        $combocatoria->tipo = 'Asignatura';
+        $combocatoria->fecha_inicio = Carbon::now();
+        $combocatoria->fecha_fin = Carbon::parse($request->get('fecha_fin'));
+        $combocatoria->area_id = $request->get('area');
+        $combocatoria->tabla_id = $request->get('tabla');
+        $combocatoria->facultad_id = $request->get('facultad');
+        $combocatoria->save();
+
+        $combocatoria->Carreras()->sync($request->get('carreras'));
+
+        $combocatoria->documentos()->delete();
+        $combocatoria->items()->delete();
+        $combocatoria->requisitos()->delete();
+
+        $array= $request->get('documentos');
+        $a= count($request->get('documentos'));
+        for ($i=0; $i<$a;$i++)
+            {
+            $doc = new Documento_Combocatoria;
+            $doc->combocatoria_id = $combocatoria->id;
+            $doc->detalle = $array[$i];
+            $doc->save();
+         }
+
+
+        $array2= $request->get('requisito');
+        $a2= count($request->get('requisito'));
+        for ($i=0; $i<$a2;$i++)
+            {
+                $doc= new Requisito_Combocatoria;
+                $doc->combocatoria_id = $combocatoria->id;
+                $doc->detalle = $array2[$i];
+                $doc->save();
+            }
+
+
+        $array3= $request->get('cantidad_aux');
+        $array4= $request->get('horas');
+        $array5= $request->get('destino');
+        $a3= count($request->get('horas'));
+        for ($i=0; $i<$a3;$i++)
+            {
+                $doc = new Item;
+                $doc->combocatoria_id = $combocatoria->id;
+                $doc->area_id = $request->get('area');
+                $doc->cantidad_aux= $array3[$i];
+                $doc->horas = $array4[$i];
+                $doc->destino = $array5[$i];
+                $doc->save();
+            }
+
+        return redirect()->route('admin.combocatorias.index')->with('flash','La combocatoria a sido actualizada ');
+        }
+        else{
+            $this->validate($request, [
+                'tituloLab'=> 'required',
+                'descripcion'=> 'required',
+                'fecha_fin'=> 'required',
+                'facultad'=> 'required',
+                'area'=> 'required',
+                
+    
+            ]);
+    
+            $combocatoria->titulo = $request->get('tituloLab');
+            $combocatoria->descripcion = $request->get('descripcion');
+            $combocatoria->tipo = 'Laboratorios';
+            $combocatoria->fecha_inicio = Carbon::now();
+            $combocatoria->fecha_fin = Carbon::parse($request->get('fecha_fin'));
+            $combocatoria->area_id = $request->get('area');
+            $combocatoria->tabla_id = $request->get('tabla');
+            $combocatoria->facultad_id = $request->get('facultad');
+            $combocatoria->save();
+    
+            $combocatoria->Carreras()->sync($request->get('carreras'));
+    
+            $combocatoria->documentos()->delete();
+            $combocatoria->items()->delete();
+            $combocatoria->requisitos()->delete();
+    
+            $array= $request->get('documentos');
+            $a= count($request->get('documentos'));
+            for ($i=0; $i<$a;$i++)
+                {
+                $doc = new Documento_Combocatoria;
+                $doc->combocatoria_id = $combocatoria->id;
+                $doc->detalle = $array[$i];
+                $doc->save();
+             }
+    
+    
+            $array2= $request->get('requisito');
+            $a2= count($request->get('requisito'));
+            for ($i=0; $i<$a2;$i++)
+                {
+                    $doc= new Requisito_Combocatoria;
+                    $doc->combocatoria_id = $combocatoria->id;
+                    $doc->detalle = $array2[$i];
+                    $doc->save();
+                }
+    
+            $array3= $request->get('cantidad_aux');
+            $array4= $request->get('horas');
+            $array5= $request->get('nombre');
+            $array6= $request->get('codigo');
+            $a3= count($request->get('horas'));
+            for ($i=0; $i<$a3;$i++)
+                {
+                    $doc = new Itemlab;
+                    $doc->combocatoria_id = $combocatoria->id;
+                    $doc->area_id = $request->get('area');
+                    $doc->cantidad_aux= $array3[$i];
+                    $doc->horas = $array4[$i];
+                    $doc->nombre = $array5[$i];
+                    $doc->codigo = $array6[$i];
+                    $doc-> save();
+                }
+    
+            return redirect()->route('admin.combocatorias.index')->with('flash','La combocatoria a sido actualizada');
+        }
+    }
     public function index()
     {
 
