@@ -53,7 +53,7 @@ class PersonasSeeder extends Seeder
              'nombre'=>'rudy',
              'apellidoP'=>'Veizaga',
              'apellidoM'=>'Zamudio',
-             'codigoSIS'=>'201409412',
+             'codigoSIS'=>'201409432',
              'carrera_id'=>'2',
              'correo'=>'rud@gmail.com',
              'telefono'=>'61607554',
@@ -110,11 +110,12 @@ class PersonasSeeder extends Seeder
             'apellidoP'=>'Milan',
             'apellidoM'=>'Herbas',
             'codigoSIS'=>'201422236',
-            'carrera'=>'sistemas',
+            'carrera_id'=>'2',
             'correo'=>'nando@gmail.com',
             'telefono'=>'61607888',
-            'facultad'=>'FCYT',
-            'ocupacion'=>'estudiante',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'2',
+            'user_id'=>'0',
         ]);
 
         Personas::create([
@@ -122,11 +123,12 @@ class PersonasSeeder extends Seeder
             'apellidoP'=>'Hugarte',
             'apellidoM'=>'Camacho',
             'codigoSIS'=>'201288236',
-            'carrera'=>'sistemas',
+            'carrera_id'=>'2',
             'correo'=>'julito@gmail.com',
             'telefono'=>'71607488',
-            'facultad'=>'FCYT',
-            'ocupacion'=>'estudiante',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0',
         ]);
 
 

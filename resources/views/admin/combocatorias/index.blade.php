@@ -28,11 +28,8 @@
                     <th>Fecha finalizacion</th>
                     <th>Area </th>
                     <th>Carreras</th>
-<<<<<<< HEAD
                     <th>Resultados</th>
-=======
                     <th>Postulantes</th>
->>>>>>> 2f04dcf22c5f6235008dee10faba82127cd0339a
                     <th>Acciones</th>
 
                   </tr>

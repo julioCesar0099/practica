@@ -43,10 +43,10 @@
 						</footer>
 						<hr class="my-4">
 						<div class="float-right">
-							  <a href="{{ url('/registroPost') }}" class="btn  btn-info " style="font-size: inherit ">Postular</a> 
 							  <a href="{{url($convocatoria->id.'/notas')}}" class="btn  btn-info " style="font-size: inherit ">Notas</a>   
 							  <a href="{{ url('/index/'.$convocatoria->id)}}" class="btn btn-info " style="font-size: inherit">Ver mas...</a>
-							  <a href="{{ url('/registroPost', $convocatoria) }}" class="btn btn btn btn-info ">Postular</a>
+							  <a href="{{ url ('/listaHab')}}" class="btn btn-info " style="font-size: inherit">Lista de habilitados</a>
+							  <a href="{{ url('/registroPost', $convocatoria) }}" class="btn btn-info " style="font-size: inherit">Postular</a>
 			</article>
 		@endforeach
 	</section>

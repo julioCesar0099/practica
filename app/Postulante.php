@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Postulante extends Model
 {
+    public function combocatoria()
+    {
+            return $this->belongsTo(combocatoria::class);
+
+    }
+
     public function persona()
     {
             return $this->belongsTo(personas::class);
@@ -16,4 +22,8 @@ class Postulante extends Model
             return $this->hasMany(Documento_Post::class);
             
     }
+    public function notas()
+   {
+         return $this->hasMany(notas::class);
+   }
 }

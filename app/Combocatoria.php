@@ -49,6 +49,10 @@ class Combocatoria extends Model
     {
             return $this->belongsTo(Tabla::class);
     }
+    public function Postulante()
+    {
+            return $this->hasMany(Tabla::class);
+    }
 
    
 }
