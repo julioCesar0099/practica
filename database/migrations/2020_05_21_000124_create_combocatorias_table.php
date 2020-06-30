@@ -23,6 +23,7 @@ class CreateCombocatoriasTable extends Migration
             $table->unsignedInteger('area_id');
             $table->unsignedInteger('tabla_id')->nullable();
             $table->unsignedInteger('facultad_id')->nullable();
+            $table->unsignedInteger('notas')->nullable();
             $table->timestamps();
         });
     }

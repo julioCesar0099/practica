@@ -53,8 +53,9 @@
                       <td>
                           <a href="{{ url('/index/'.$combocatoria->id)}}"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
           
-
+                          @can('editar convocatorias', new \Spatie\Permission\Models\Role)
                           <a href="{{ route('admin.combocatorias.edit',$combocatoria) }}"  class="btn btn-xs btn-primary" ><i class="fa fa-pencil"></i></a>
+                          @endcan
 	                        @can('eliminar convocatorias', new \Spatie\Permission\Models\Role)
                           <form  method="POST" action="{{ route('admin.combocatorias.destroy', $combocatoria) }}"  style="display: inline">
                                   {{ csrf_field() }} {{ method_field('DELETE')}}

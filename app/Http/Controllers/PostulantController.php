@@ -138,4 +138,22 @@ class PostulantController extends Controller
         return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('mensaje','Registro agregado!');
 
     }
+
+
+    public function verNotas(Combocatoria $convocatoria)
+    {
+
+      $postulantes;
+
+      if($convocatoria->notas != null)
+      {
+          $postulantes=  Postulante::where([ 'convocatoria_id' => $convocatoria->id ,'estado' => 'Habilitado'])->get();
+      }
+      else{
+          $postulantes;
+      }
+
+      return view('notas' ,compact('convocatoria','postulantes'));
+
+    }
 }

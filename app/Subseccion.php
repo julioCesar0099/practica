@@ -11,4 +11,17 @@ class Subseccion extends Model
          return $this->hasMany(Inciso::class);
     }
 
+    public function tieneIncisos(Subseccion $subseccion )
+    {
+        
+        $incisos=Inciso::where('subseccion_id', $subseccion->id )->get();
+
+        if( count($incisos)!= 0 )
+        {
+            return 1 ;
+        }else{
+            return 0;
+        }
+        
+    }
 }
