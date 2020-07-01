@@ -154,6 +154,14 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->area_id = 1;
         $conv->facultad_id = 1;
         $conv-> save();
+        // $conv= new Combocatoria;
+        // $conv->titulo ='Primera Convocatoria';
+        // $conv->descripcion ='Descripcion primera convocatoria';
+        // $conv->fecha_inicio = Carbon::now();
+        // $conv->fecha_fin = Carbon::now()->addDays(15);
+        // $conv->area_id = 1;
+        // $conv->facultad_id = 1;
+        // $conv-> save();
 
         // $conv->Carreras()->attach($c1);
         // $conv->Carreras()->attach($c5);
@@ -167,6 +175,14 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->area_id = 2;
         $conv->facultad_id = 1;
         $conv-> save();
+        // $conv= new Combocatoria;
+        // $conv->titulo ='Segunda Convocatoria';
+        // $conv->descripcion ='Descripcion segunda convocatoria';
+        // $conv->fecha_inicio = Carbon::now()->subDays(3);
+        // $conv->fecha_fin = Carbon::now()->addDays(20);
+        // $conv->area_id = 2;
+        // $conv->facultad_id = 1;
+        // $conv-> save();
 
         // $conv->Carreras()->attach($c2);
 
@@ -179,6 +195,14 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->area_id = 1;
         $conv->facultad_id = 1;
         $conv-> save();
+        // $conv= new Combocatoria;
+        // $conv->titulo ='Tercera Convocatoria';
+        // $conv->descripcion ='Descripcion tercera convocatoria';
+        // $conv->fecha_inicio = Carbon::now()->subDays(5);
+        // $conv->fecha_fin = Carbon::now()->addDays(21);
+        // $conv->area_id = 1;
+        // $conv->facultad_id = 1;
+        // $conv-> save();
 
         // $conv->Carreras()->attach($c5);
 
