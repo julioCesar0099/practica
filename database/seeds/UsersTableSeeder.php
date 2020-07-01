@@ -38,8 +38,11 @@ class UsersTableSeeder extends Seeder
         $permiso11=Permission::create(['name' =>'editar usuarios']);
         $permiso12=Permission::create(['name' =>'crear usuarios']);
 
-        $permiso13=Permission::create(['name' =>'publicar notas']);
-        $permiso14=Permission::create(['name' =>'registrar estudiantes especiales']);
+        $permiso13=Permission::create(['name' =>'registrar estudiantes especiales']);
+        $permiso14=Permission::create(['name' =>'publicar notas']);
+        $permiso15=Permission::create(['name' =>'calificar postulantes']);
+        $permiso16=Permission::create(['name' =>'editar convocatorias']);
+        $permiso17=Permission::create(['name' =>'agregar nuevo usuario']);
 
         
 
@@ -57,6 +60,9 @@ class UsersTableSeeder extends Seeder
         $adminRole->givePermissionTo($permiso12);
         $adminRole->givePermissionTo($permiso13);
         $adminRole->givePermissionTo($permiso14);
+        $adminRole->givePermissionTo($permiso15);
+        $adminRole->givePermissionTo($permiso16);
+        $adminRole->givePermissionTo($permiso17);
 
 
         // $comiteRole->givePermissionTo($permiso1);

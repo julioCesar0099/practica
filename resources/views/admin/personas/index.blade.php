@@ -47,7 +47,9 @@
                         @can('editar usuarios',new \Spatie\Permission\Models\Role)   
                         <a href="{{ url('/admin/personas/'.$personas->id.'/edit')}}"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a> 
                         @if($personas->ocunombre == 'docente')
-                        <a href="{{ url('/admin/'.$personas->id.'/agregar/')}}"class="btn btn-xs btn-info"><i class="">agregar</i></a>
+                        @can('agregar nuevo usuario',new \Spatie\Permission\Models\Role)
+                           <a href="{{ url('/admin/'.$personas->id.'/agregar/')}}"class="btn btn-xs btn-info"><i class="">agregar</i></a>
+                        @endcan
                         @endif
                         @endcan
                         @can('eliminar usuarios',new \Spatie\Permission\Models\Role)

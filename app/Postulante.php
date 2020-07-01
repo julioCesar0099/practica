@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Postulante extends Model
 {
-    public function combocatoria()
+    public function convocatoria()
     {
-            return $this->belongsTo(combocatoria::class);
+            return $this->belongsTo(Combocatoria::class);
 
     }
 

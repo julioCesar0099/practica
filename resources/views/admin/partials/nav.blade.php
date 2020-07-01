@@ -29,6 +29,21 @@
 							@endcan
 						</ul>
     </li>
+	<li class="treeview {{ request()->is('admin/calificaciones*') ? 'active' : ''}}">
+
+				<a href="#"><i class="fa fa-book"></i> <span>Calificaciones</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+				</a>
+						<ul class="treeview-menu">
+							<li {{ request()->is('admin/calificaciones') ? 'class=active' : ''}} >
+								<a href="{{ route('admin.calificaciones.index') }}">
+									<i class="fa fa-eye"></i> Calificar Convocatorias
+								</a>
+							</li>
+						</ul>
+    </li>
 	@endcan
 	@can('ver roles', new \Spatie\Permission\Models\Role)
 		<li class="treeview  {{ request()->is('admin/roles*') ? 'active' : ''}} ">

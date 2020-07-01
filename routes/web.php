@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/','InicioController@index');
+Route::get('/','InicioController@index')->name('inicio');
 Route::get('/ayuda', 'ControllerMail@index');
 Route::post('/send', 'ControllerMail@send');
 Route::get('/login','Auth\LoginController@showLoginForm');
@@ -81,7 +81,16 @@ Route::group([
        Route::post('tablas/subinciso/{tabla}/{inciso}','TituloController@subincisoStore')->name('admin.tablas.subinciso.store');
        
        
-       
+       Route::get('calificaciones', 'NotasController@index')->name('admin.calificaciones.index');
+       Route::get('calificaciones/notas/{convocatoria}', 'NotasController@notas')->name('admin.calificaciones.notas');
+       Route::get('calificaciones/publicar/{convocatoria}', 'NotasController@publicar')->name('admin.calificaciones.publicar');
+       Route::get('calificaciones/items/{convocatoria}', 'NotasController@items')->name('admin.calificaciones.items');
+       Route::get('calificaciones/Postulantes/{destino}/{convocatoria}', 'NotasController@postulantes')->name('admin.calificaciones.postulantes');
+       Route::get('calificaciones/calificar/{postulante}/{destino}/{convocatoria}', 'NotasController@calificar')->name('admin.calificaciones.calificar');
+       Route::get('calificaciones/meritos/{postulante}/{destino}/{convocatoria}', 'NotasController@meritos')->name('admin.calificaciones.meritos');
+       Route::put('calificaciones/calif/{postulante}/{destino}/{convocatoria}', 'NotasController@calif')->name('admin.calificaciones.calif');
+       Route::put('calificaciones/mer/{postulante}/{destino}/{convocatoria}', 'NotasController@mer')->name('admin.calificaciones.mer');
+
     });
 
 Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -97,6 +106,7 @@ Route::get('/{id}/notas', 'InicioController@mostrar');
 Route::get('/index/{id}', 'PDFController@index');
 
    
+Route::get('/notas/{convocatoria}','PostulantController@verNotas')->name('notas.ver');
 
 Route::get('/registroPost/{convocatoria}','PostulantController@registroPost')->name('registroPost');
 Route::get('/regPostulante/{codigoS}/{convocatoria}','PostulantController@regPostulante')->name('regPostulante');

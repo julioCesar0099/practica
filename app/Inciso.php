@@ -15,4 +15,5 @@ class Inciso extends Model
     {
             return $this->belongsTo(Subseccion::class);
     }
+    
 }

@@ -19,8 +19,11 @@ class CreatePostulantesTable extends Migration
             $table->string('item_nombre');
             $table->string('estado');
             $table->string('observacion')->nullable();
-            $table->integer('persona_id')->unsigned();
-            $table->foreign('persona_id')->references('id')->on('personas')->onDelete("cascade");
+            $table->unsignedInteger('persona_id');
+            $table->unsignedInteger('nota_meritos')->nullable();
+            $table->unsignedInteger('nota_conocimientos')->nullable();
+            $table->unsignedInteger('nota_final')->nullable();
+
             $table->timestamps();
         });
     }
