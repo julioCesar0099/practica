@@ -23,8 +23,9 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      
       <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
       <th scope="col">Carrera</th>
       <th scope="col">Item</th>
       <th scope="col">Estado</th>
@@ -36,10 +37,10 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($listaPost as $listaP)
+    @foreach($postulante as $listaP)
     <tr>
-      <td>{{$listaP->id}}</td>
       <td>{{$listaP->persona->nombre}}</td>
+      <td>{{$listaP->persona->apellidoP}}</td>
       <td>{{$listaP->persona->carrera}}</td>
       <td>{{$listaP->item_nombre}}</td>
       <td>{{$listaP->estado}}</td>
@@ -57,15 +58,15 @@
           </form>
       </td>
       <td>
-          <a href="{{ url($listaP->id.'/habilitacion') }}" class="btn btn-warning btn-sm">Habilitar</a>
+          <a href="{{ url('admin/habilitacion',$listaP->id) }}" class="btn btn-warning btn-sm">Habilitar</a>
       </td>
       <td>
-          <a href="{{ url($listaP->id.'/deshabilitacion') }}" class="btn btn-danger btn-sm">Deshabilitar</a>
+          <a href="{{ url('admin/deshabilitacion',$listaP->id) }}" class="btn btn-danger btn-sm">Deshabilitar</a>
       </td>
     </tr>
     @endforeach
 
-      <button></button>
+      
 
   </tbody>
 </table>

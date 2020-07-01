@@ -14,23 +14,27 @@
             <table class="table">
     <thead>
     <tr>
-      <th scope="col">#</th>
+      
       <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
       <th scope="col">Carrera</th>
       <th scope="col">Item</th>
       <th scope="col">Estado</th>
       <th scope="col">Observaciones</th>
     @foreach($listaH as $list)
     <tr>
-      <td>{{$list->id}}</td>
+      
       <td>{{$list->persona->nombre}}</td>
+      <td>{{$list->persona->apellidoP}}</td>
       <td>{{$list->persona->carrera}}</td>
       <td>{{$list->item_nombre}}</td>
       <td>{{$list->estado}}</td>
       <td>{{$list->observacion}}</td>
 
     @endforeach
-
+    <div class="form-group">
+         <a href="{{ url('/') }}" class="btn btn-primary my-2 my-sm-0">Atras</a>
+    </div>
     </body>
     </html>
 

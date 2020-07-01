@@ -22,50 +22,6 @@ class PostulantController extends Controller
 
 
 
-    public function habPostulante(){
-        $listaPost = Postulante::all();
-        //$listaPost= \DB::table('postulantes')->select('id','nombre','carrera','item_nombre');
-        return view('postulantes.habPostulante',compact('listaPost'));
-    }
-
-
-    public function observacion(Request $request,Postulante $listaP){
-
-       //$this->validate($request, ['observacion'=>'required']);
-       
-        $listaP->observacion = $request->observacion;
-        $listaP->save();
-        return back();
-    }
-
-
-
-    public function habilitar($id){
-      $Postulantes=Postulante::findOrFail($id);
-      $Postulantes->estado='Habilitado';
-      $arrayName = array(
-        'convocatoria_id' => $Postulantes->convocatoria_id,
-        'item_nombre'=>$Postulantes->item_nombre,
-        'estado'=>$Postulantes->estado,
-        'persona_id'=>$Postulantes->persona_id,
-       );
-      Postulante::where('id','=',$id)->update($arrayName);
-      return back();
-    }
-
-    public function deshabilitar($id){
-      $Postulantes=Postulante::findOrFail($id);
-      $Postulantes->estado='Deshabilitado';
-      $arrayName = array(
-        'convocatoria_id' => $Postulantes->convocatoria_id,
-        'item_nombre'=>$Postulantes->item_nombre,
-        'estado'=>$Postulantes->estado,
-        'persona_id'=>$Postulantes->persona_id,
-       );
-      Postulante::where('id','=',$id)->update($arrayName);
-      return back();
-    }
-
 
     public function identificacion(Request $request,Combocatoria $convocatoria){
         
