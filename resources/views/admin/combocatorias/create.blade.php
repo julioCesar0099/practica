@@ -336,7 +336,7 @@
                                                                             <td><button type="button" name="add" id="add6" class="btn btn-primary">Añadir Item</button></td>
                                                                         </tr>
                                                                     </table>
-                                                            
+
                                                             </div>
                                                                 
                                                             </div>        
