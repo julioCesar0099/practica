@@ -45,7 +45,7 @@
                       <td>{{ $combocatoria->fecha_fin->format('d - M - Y')  }}</td>
                       <td>{{ $combocatoria->area->nombre }}</td>
                       <td>{{ $combocatoria->carreras->pluck('nombre')->implode(' , ')}}</td>
-                      <td> <a href="{{ url('/habPostulante') }}" class="btn btn-default">Auxiliatura Docencia</a></td>
+                      <td> <a href="{{ route('postulantes.itemsPost',$combocatoria) }}" class="btn btn-default">Postulantes</a></td>
                       <td>
                       <a href="{{'/admin/notas'}}"  class="btn btn-xs btn-default" ><i class="">notas</i></a>
                       </td>
