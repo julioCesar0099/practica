@@ -79,6 +79,13 @@ Route::group([
        Route::get('tablas/subinciso/{tabla}/{inciso}','TituloController@subinciso')->name('admin.tablas.subinciso');
        Route::delete('tablas/subinciso/{tabla}/{subinciso}','TituloController@subincisoDestroy')->name('admin.tablas.subinciso.destroy');
        Route::post('tablas/subinciso/{tabla}/{inciso}','TituloController@subincisoStore')->name('admin.tablas.subinciso.store');
+       Route::get('habilitacion/{id}','habilitadosController@habilitar');
+       Route::get('deshabilitacion/{id}','habilitadosController@deshabilitar');
+       Route::put('postulante/{listaP}','habilitadosController@observacion')->name('postulante.observacion');
+       Route::get('/habPostulante','habilitadosController@habPostulante')->name('postulantes.habPostulante');
+       Route::get('itemsPost/{combocatoria}','habilitadosController@itemsPost')->name('postulantes.itemsPost');
+       Route::get('item/Postulante/{combocatoria}/{destino}','habilitadosController@postulante')->name('item.Postulante');
+
        
        
        Route::get('calificaciones', 'NotasController@index')->name('admin.calificaciones.index');
@@ -108,13 +115,14 @@ Route::get('/index/{id}', 'PDFController@index');
    
 Route::get('/notas/{convocatoria}','PostulantController@verNotas')->name('notas.ver');
 
+
+//Route::get('itemsPost/{combocatoria}','PostulantController@itemsPost')->name('postulantes.itemsPost');
 Route::get('/registroPost/{convocatoria}','PostulantController@registroPost')->name('registroPost');
 Route::get('/regPostulante/{codigoS}/{convocatoria}','PostulantController@regPostulante')->name('regPostulante');
 Route::post('/regPostulante/{codigoS}/{convocatoria}','PostulantController@crear')->name('postulantes.crear');
 Route::post('/registroPost/{convocatoria}', 'PostulantController@identificacion')->name('postulantes.identificacion');
-Route::get('/habPostulante','PostulantController@habPostulante')->name('postulantes.habPostulante');
-Route::get('{id}/habilitacion','PostulantController@habilitar');
-Route::get('{id}/deshabilitacion','PostulantController@deshabilitar');
 Route::get('/listaHab','PostulantController@listaHab')->name('postulantes.listaHab');
-Route::put('postulante/{listaP}','PostulantController@observacion')->name('postulante.observacion');
+
+Route::get('/registroPost/generar/{id}','PDFController@generar');///generar rotulo
+
 

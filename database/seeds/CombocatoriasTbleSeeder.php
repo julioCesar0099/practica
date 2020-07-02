@@ -58,34 +58,59 @@ class CombocatoriasTbleSeeder extends Seeder
         $a->facultad_id=1;
         $a-> save();
 
-        $a= new Area;
-        $a->nombre='Matematicas';
-        $a->facultad_id=1;
+         $a= new Area;
+         $a->nombre='Matematicas';
+         $a->facultad_id=1;
         $a-> save();
 
-        $a= new Area;
-        $a->nombre='Mecanica';
-        $a->facultad_id=1;
-        $a-> save();
+         $a= new Area;
+         $a->nombre='Mecanica';
+         $a->facultad_id=1;
+         $a-> save();
 
         $a= new Facultad;
         $a->nombre='Fcyt';
         $a-> save();
+
+        // $i =new Item;
+        // $i ->combocatoria_id ='1';
+        // $i ->area_id ='1';
+        // $i ->cantidad_aux =5;
+        // $i ->horas = 8;
+        // $i ->destino = 'matematica discreta';
+        // $i -> save();
+
+        // $i =new Item;
+        // $i ->combocatoria_id ='1';
+        // $i ->area_id ='1';
+        // $i ->cantidad_aux =2;
+        // $i ->horas = 3;
+        // $i ->destino = 'matematica cuantica';
+        // $i -> save();
+
 
         $i =new Item;
         $i ->combocatoria_id ='1';
         $i ->area_id ='1';
         $i ->cantidad_aux =5;
         $i ->horas = 8;
-        $i ->destino = 'matematica discreta';
+        $i ->destino = 'Introduccion a la programacion';
         $i -> save();
 
         $i =new Item;
         $i ->combocatoria_id ='1';
         $i ->area_id ='1';
-        $i ->cantidad_aux =2;
-        $i ->horas = 3;
-        $i ->destino = 'matematica cuantica';
+        $i ->cantidad_aux =4;
+        $i ->horas = 7;
+        $i ->destino = 'Elementos de programacion';
+        $i -> save();
+
+        $i =new Item;
+        $i ->combocatoria_id ='1';
+        $i ->area_id ='1';
+        $i ->cantidad_aux =3;
+        $i ->horas = 6;
+        $i ->destino = 'Taller de computacion';
         $i -> save();
 
         $c1 = new Carrera;
@@ -130,8 +155,8 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->facultad_id = 1;
         $conv-> save();
 
-        $conv->Carreras()->attach($c1);
-        $conv->Carreras()->attach($c5);
+        // $conv->Carreras()->attach($c1);
+        // $conv->Carreras()->attach($c5);
 
         $conv= new Combocatoria;
         $conv->titulo ='Segunda Convocatoria';
@@ -143,7 +168,7 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->facultad_id = 1;
         $conv-> save();
 
-        $conv->Carreras()->attach($c2);
+        // $conv->Carreras()->attach($c2);
 
         $conv= new Combocatoria;
         $conv->titulo ='Tercera Convocatoria';
@@ -155,7 +180,30 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->facultad_id = 1;
         $conv-> save();
 
-        $conv->Carreras()->attach($c5);
+        // $conv->Carreras()->attach($c5);
+
+        // $conv= new Combocatoria;
+        // $conv->titulo ='Cuarta Convocatoria';
+        // $conv->descripcion ='Descripcion cuarta convocatoria';
+        // $conv->fecha_inicio = Carbon::now()->subDays(7);
+        // $conv->fecha_fin = Carbon::now()->addDays(22);
+        // $conv->area_id = 2;
+        // $conv->facultad_id = 1;
+        // $conv-> save();
+
+        // $conv->Carreras()->attach($c2);
+
+        // $conv= new Combocatoria;
+        // $conv->titulo ='Quinta Convocatoria';
+        // $conv->descripcion ='Descripcion quinta convocatoria';
+        // $conv->fecha_inicio = Carbon::now()->subDays(7);
+        // $conv->fecha_fin = Carbon::now()->addDays(25);
+        // $conv->area_id = 3;
+        // $conv->facultad_id = 1;
+        // $conv-> save();
+
+        // $conv->Carreras()->attach($c3);
+        // $conv->Carreras()->attach($c4);
 
         $conv= new Combocatoria;
         $conv->titulo ='Cuarta Convocatoria';
@@ -167,7 +215,6 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->facultad_id = 1;
         $conv-> save();
 
-        $conv->Carreras()->attach($c2);
 
         $conv= new Combocatoria;
         $conv->titulo ='Quinta Convocatoria';
@@ -175,11 +222,11 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->descripcion ='Descripcion quinta convocatoria';
         $conv->fecha_inicio = Carbon::now()->subDays(7);
         $conv->fecha_fin = Carbon::now()->addDays(25);
-        $conv->area_id = 3;
+        $conv->area_id = 1;
         $conv->facultad_id = 1;
         $conv-> save();
 
-        $conv->Carreras()->attach($c3);
-        $conv->Carreras()->attach($c4);
+        $conv->Carreras()->attach($c5);
+        $conv->Carreras()->attach($c1);
     }
 }

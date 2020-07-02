@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use App\Combocatoria;
 use App\tabla;
 use App\seccion;
+use  App\personas;
+
 class PDFController extends Controller
 {
     public function show(){
@@ -25,6 +27,12 @@ class PDFController extends Controller
 		$tabla = Tabla::findOrFail($idT);
 		
 		$pdf = PDF::loadview('docPDF',compact('doc','tabla'));
+		return $pdf->stream();
+	}
+	public function generar($id){
+		$idCom = Combocatoria::findOrFail($id);
+				
+		$pdf = PDF::loadview('postulantes.generar',compact('idCom'));
 		return $pdf->stream();
 	}
 }

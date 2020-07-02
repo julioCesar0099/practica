@@ -118,19 +118,15 @@ class PersonasSeeder extends Seeder
             'user_id'=>'0',
         ]);
 
-        Personas::create([
-            'nombre'=>'julio',
-            'apellidoP'=>'Hugarte',
-            'apellidoM'=>'Camacho',
-            'codigoSIS'=>'201288236',
-            'carrera_id'=>'2',
-            'correo'=>'julito@gmail.com',
-            'telefono'=>'71607488',
-            'facultad_id'=>'1',
-            'ocupacion_id'=>'1',
-            'user_id'=>'0',
-        ]);
+           
+        
+       
 
+
+
+
+
+        
 
     }
 }
