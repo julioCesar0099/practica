@@ -26,14 +26,15 @@ class CombocatoriaController extends Controller
         $areas = Area::all();
         $tablasDoc = Tabla::all();
         $tablasLab = Tabla::all();
-
+        $reqC= Requisito_Combocatoria::all();
+        $docC= Documento_Combocatoria::all();
         if( $combocatoria->tipo == 'Asignatura' ){
 
-            return view ('admin.combocatorias.edit',compact('facultades','areas','carreras','tablasDoc','tablasLab','combocatoria')); 
+            return view ('admin.combocatorias.edit',compact('facultades','areas','carreras','tablasDoc','tablasLab','combocatoria','reqC','docC')); 
 
         }else{
 
-            return view ('admin.combocatorias.edit2',compact('facultades','areas','carreras','tablasDoc','tablasLab','combocatoria')); 
+            return view ('admin.combocatorias.edit2',compact('facultades','areas','carreras','tablasDoc','tablasLab','combocatoria','reqC','docC')); 
 
         }
 
@@ -206,6 +207,7 @@ class CombocatoriaController extends Controller
                 $areas = Area::all();
                 $tablasDoc = Tabla::all();
                 $tablasLab = Tabla::all();
+                
                 return view ('admin.combocatorias.create',compact('facultades','areas','carreras','tablasDoc','tablasLab')); 
             }
     
