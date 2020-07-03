@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use \PDF;
 use Carbon\Carbon;
 use App\Combocatoria;
-use App\tabla;
-use App\seccion;
+use App\Tabla;
+use App\Seccion;
+use App\Requisito_Combocatoria;
+use App\Documento_Combocatoria;
 use App\personas;
 use App\Carrera;
 use App\Area;
@@ -38,8 +40,10 @@ class PDFController extends Controller
 
 		$idT=$doc->tabla_id;
 		$tabla = Tabla::findOrFail($idT);
+		$reqC= Requisito_Combocatoria::all();
+		$docC= Documento_Combocatoria::all();
 		
-		$pdf = PDF::loadview('docPDF',compact('doc','tabla','cant'));
+		$pdf = PDF::loadview('docPDF',compact('doc','tabla','cant','reqC','docC'));
 		return $pdf->stream();
 	}
 	public function generar($codigoS,Combocatoria $convocatoria){
