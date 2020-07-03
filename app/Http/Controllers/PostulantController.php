@@ -12,8 +12,8 @@ use App\Documento_Combocatoria;
 class PostulantController extends Controller
 {
     public function registroPost(Combocatoria $convocatoria){
-            $docC= Documento_Combocatoria::all();
-            return view('postulantes.registroPost',compact('convocatoria','docC'));
+      
+            return view('postulantes.registroPost',compact('convocatoria'));
     }
 
 
@@ -26,7 +26,7 @@ class PostulantController extends Controller
 
 
     public function identificacion(Request $request,Combocatoria $convocatoria){
-        
+        $docC= Documento_Combocatoria::all();
         $request->validate([
            'codigo' => 'required|numeric'
         ]);
@@ -35,14 +35,14 @@ class PostulantController extends Controller
         $codigoS = personas::where('codigoSIS', $inputCom)->get()->first();
         //dd($codigoS);
           if($codigoS) {
-            return view('postulantes.regPostulante',compact('codigoS','convocatoria'));
+            return view('postulantes.regPostulante',compact('codigoS','convocatoria','docC'));
         //    $areas= App\Area::all();
         //    $items= App\Item::all();
         //    return view('regPostulante', compact('areas','items','codigoS'));
 
           }else{
            
-             return view('postulantes.registroPost', compact('convocatoria'))->with('mensaje','El codigo sis es incorrecto');
+             return view('postulantes.registroPost', compact('convocatoria','docC'))->with('mensaje','El codigo sis es incorrecto');
         }
     }
     
@@ -56,14 +56,14 @@ class PostulantController extends Controller
         $items= App\Item::all();
       //  $items= App\Item_Post::all();
         $documentos = App\Documento_Post::all();
-    
-        return view('postulantes.regPostulante', compact('codigoS','convocatoria'));
+        $docC= Documento_Combocatoria::all();
+        return view('postulantes.regPostulante', compact('codigoS','convocatoria','docC'));
     }
 
 
     public function crear(Request $request,personas $codigoS,Combocatoria $convocatoria){
         //return $request->all();
-
+        $docC= Documento_Combocatoria::all();
         $request->validate([
             'items' => 'required',
             'documentos' => 'required',
@@ -93,7 +93,7 @@ class PostulantController extends Controller
         $documentosNuevo->num_Hojas= $request->num_Hojas;
         $documentosNuevo->save();
 
-        return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('mensaje','Registro agregado!');
+        return view('postulantes.regPostulante',compact('codigoS','convocatoria','docC'))->with('mensaje','Registro agregado!');
 
     }
 
