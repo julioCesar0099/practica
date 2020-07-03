@@ -17,6 +17,7 @@ use App\Item;
 use App\Postulante;
 use App\Documento_Post;
 
+
 class PDFController extends Controller
 {
     public function show(){
@@ -47,6 +48,7 @@ class PDFController extends Controller
 		return $pdf->stream();
 	}
 	public function generar($codigoS,Combocatoria $convocatoria){
+		$docC= Documento_Combocatoria::all();
 		$codS = \DB::table('personas')->where('id', $codigoS)->first();
 		$areas= Area::all();
 		$items= Item::all();
@@ -54,7 +56,7 @@ class PDFController extends Controller
 
 		$idCarrera = $codS->carrera_id;
 		$carrera = Carrera::findOrFail($idCarrera);
-		$pdf = PDF::loadview('postulantes.generar',compact('codS','convocatoria','carrera'));
+		$pdf = PDF::loadview('postulantes.generar',compact('codS','convocatoria','carrera','docC'));
 		return $pdf->stream();
 	}
 }
