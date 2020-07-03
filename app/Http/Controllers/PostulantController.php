@@ -12,7 +12,8 @@ use App\Documento_Combocatoria;
 class PostulantController extends Controller
 {
     public function registroPost(Combocatoria $convocatoria){
-            return view('postulantes.registroPost',compact('convocatoria'));
+            $docC= Documento_Combocatoria::all();
+            return view('postulantes.registroPost',compact('convocatoria','docC'));
     }
 
 
