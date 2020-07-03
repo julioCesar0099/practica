@@ -69,7 +69,7 @@
                                                                                     <div class="input-group-addon">
                                                                                         <i class="fa fa-calendar"></i>
                                                                                     </div>
-                                                                                        <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker">
+                                                                                        <input autocomplete="off" name="fecha" type="text" class="form-control pull-right" id="datepicker">
                                                                             </div>
                                                                 </div>
                                                                 <div class="form-group {{ $errors->has('facultad') ? 'has-error' : '' }}">
@@ -336,7 +336,7 @@
                                                                             <td><button type="button" name="add" id="add6" class="btn btn-primary">Añadir Item</button></td>
                                                                         </tr>
                                                                     </table>
-                                                            
+
                                                             </div>
                                                                 
                                                             </div>        

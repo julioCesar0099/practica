@@ -45,6 +45,9 @@
     background-color: #164488;
     border-color: #164488;
     }
+    .fecha{
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -73,8 +76,19 @@
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
          @include('carrusel.carrusel')
       </div>
-      <div class="container">
-        @yield('content')
+
+      
+
+ 
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-8">
+            @yield('content')
+          </div>
+          <div class="col-4">
+            @yield('contenido')
+          </div>
+        </div>
       </div>
 
 <div class="jumbotron text-center" style="margin-bottom:0">

@@ -185,7 +185,16 @@ class PersonasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $campos=[
+            'nombre'=>'required',
+            'apellidoP'=>'required',
+            'apellidoM'=>'required',
+            'correo'=>'required',
+            'telefono'=>'required'
+        ];
+        $Mensaje=["required"=>'El :attribute es requerido'];
+        $this->validate($request,$campos,$Mensaje);
+        
         $datosPersona=request()->except(['_token','_method']);
         Personas::where('id','=',$id)->update($datosPersona);
 

@@ -28,10 +28,18 @@ class PDFController extends Controller
     }
 	public function index($id){
 		$doc = Combocatoria::findOrFail($id);
+		
+		$items= $doc->items;
+		$cant='0';
+		foreach($items as $it){
+			$cant='1';
+		}
+		
+
 		$idT=$doc->tabla_id;
 		$tabla = Tabla::findOrFail($idT);
 		
-		$pdf = PDF::loadview('docPDF',compact('doc','tabla'));
+		$pdf = PDF::loadview('docPDF',compact('doc','tabla','cant'));
 		return $pdf->stream();
 	}
 	public function generar($codigoS,Combocatoria $convocatoria){

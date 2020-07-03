@@ -53,6 +53,10 @@ Route::group([
            return view('admin.notas.index');
        });
        
+       Route::get('eventos/{id}','EventosController@index');
+       Route::get('eventos/create/{id}','EventosController@create');
+       Route::post('eventos/guardar/{id}','EventosController@guardar');
+       Route::delete('eventos/borrar/{evento}','EventosController@destroy')->name('admin.eventos.borrar');
        
        Route::get('tablas','TablaController@indexAsig')->name('admin.tablas.indexAsig');
        Route::delete('tablas/{tabla}','TablaController@destroy')->name('admin.tablas.destroy');
@@ -98,6 +102,7 @@ Route::group([
        Route::put('calificaciones/calif/{postulante}/{destino}/{convocatoria}', 'NotasController@calif')->name('admin.calificaciones.calif');
        Route::put('calificaciones/mer/{postulante}/{destino}/{convocatoria}', 'NotasController@mer')->name('admin.calificaciones.mer');
 
+       
     });
 
 Route::post('login', 'Auth\LoginController@login')->name('login');

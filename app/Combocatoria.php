@@ -54,5 +54,9 @@ class Combocatoria extends Model
             return $this->hasMany(Postulante::class);
     }
 
+    public function Eventos()
+    {
+        return $this->hasMany(Eventos::class);
+    }
    
 }
