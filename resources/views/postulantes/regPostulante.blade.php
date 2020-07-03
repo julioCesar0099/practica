@@ -57,7 +57,7 @@
             <div class="form-group">
                <a href="{{ url('/registroPost',$convocatoria) }}" class="btn btn-primary my-2 my-sm-0">Cancelar</a>
                <button class="btn btn-primary" type="submit" id="acept" name="aceptar" onclick="return confirm('Esta seguro?')">Aceptar</button>
-               <a href="{{ url ('/registroPost/generar/'.$convocatoria->id) }}" class="btn btn-primary my-2 my-sm-0">Generar Rotulo</a>
+               <a href="{{ url ('/registroPost/generar/'.$codigoS->id,$convocatoria) }}" class="btn btn-primary my-2 my-sm-0">Generar Rotulo</a>
             </div>
         </form>          
 

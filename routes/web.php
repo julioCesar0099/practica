@@ -123,6 +123,6 @@ Route::post('/regPostulante/{codigoS}/{convocatoria}','PostulantController@crear
 Route::post('/registroPost/{convocatoria}', 'PostulantController@identificacion')->name('postulantes.identificacion');
 Route::get('/listaHab','PostulantController@listaHab')->name('postulantes.listaHab');
 
-Route::get('/registroPost/generar/{id}','PDFController@generar');///generar rotulo
+Route::get('/registroPost/generar/{codigoS}/{convocatoria}','PDFController@generar')->name('generar');///generar rotulo
 
 

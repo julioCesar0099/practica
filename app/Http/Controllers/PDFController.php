@@ -8,7 +8,12 @@ use Carbon\Carbon;
 use App\Combocatoria;
 use App\tabla;
 use App\seccion;
-use  App\personas;
+use App\personas;
+use App\Carrera;
+use App\Area;
+use App\Item;
+use App\Postulante;
+use App\Documento_Post;
 
 class PDFController extends Controller
 {
@@ -29,10 +34,15 @@ class PDFController extends Controller
 		$pdf = PDF::loadview('docPDF',compact('doc','tabla'));
 		return $pdf->stream();
 	}
-	public function generar($id){
-		$idCom = Combocatoria::findOrFail($id);
-				
-		$pdf = PDF::loadview('postulantes.generar',compact('idCom'));
+	public function generar($codigoS,Combocatoria $convocatoria){
+		$codS = \DB::table('personas')->where('id', $codigoS)->first();
+		$areas= Area::all();
+		$items= Item::all();
+		$documentos = Documento_Post::all();
+
+		$idCarrera = $codS->carrera_id;
+		$carrera = Carrera::findOrFail($idCarrera);
+		$pdf = PDF::loadview('postulantes.generar',compact('codS','convocatoria','carrera'));
 		return $pdf->stream();
 	}
 }
