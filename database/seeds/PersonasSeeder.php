@@ -104,6 +104,7 @@ class PersonasSeeder extends Seeder
         'user_id'=>'0',
         //'ocupacion_id'=> $ocupacion1,
         ]);
+        
 
         Personas::create([
             'nombre'=>'fernando',
