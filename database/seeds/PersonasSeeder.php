@@ -104,8 +104,6 @@ class PersonasSeeder extends Seeder
         'user_id'=>'0',
         //'ocupacion_id'=> $ocupacion1,
         ]);
-        
-
         Personas::create([
             'nombre'=>'fernando',
             'apellidoP'=>'Milan',
@@ -115,14 +113,83 @@ class PersonasSeeder extends Seeder
             'correo'=>'nando@gmail.com',
             'telefono'=>'61607888',
             'facultad_id'=>'1',
-            'ocupacion_id'=>'2',
+            'ocupacion_id'=>'1',
             'user_id'=>'0',
         ]);
 
-           
+        Personas::create([
+            'nombre'=>'julio',
+            'apellidoP'=>'Hugarte',
+            'apellidoM'=>'Camacho',
+            'codigoSIS'=>'201288236',
+            'carrera_id'=>'2',
+            'correo'=>'julito@gmail.com',
+            'telefono'=>'71607488',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0',
+        ]);
         
-       
+        Personas::create([
+            'nombre'=>'esteban',
+            'apellidoP'=>'Quiroz',
+            'apellidoM'=>'Cossio',
+            'codigoSIS'=>'201011557',
+            'carrera_id'=>'1',
+            'correo'=>'estebanquito@gmail.com',
+            'telefono'=>'7778111',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
+        ]);
 
+
+        Personas::create([
+            'nombre'=>'Carolina',
+            'apellidoP'=>'Veizaga',
+            'apellidoM'=>'Cespedes',
+            'codigoSIS'=>'200855887',
+            'carrera_id'=>'3',
+            'correo'=>'caroVez@gmail.com',
+            'telefono'=>'78811000',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
+        ]);
+
+
+
+        Personas::create([
+            'nombre'=>'Yolanda',
+            'apellidoP'=>'Fernandez',
+            'apellidoM'=>'Fuentes',
+            'codigoSIS'=>'200899887',
+            'carrera_id'=>'3',
+            'correo'=>'yolita111@gmail.com',
+            'telefono'=>'65530215',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
+        ]);
+
+
+
+
+
+        Personas::create([
+            'nombre'=>'Cesar',
+            'apellidoP'=>'Peredo',
+            'apellidoM'=>'Cruz',
+            'codigoSIS'=>'201188000',
+            'carrera_id'=>'4',
+            'correo'=>'Cesapolio1@gmail.com',
+            'telefono'=>'77220065',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
+        ]);
+
+           
 
 
 

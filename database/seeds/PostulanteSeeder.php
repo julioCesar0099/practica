@@ -20,82 +20,74 @@ class PostulanteSeeder extends Seeder
       
 
 
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Introduccion a la programacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 1; 
-         $post->save();
+        $post = new Postulante;
+        $post->convocatoria_id = 1;
+        $post->item_nombre = 'Introduccion a la programacion';
+        $post->estado = 'Deshabilitado';
+        $post->observacion = '';
+        $post->persona_id = 7; 
+        $post->save();
 
 
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Introduccion a la programacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 2; 
-         $post->save();
+        $post = new Postulante;
+        $post->convocatoria_id = 1;
+        $post->item_nombre = 'Introduccion a la programacion';
+        $post->estado = 'Deshabilitado';
+        $post->observacion = '';
+        $post->persona_id = 8; 
+        $post->save();
 
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Introduccion a la programacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 3; 
-         $post->save();
-
-
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Elementos de programacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 4; 
-         $post->save();
-        
-
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Elementos de programacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 5; 
-         $post->save();
-
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Elementos de programacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 6; 
-         $post->save();
+        $post = new Postulante;
+        $post->convocatoria_id = 1;
+        $post->item_nombre = 'Introduccion a la programacion';
+        $post->estado = 'Deshabilitado';
+        $post->observacion = '';
+        $post->persona_id = 9; 
+        $post->save();
 
 
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Taller de computacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 7; 
-         $post->save();
-        
+        $post = new Postulante;
+        $post->convocatoria_id = 1;
+        $post->item_nombre = 'Elementos de programacion';
+        $post->estado = 'Deshabilitado';
+        $post->observacion = '';
+        $post->persona_id = 10; 
+        $post->save();
+       
 
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Taller de computacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 8; 
-         $post->save();
+        $post = new Postulante;
+        $post->convocatoria_id = 1;
+        $post->item_nombre = 'Elementos de programacion';
+        $post->estado = 'Deshabilitado';
+        $post->observacion = '';
+        $post->persona_id = 11; 
+        $post->save();
 
-         $post = new Postulante;
-         $post->convocatoria_id = 1;
-         $post->item_nombre = 'Taller de computacion';
-         $post->estado = 'Deshabilitado';
-         $post->observacion = '';
-         $post->persona_id = 9; 
-         $post->save();
+        $post = new Postulante;
+        $post->convocatoria_id = 1;
+        $post->item_nombre = 'Elementos de programacion';
+        $post->estado = 'Deshabilitado';
+        $post->observacion = '';
+        $post->persona_id = 12; 
+        $post->save();
+
+
+        $post = new Postulante;
+        $post->convocatoria_id = 1;
+        $post->item_nombre = 'Taller de computacion';
+        $post->estado = 'Deshabilitado';
+        $post->observacion = '';
+        $post->persona_id = 3; 
+        $post->save();
+       
+
+        $post = new Postulante;
+        $post->convocatoria_id = 1;
+        $post->item_nombre = 'Taller de computacion';
+        $post->estado = 'Deshabilitado';
+        $post->observacion = '';
+        $post->persona_id = 4; 
+        $post->save();
 
     }
 }
