@@ -369,6 +369,8 @@ class CombocatoriaController extends Controller
 
     public function destroy(Combocatoria $combocatoria){
 
+                $reqC= Requisito_Combocatoria::all();
+                $docC= Documento_Combocatoria::all();
                  if( auth()->user()->hasPermissionTo('eliminar convocatorias')){
                     $combocatoria->Carreras()->detach();
                     $combocatoria->Documentos()->delete();
