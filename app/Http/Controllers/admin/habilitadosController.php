@@ -28,7 +28,7 @@ class habilitadosController extends Controller
 
 
       public function postulante(Combocatoria $combocatoria,$destino){
-        $postulante = Postulante::where(['convocatoria_id'=> $combocatoria->id,'item_nombre'=>$destino])->get();
+        $postulante = Postulante::where(['convocatoria_id'=> $combocatoria->id,'item_nombre'=>$destino])->first();
       
         return view('postulantes.habPostulante',compact('postulante'));
       }
