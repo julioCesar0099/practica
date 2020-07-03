@@ -136,11 +136,12 @@ class PersonasSeeder extends Seeder
             'apellidoP'=>'Quiroz',
             'apellidoM'=>'Cossio',
             'codigoSIS'=>'201011557',
-            'carrera'=>'informatica',
+            'carrera_id'=>'1',
             'correo'=>'estebanquito@gmail.com',
             'telefono'=>'7778111',
-            'facultad'=>'FCYT',
-            'ocupacion'=>'estudiante',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
         ]);
 
 
@@ -149,11 +150,12 @@ class PersonasSeeder extends Seeder
             'apellidoP'=>'Veizaga',
             'apellidoM'=>'Cespedes',
             'codigoSIS'=>'200855887',
-            'carrera'=>'Mecanica',
+            'carrera_id'=>'3',
             'correo'=>'caroVez@gmail.com',
             'telefono'=>'78811000',
-            'facultad'=>'FCYT',
-            'ocupacion'=>'estudiante',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
         ]);
 
 
@@ -163,11 +165,12 @@ class PersonasSeeder extends Seeder
             'apellidoP'=>'Fernandez',
             'apellidoM'=>'Fuentes',
             'codigoSIS'=>'200899887',
-            'carrera'=>'Mecanica',
+            'carrera_id'=>'3',
             'correo'=>'yolita111@gmail.com',
             'telefono'=>'65530215',
-            'facultad'=>'FCYT',
-            'ocupacion'=>'estudiante',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
         ]);
 
 
@@ -179,11 +182,12 @@ class PersonasSeeder extends Seeder
             'apellidoP'=>'Peredo',
             'apellidoM'=>'Cruz',
             'codigoSIS'=>'201188000',
-            'carrera'=>'Industrial',
+            'carrera_id'=>'4',
             'correo'=>'Cesapolio1@gmail.com',
             'telefono'=>'77220065',
-            'facultad'=>'FCYT',
-            'ocupacion'=>'estudiante',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
         ]);
 
 

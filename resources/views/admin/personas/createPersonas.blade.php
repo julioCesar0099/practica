@@ -24,6 +24,7 @@
                         <h2>Agregar</h2>
                         <label form="prueba">{{'codigo SIS'}}</label>
                         <input class="form-control" type="number" name="codigoSIS" id="codigoSIS" value="{{isset($persona->codigoSIS)?$persona->codigoSIS:old('codigoSIS')}}" Placeholder="Ingrese su codigo sis">
+                        {!! $errors->first('codigoSIS','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
                     </div>
                 </div>
             </div>

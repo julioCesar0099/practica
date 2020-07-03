@@ -21,6 +21,9 @@
         .req{
             
         }
+        .espacio{
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -33,17 +36,28 @@
     </br>
     <h4>1. Requerimientos</h4>
     <div class="box-body">
+              
               <table id="user-table" class="table table-bordered table-striped">
                 <thead>
                     
-                    <tr>
-                        <th>Item</th>
-                        <th>Cantidad</th>
-                        <th>Hrs. Academicas</th>
-                        <th>Destino</th>  
-                        <th>codigo</th>
-                    </tr>
-                
+                    @if($cant == '0')
+                        <tr>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Hrs. Academicas</th>
+                            <th>Destino</th>
+                            <th>codigo</th>
+                        </tr>
+                    @endif
+                    @if($cant == '1')
+                        <tr>
+                            <th>Item</th>
+                            <th>Cantidad</th>
+                            <th>Hrs. Academicas</th>
+                            <th>Destino</th>
+                        </tr>
+                    @endif
+                    
                 </thead>
                 <tbody>
                         @foreach($doc->items as $item)
@@ -133,9 +147,75 @@
         </table>
     </div>
     <h4>7. Calificacion de conocimientos</h4>
-
+    <p class="Nota" style="text-align: justify">La calificacion de conocimientos se realiza sobre la base de 100 puntos, equivalentes al 80%
+    de la calificacion final. Se ralizan las siguientes pruebas:</p>
+    <p>a) Examen escrito de conocimientos(prueba de preselección).........40%
+    </p>
+    <p class="Nota" style="text-align: justify">
+    b) Examen oral, donde se evaluaran aspectos didácticos y pedagógicos sobre conocimiento y dominio
+    de la materia. Tendrá una duracion maxima de 25 minutos:</p>
+    <p class="Nota" style="text-align: justify">15 minutos de exposicion y 10 minutos de preguntas.......................60%</p>
     <h4>8. De los tribunales</h4>
+    <p class="Nota" style="text-align: justify">Los Honorables Consejos de Carrera de Informaática de Sistemas designarán respectivamente; para
+    la calificacion de méritos 1 docente y 1 delegado estudiante y para la comisión de conocimientos 1
+    docente por asignatura convocada más un estudiante veedor</p>
     <h4>9. Fecha de las pruebas</h4>
+    <p class="Nota" style="text-align: justify">Las pruebas escritas serán sobre el contenido de la materia a la que postula y la nota de 
+    aprobación mayor o igual a 51.</p>
+    <p class="Nota" style="text-align: justify">Las pruebas orales, se tomarán solo a los postulantes que hayan vencido la prueba escrita y de 
+    acuerdo a pertinencia y contenido de la materia a la que postula.</p>
+    <p class="Nota" style="text-align: justify">Fechas importantes a considerar:</p>
+
+    <div class="box-body">
+              
+        <table id="user-table" class="table table-bordered table-striped">
+        <thead>
+                <tr>
+                    <th>Eventos</th>
+                    <th>Fechas</th>
+                </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>Publicacion de convocatoria</td>
+                    <td>{{$doc->fecha_inicio->format('d - M - Y')}}</td>
+                </tr>
+                @foreach($doc->eventos as $evento)
+                    <tr>
+                        <td>{{ $evento->detalle}}</td>
+                        <td>{{ $evento->fecha->format('d - M - Y')}}</td>
+                    </tr>
+                @endforeach
+                <tr>
+                    <td>Fin de la convocatoria</td>
+                    <td>{{$doc->fecha_fin->format('d - M - Y')}}</td>
+                </tr>
+        </tbody>
+        </table>
+    </div>
+
     <h4>10. Del nombramientos</h4>
+    <p class="Nota" style="text-align: justify">Los nombramientos de auxilar universitario titular recaerán sobre aquellos postulantes que 
+    hubieran y optenido mayor calificacion. Caso contrario se procederá con el nombramiento de 
+    aquel que tenga la calificacion mayor como invitado.</p>
+    <p class="Nota" style="text-align: justify">Cabe resaltar que un auxiliar invitado solo tendrá nombramiento por los periodos académicos 
+    del semestre I y II del presente año.</p>
+    <p class="Nota" style="text-align: center"> Cochabamba, {{$doc->fecha_inicio->format('d - M - Y')}}</p>
+    
+    <p class="espacio">.</p>
+    <p class="espacio">.</p>
+    <p class="Nota" style="text-align: center">..................................................</p>
+    <p class="Nota" style="text-align: center">DIRECTOR DE CARRERA</p>
+    
+    <p class="espacio">.</p>
+    <p class="espacio">.</p>
+    <p class="Nota" style="text-align: center">..................................................</p>
+    <p class="Nota" style="text-align: center">JEFE DPTO DE CARRERA</p>
+    
+    <p class="espacio">.</p>
+    <p class="espacio">.</p>
+    <p class="Nota" style="text-align: center">..................................................</p>
+    <p class="Nota" style="text-align: center">DECANO - FCyT</p>
+
 </body>
 </html>
