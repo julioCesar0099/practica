@@ -26,7 +26,7 @@
 									<span class="c-gray-1">{{ $convocatoria->fecha_inicio->format('d , M , Y')}}</span>
 								</div>
 								<div class="post-category">
-								<span class="category text-capitalize">{{ $convocatoria->facultad->nombre}}</span>
+									<span class="category text-capitalize">{{ $convocatoria->facultad->nombre}}</span>
 								</div>
 							</header>
 							<h1>{{ $convocatoria->titulo }}</h1>

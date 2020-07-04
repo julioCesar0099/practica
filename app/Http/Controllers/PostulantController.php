@@ -48,7 +48,7 @@ class PostulantController extends Controller
     
 
     public function regPostulante(personas $codigoS,Combocatoria $convocatoria){
-      
+     
         $codigoS = \DB::table('personas')->where('id', $id)->first();
         //dd($codigoS);
         $areas= App\Area::all();
@@ -62,14 +62,14 @@ class PostulantController extends Controller
 
 
     public function crear(Request $request,personas $codigoS,Combocatoria $convocatoria){
-        //return $request->all();
+        
         $docC= Documento_Combocatoria::all();
         $request->validate([
             'items' => 'required',
             'num_Hojas' => 'required'
         ]);
         
-        $this->validate($request,$codigoS,$convocatoria);
+        //$this->validate($request,$codigoS,$convocatoria);
         if($request->aceptar)
         {
           $postulanteNuevo = new App\Postulante;

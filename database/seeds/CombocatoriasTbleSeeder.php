@@ -392,7 +392,6 @@ class CombocatoriasTbleSeeder extends Seeder
         $i ->destino = 'ingles 2';
         $i -> save();
 
-
         $c1 = new Carrera;
         $c1 -> facultad_id = 1;
         $c1 -> area_id = 1 ;
@@ -434,7 +433,6 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->area_id = 1;
         $conv->facultad_id = 1;
         $conv-> save();
-        
 
 
         $requisito= new Requisito_Combocatoria;
@@ -526,6 +524,14 @@ class CombocatoriasTbleSeeder extends Seeder
         $documento->detalle = 'Presentar documentación que respalde el currículum vitae, ORGANIZADO Y
         SEPARADO de acuerdo a la tabla de calificación de méritos.';
         $documento->save();
+        // $conv= new Combocatoria;
+        // $conv->titulo ='Primera Convocatoria';
+        // $conv->descripcion ='Descripcion primera convocatoria';
+        // $conv->fecha_inicio = Carbon::now();
+        // $conv->fecha_fin = Carbon::now()->addDays(15);
+        // $conv->area_id = 1;
+        // $conv->facultad_id = 1;
+        // $conv-> save();
 
 
         $conv= new Combocatoria;
@@ -628,6 +634,14 @@ class CombocatoriasTbleSeeder extends Seeder
         $documento->detalle = 'Presentar documentación que respalde el currículum vitae, ORGANIZADO Y
         SEPARADO de acuerdo a la tabla de calificación de méritos.';
         $documento->save();
+        // $conv= new Combocatoria;
+        // $conv->titulo ='Segunda Convocatoria';
+        // $conv->descripcion ='Descripcion segunda convocatoria';
+        // $conv->fecha_inicio = Carbon::now()->subDays(3);
+        // $conv->fecha_fin = Carbon::now()->addDays(20);
+        // $conv->area_id = 2;
+        // $conv->facultad_id = 1;
+        // $conv-> save();
 
 
         $conv= new Combocatoria;
