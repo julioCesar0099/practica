@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-        <p  class="titulo">Registro de Postulante</h2>
+        <p  class="titulo">Registro de Postulante</p>
         <p >N° de convocatoria: #{{ $convocatoria->id }}</p>
         <hr class="my-4">   
         <p class="notas">Nombre Completo: {{ $codS->nombre." ".$codS->apellidoP." ".$codS->apellidoM }}</p>
