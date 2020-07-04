@@ -68,8 +68,8 @@ class UsersTableSeeder extends Seeder
         // $comiteRole->givePermissionTo($permiso1);
 
         $admin= new User;
-        $admin -> name = 'julio';
-        $admin -> email= 'julio@gmail.com';
+        $admin -> name = 'Administrador(a)';
+        $admin -> email= 'admin@gmail.com';
         $admin -> password = Hash::make('123123');
         $admin -> save();
 

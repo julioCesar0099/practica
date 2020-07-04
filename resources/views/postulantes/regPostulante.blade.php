@@ -7,7 +7,7 @@
          {{csrf_field()}}
       
          
-         @if(session('mensaje'))
+         <!--@if(session('mensaje'))
             <div class="aler alert-success">
                {{session('mensaje')}}
             </div>
@@ -21,7 +21,7 @@
                    @endforeach
                </ul>      
             </div>
-         @endif  
+         @endif    -->
          <h3>{{$codigoS->nombre." ".$codigoS->apellidoP}}</h3>
          <br> 
         <div class="form-group">
@@ -43,20 +43,21 @@
             </div>                       
          </div>
           <div class="form-group">
-            <h4 class="">Documentos a presentar (obligatorio)</h4> 
-                <div class="checkbox">
+          <h4 class="">Documentos a presentar</h4> 
+                <div class="">
                   @foreach($convocatoria->documentos as $documento)
-                    <input class="btn-block" type="checkbox" id="check1" name="documentos[]" value="{{$documento->id}}">{{$documento->detalle}}
+                  <p class="" style="text-align: justify" name="documentos[]" value="{{$documento->id}}">{{$documento->detalle}}</p>
                   @endforeach
+                  <h4><input type="checkbox" name="aceptar" value="1"> Acepta presentar todos los documentos</h4>
                 </div>
 
           </div>
             <div class="form-group ">
-            <input class="" type="number" id="numHojas" name="num_Hojas">  N° de hojas a entregar
+            <input class="" type="number" name="num_Hojas">  N° de hojas a entregar
             </div>
             <div class="form-group">
                <a href="{{ url('/registroPost',$convocatoria) }}" class="btn btn-primary my-2 my-sm-0">Cancelar</a>
-               <button class="btn btn-primary" type="submit" id="acept" name="aceptar" onclick="return confirm('Esta seguro?')">Aceptar</button>
+               <button class="btn btn-primary" type="submit"  onclick="return confirm('Esta seguro?')">Aceptar</button>
                <a href="{{ url ('/registroPost/generar/'.$codigoS->id,$convocatoria) }}" class="btn btn-primary my-2 my-sm-0">Generar Rotulo</a>
             </div>
         </form>          

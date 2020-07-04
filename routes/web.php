@@ -126,7 +126,7 @@ Route::get('/registroPost/{convocatoria}','PostulantController@registroPost')->n
 Route::get('/regPostulante/{codigoS}/{convocatoria}','PostulantController@regPostulante')->name('regPostulante');
 Route::post('/regPostulante/{codigoS}/{convocatoria}','PostulantController@crear')->name('postulantes.crear');
 Route::post('/registroPost/{convocatoria}', 'PostulantController@identificacion')->name('postulantes.identificacion');
-Route::get('/listaHab','PostulantController@listaHab')->name('postulantes.listaHab');
+Route::get('/listaHab/{convocatoria}','PostulantController@listaHab')->name('postulantes.listaHab');
 
 Route::get('/registroPost/generar/{codigoS}/{convocatoria}','PDFController@generar')->name('generar');///generar rotulo
 
