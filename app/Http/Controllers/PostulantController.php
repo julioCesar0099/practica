@@ -15,8 +15,8 @@ class PostulantController extends Controller
     }
 
 
-    public function listaHab(){
-      $listaH = Postulante::all();
+    public function listaHab(Combocatoria $convocatoria){
+      $listaH = Postulante::where('convocatoria_id',$convocatoria->id)->get();
       return view('postulantes.listaHab',compact('listaH'));
     }
 
@@ -46,7 +46,7 @@ class PostulantController extends Controller
     
 
     public function regPostulante(personas $codigoS,Combocatoria $convocatoria){
-      return $convocatoria;
+     
         $codigoS = \DB::table('personas')->where('id', $id)->first();
         //dd($codigoS);
         $areas= App\Area::all();
@@ -60,39 +60,30 @@ class PostulantController extends Controller
 
 
     public function crear(Request $request,personas $codigoS,Combocatoria $convocatoria){
-        //return $request->all();
-
         $request->validate([
             'items' => 'required',
-            'documentos' => 'required',
-            'num_Hojas' => 'required'
+            'num_Hojas' => 'required'   
         ]);
-        
-       // $codigoS = \DB::table('personas')->where('id', $request->id_est)->first();
-        
-        //dd($codigoS);
+        $this->validate($request,$codigoS,$convocatoria);
+        if($request->aceptar)
+        {
+          $postulanteNuevo = new App\Postulante;
+          $postulanteNuevo->convocatoria_id = $convocatoria->id;
+          $postulanteNuevo->item_nombre = $request->items;
+          $postulanteNuevo->persona_id = $codigoS->id;
+          $postulanteNuevo->estado = 'Deshabilitado';
+          $postulanteNuevo->observacion = "";
+          $postulanteNuevo->save();
 
-
-        $postulanteNuevo = new App\Postulante;
-        $postulanteNuevo->convocatoria_id = $convocatoria->id;
-        $postulanteNuevo->item_nombre = $request->items;
-        $postulanteNuevo->persona_id = $codigoS->id;
-        $postulanteNuevo->estado = 'Deshabilitado';
-        $postulanteNuevo->observacion = "";
-        $postulanteNuevo->save();
-
-        
-        //$documentoNuevo->Doc_Ent = $request->documento[];
-       
-        
-        $documentosNuevo = new Documento_Post;
-        $documentosNuevo->postulantes_id = $codigoS->id;
-        $documentosNuevo->Doc_Ent = count($request->documentos); 
-        $documentosNuevo->num_Hojas= $request->num_Hojas;
-        $documentosNuevo->save();
-
-        return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('mensaje','Registro agregado!');
-
+          $documentosNuevo = new Documento_Post;
+          $documentosNuevo->postulantes_id = $codigoS->id;
+          $documentosNuevo->Doc_Ent = count($convocatoria->documentos); 
+          $documentosNuevo->num_Hojas= $request->num_Hojas;
+          $documentosNuevo->save();
+          return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('flash','Registro agregado!');
+        }else{
+          return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('flash','Debe aceptar presentar todos los documentos!');
+        }     
     }
 
 

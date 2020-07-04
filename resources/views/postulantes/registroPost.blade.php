@@ -28,7 +28,7 @@
                 <h2>Ingrese su CodigoSis</h2>
             <br><br><br>
                     <div class="form-group">
-                        <input type="number" class="btn-block" name="codigo" value="CodSis" placeholder="ingrese su codsis">
+                        <input type="number" class="btn-block" name="codigo" value="{{old('codigo')}}" placeholder="ingrese su codsis">
                     </div>
                     <div class="form-group">
                         <a href="{{ url('/') }}" class="btn btn-primary my-2 my-sm-0">Cancelar</a>

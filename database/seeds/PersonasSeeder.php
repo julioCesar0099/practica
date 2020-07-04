@@ -191,6 +191,62 @@ class PersonasSeeder extends Seeder
         ]);
 
 
+        Personas::create([
+            'nombre'=>'Pedrito',
+            'apellidoP'=>'Paz',
+            'apellidoM'=>'Orellana',
+            'codigoSIS'=>'200933001',
+            'carrera_id'=>'5',
+            'correo'=>'pedritogg11@gmail.com',
+            'telefono'=>'77225598',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
+        ]);
+
+
+        Personas::create([
+            'nombre'=>'carlos',
+            'apellidoP'=>'Palacios',
+            'apellidoM'=>'Valencia',
+            'codigoSIS'=>'201507893',
+            'carrera_id'=>'5',
+            'correo'=>'Carbrown1@gmail.com',
+            'telefono'=>'66525587',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
+        ]);
+
+
+        Personas::create([
+            'nombre'=>'Solomeo',
+            'apellidoP'=>'Paredes',
+            'apellidoM'=>'Cozarde',
+            'codigoSIS'=>'201502329',
+            'carrera_id'=>'1',
+            'correo'=>'Catacorapi123@gmail.com',
+            'telefono'=>'76658002',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
+        ]);
+
+
+        Personas::create([
+            'nombre'=>'Carolina',
+            'apellidoP'=>'Porta',
+            'apellidoM'=>'Delgadillo',
+            'codigoSIS'=>'201439880',
+            'carrera_id'=>'1',
+            'correo'=>'Caroliza112@gmail.com',
+            'telefono'=>'78899652',
+            'facultad_id'=>'1',
+            'ocupacion_id'=>'1',
+            'user_id'=>'0'
+        ]);
+
+
 
 
 

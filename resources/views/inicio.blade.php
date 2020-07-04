@@ -26,7 +26,7 @@
 									<span class="c-gray-1">{{ $convocatoria->fecha_inicio->format('d , M , Y')}}</span>
 								</div>
 								<div class="post-category">
-									<span class="category text-capitalize">{{ $convocatoria->facultad->nombre }}</span>
+									<span class="category text-capitalize">{{ $convocatoria->facultad->nombre}}</span>
 								</div>
 							</header>
 							<h1>{{ $convocatoria->titulo }}</h1>
@@ -46,7 +46,7 @@
 							<div class="float-right">
 								  <a href="{{ route('notas.ver', $convocatoria) }}" class="btn  btn-info " style="font-size: inherit ">Notas</a>   
 								  <a href="{{ url('/index/'.$convocatoria->id)}}" class="btn btn-info " style="font-size: inherit">Ver mas</a>
-								  <a href="{{ url ('/listaHab')}}" class="btn btn-info " style="font-size: inherit">Lista de habilitados</a>
+								  <a href="{{ url ('/listaHab',$convocatoria)}}" class="btn btn-info " style="font-size: inherit">Lista de habilitados</a>
 								  <a href="{{ url('/registroPost', $convocatoria) }}" class="btn btn-info " style="font-size: inherit">Postular</a>
 				</article>
 			@endforeach
