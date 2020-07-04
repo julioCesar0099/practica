@@ -7,9 +7,9 @@
          {{csrf_field()}}
       
          
-         <!--@if(session('mensaje'))
+          <!-- @if(session('flash'))
             <div class="aler alert-success">
-               {{session('mensaje')}}
+               {{session('flash')}}
             </div>
          @endif
 
@@ -43,10 +43,10 @@
             </div>                       
          </div>
           <div class="form-group">
-          <h4 class="">Documentos a presentar</h4> 
+            <h4 class="">Documentos a presentar</h4> 
                 <div class="">
                   @foreach($convocatoria->documentos as $documento)
-                  <p class="" style="text-align: justify" name="documentos[]" value="{{$documento->id}}">{{$documento->detalle}}</p>
+                    <p class="" style="text-align: justify" name="documentos[]" value="{{$documento->id}}">{{$documento->detalle}}</p>
                   @endforeach
                   <h4><input type="checkbox" name="aceptar" value="1"> Acepta presentar todos los documentos</h4>
                 </div>
@@ -58,7 +58,7 @@
             <div class="form-group">
                <a href="{{ url('/registroPost',$convocatoria) }}" class="btn btn-primary my-2 my-sm-0">Cancelar</a>
                <button class="btn btn-primary" type="submit"  onclick="return confirm('Esta seguro?')">Aceptar</button>
-               <a href="{{ url ('/registroPost/generar/'.$codigoS->id,$convocatoria) }}" class="btn btn-primary my-2 my-sm-0">Generar Rotulo</a>
+               <a href="#" class="btn btn-primary my-2 my-sm-0">Generar Rotulo</a>
             </div>
         </form>          
 
