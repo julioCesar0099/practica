@@ -41,8 +41,8 @@ class CombocatoriaController extends Controller
     }
 
     public function update(Request $request , Combocatoria $combocatoria){
-
-       
+        $reqC= Requisito_Combocatoria::all();
+        $docC= Documento_Combocatoria::all();       
        
         if($request->tituloDoc)
         {
