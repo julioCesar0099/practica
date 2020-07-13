@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="css/responsive.css">
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     
+    
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -67,6 +68,15 @@
                                 <li class="nav-item">
                                   <a class="nav-link" href="{{ url('/ayuda') }}">Ayuda</a>
                                 </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="{{ url('http://www.umss.edu.bo/') }}">UMSS</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="{{ url('http://www.fcyt.umss.edu.bo/') }}">FCYT</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="{{ url('http://websis.umss.edu.bo/') }}">WEBSIS</a>
+                                </li>
                           
                         </ul>
                             <a href="{{ url('/login') }}" class="btn btn-outline-danger my-2 my-sm-0">Iniciar Sesion</a>
@@ -85,9 +95,19 @@
           <div class="col-8">
             @yield('content')
           </div>
-          <div class="col-4">
+          <div class="col">
+            <div class="card col-12" style="width: 32rem ">
+             <div class="card-body" style="height: 50rem ">
             @yield('contenido')
+            </div>
           </div>
+            
+          </div>
+          
+          <div class="container">
+          {{$convocatorias->render("pagination::bootstrap-4")}}
+          </div>
+
         </div>
       </div>
 

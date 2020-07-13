@@ -16,12 +16,13 @@
 	
 				<h1 class="display-4 " align="center" >Lista de Convocatorias  </h1>
                 <p class="lead" align="center">Universidad Mayor de San Simón - Facultad de Ciencias y Tecnologia </p>
-    	        <hr class="my-4">
+    	        <hr class="my-3">
 			@foreach ($convocatorias as $convocatoria)
-				<article class="post no-imag col-xs-offset-8">
-				<div class="card-header text-white bg-primary"></div>
-					<div class="content-post">
-							<header class="container-flex space-between">
+				<article class="post no-imag col-md-4">
+				<div class="card-header bg-primary"></div>
+				<div class="card" style="width: 43rem;">
+ 					<div class="card-body">
+					 <header class="container-flex space-between">
 								<div class="date">
 									<span class="c-gray-1">{{ $convocatoria->fecha_inicio->format('d , M , Y')}}</span>
 								</div>
@@ -29,9 +30,9 @@
 									<span class="category text-capitalize">{{ $convocatoria->facultad->nombre}}</span>
 								</div>
 							</header>
-							<h1>{{ $convocatoria->titulo }}</h1>
+							<h4>{{ $convocatoria->titulo }}</h4>
 							<div class="divider"></div>
-							<p>{{ $convocatoria->descripcion }}</p>
+							<h6>{{ $convocatoria->descripcion }}</h6>
 							<footer class="container-flex space-between">
 								<div class="read-more">
 									<a  class="text-uppercase " style="color:#164488">Area de : {{ $convocatoria->area->nombre}}</a>
@@ -42,12 +43,15 @@
 									@endforeach
 								</div>
 							</footer>
-							<hr class="my-4">
+							<hr class="my-1">
 							<div class="float-right">
 								  <a href="{{ route('notas.ver', $convocatoria) }}" class="btn  btn-info " style="font-size: inherit ">Notas</a>   
 								  <a href="{{ url('/index/'.$convocatoria->id)}}" class="btn btn-info " style="font-size: inherit">Ver mas</a>
 								  <a href="{{ url ('/listaHab',$convocatoria)}}" class="btn btn-info " style="font-size: inherit">Lista de habilitados</a>
 								  <a href="{{ url('/registroPost', $convocatoria) }}" class="btn btn-info " style="font-size: inherit">Postular</a>
+					</div>
+					</div>				
+							
 				</article>
 			@endforeach
 
@@ -58,25 +62,28 @@
 @endsection
 
 @section('contenido')
-	<h1 class="display-4 " align="center" >Eventos</h1>
+	<h1 class="display-5" align="center" >Eventos</h1>
             <p class="lead" align="center"> Se muestran las fechas de todas las convocatorias</p>
-    	      	<hr class="my-4">
+    	      	<hr class="my-2">
 			  	<article class="post no-imag col-xs-offset-8">
 			  	<div class="card-header text-white bg-primary"></div>
 					
 			  	<ul>
 					@foreach($convocatorias as $convocatoria)
-						<li id="slide1">
-							<h4>{{$convocatoria->titulo}}</h4>
-						</li>
+						
+						<h5>{{$convocatoria->titulo}}</h5>
+						<ul>
 						@foreach($convocatoria->eventos as $evento)
 							<li id="slide2">
 								<label>{{$evento->detalle}}:</label>
 								<label class="fecha">{{$evento->fecha->format('d - M - Y')}}</label>
 							</li>
 						@endforeach
+						</ul>
 					@endforeach
 				</ul>
+				<br>
+				</article>
+				
 
 @endsection
-

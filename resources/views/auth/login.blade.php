@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>{{ config('app.name') }} | Log in</title>
+		<title>Usuario</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- Bootstrap 3.3.6 -->
@@ -28,7 +28,7 @@
 	<body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="/">{{ config('app.name') }}</a>
+			<p>Iniciar Sesion </p>
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
@@ -81,8 +81,8 @@
 			</div> --}}
 			<!-- /.social-auth-links -->
 
-			<a href="{{ url('/password/reset') }}">Reestablecer contraseña</a><br>
-			{{-- <a href="register.html" class="text-center">Register a new membership</a> --}}
+			<a href="{{ url('/') }}">Volver a Inicio</a><br>
+			
 
 		</div>
 		<!-- /.login-box-body -->

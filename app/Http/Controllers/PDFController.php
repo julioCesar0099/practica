@@ -53,10 +53,12 @@ class PDFController extends Controller
 		$areas= Area::all();
 		$items= Item::all();
 		$documentos = Documento_Post::all();
+		$item = \DB::table('postulantes')->orderBy('id', 'desc')->take(1)->first();
+		$numHojas= \DB::table('documento__posts')->orderBy('id', 'desc')->take(1)->first();
 
 		$idCarrera = $codS->carrera_id;
 		$carrera = Carrera::findOrFail($idCarrera);
-		$pdf = PDF::loadview('postulantes.generar',compact('codS','convocatoria','carrera','docC'));
-		return $pdf->download();
+		$pdf = PDF::loadview('postulantes.generar',compact('codS','convocatoria','carrera','docC','item','numHojas'));
+		return $pdf->stream();
 	}
 }

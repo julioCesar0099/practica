@@ -64,6 +64,15 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/ayuda') }}">Ayuda</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('http://www.umss.edu.bo/') }}">UMSS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('http://www.fcyt.umss.edu.bo/') }}">FCYT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('http://websis.umss.edu.bo/') }}">WEBSIS</a>
+      </li>
       
     </ul>
         <a href="{{ url('/login') }}" class="btn btn-outline-danger my-2 my-sm-0">Iniciar Sesion</a>
