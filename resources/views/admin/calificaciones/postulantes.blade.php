@@ -42,10 +42,12 @@
                       <td align="center">{{ $postulante->nota_conocimientos}}</td>
                       <td align="center">{{ $postulante->nota_final}}</td>
                       <td>
-                      
-                          <a href="{{ route('admin.calificaciones.calificar',[$postulante,$destino,$convocatoria]) }}"  class="btn btn-xs btn-primary" ><i class="fa fa-check"></i>Conocimientos</a>
-                          <a href="{{ route('admin.calificaciones.meritos',[$postulante,$destino,$convocatoria]) }}"  class="btn btn-xs btn-primary" ><i class="fa fa-check"></i> Meritos</a>
-                        
+                          @can('calificar conocimientos', new \Spatie\Permission\Models\Role)
+                            <a href="{{ route('admin.calificaciones.calificar',[$postulante,$destino,$convocatoria]) }}"  class="btn btn-xs btn-primary" ><i class="fa fa-check"></i>Conocimientos</a>
+                          @endcan
+                          @can('calificar meritos', new \Spatie\Permission\Models\Role)
+                            <a href="{{ route('admin.calificaciones.meritos',[$postulante,$destino,$convocatoria]) }}"  class="btn btn-xs btn-primary" ><i class="fa fa-check"></i> Meritos</a>
+                          @endcan
                       </td>
                     </tr>
                   @endforeach

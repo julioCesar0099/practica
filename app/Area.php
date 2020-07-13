@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-    
+    protected  $guarded = [];
+     
     public function Facultad()
     {
             return $this->belongsTo(Facultad::class);
