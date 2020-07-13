@@ -29,7 +29,18 @@ class EventosController extends Controller
      */
     public function create($id)
     {
-        return view('admin.eventos.create',compact('id'));
+        $combocatoria=Combocatoria::findOrFail($id);
+        $fecha1=$combocatoria->fecha_inicio->month;
+        $fecha2=$combocatoria->fecha_inicio->day;
+        $fecha3=$combocatoria->fecha_inicio->year;
+        $inicio=$fecha1."-".$fecha2."-".$fecha3;
+        
+        $fecha4=$combocatoria->fecha_fin->month;
+        $fecha5=$combocatoria->fecha_fin->day;
+        $fecha6=$combocatoria->fecha_fin->year;
+        $fin=$fecha4.'-'.$fecha5.'-'.$fecha6;
+
+        return view('admin.eventos.create',compact('id','fecha1','fecha2','fecha3'));
     }
 
     public function guardar($id, Request $request)

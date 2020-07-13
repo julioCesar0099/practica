@@ -36,6 +36,7 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
+                                                    
                                                     <input autocomplete="off" name="fecha" type="text" class="form-control pull-right" id="0">
                                                 </div>
                                             </div>
@@ -52,9 +53,11 @@
                 </div>
             </div>
         </form>
+        
 @endsection
-@push('scripts')
 
+@push('scripts')
+            
             <!-- Select2 -->
             <script src="/adminlte/plugins/select2/select2.full.min.js"></script>
             <!-- bootstrap datepicker -->
@@ -67,7 +70,8 @@
                     $(".select4").select2();
                     //Date picker
                     $('#0').datepicker({
-                    startDate: 'today',
+                    startDate: "7-12-2020",
+                    endDate: "7-21-2020",
                     autoclose: true});
                     $('#1').datepicker({
                     startDate: 'today',

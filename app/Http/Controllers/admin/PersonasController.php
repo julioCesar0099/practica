@@ -24,7 +24,7 @@ class PersonasController extends Controller
         $datos['personas']=DB::table('personas')
         ->join('ocupacions', 'ocupacions.id','=','personas.ocupacion_id')
         ->select('personas.id','personas.nombre','personas.apellidoP','personas.apellidoM',
-        'personas.telefono','personas.correo','ocupacions.nombre as ocunombre')
+        'personas.telefono','personas.correo','ocupacions.nombre as ocunombre','personas.user_id')
         ->get();
         
         return view('admin.personas.index',$datos);
@@ -84,6 +84,30 @@ class PersonasController extends Controller
         //return redirect('/admin/personas');
         
     }
+    public function index4($id){
+        $persona=Personas::findOrFail($id);
+        $user=User::where('email','=',$persona->correo)->delete();
+
+        $persona->user_id='0';
+            
+
+            $arrayName = array(
+             'nombre' => $persona->nombre,
+             'apellidoP'=>$persona->apellidoP,
+             'apellidoM'=>$persona->apellidoM,
+             'codigoSIS'=>$persona->codigoSIS,
+             'carrera_id'=>$persona->carrera_id,
+             'correo'=>$persona->correo,
+             'telefono'=>$persona->telefono,
+             'facultad_id'=>$persona->facultad_id,
+             'ocupacion_id'=>$persona->ocupacion_id,
+             'user_id'=>$persona->user_id
+            );
+
+        Personas::where('id','=',$id)->update($arrayName);
+
+        return redirect('/admin/personas'); 
+    }
 
     
 
@@ -118,22 +142,28 @@ class PersonasController extends Controller
     {
         //$datosPersona=request()->all();
         $campos=[
-            'codigoSIS'=>'required',
-            'nombre'=>'required',
-            'apellidoP'=>'required',
-            'apellidoM'=>'required',
-            'correo'=>'required',
-            'telefono'=>'required'
+            'codigoSIS'=>'required|integer|max:999999999999|min:99999999',
+            'nombre'=>'required|string|regex:/^[\pL\s\-]+$/u|max:50',
+            'apellidoP'=>'required|string|regex:/^[\pL\s\-]+$/u|max:50',
+            'apellidoM'=>'required|string|regex:/^[\pL\s\-]+$/u|max:50',
+            'correo'=>'required|email|unique:personas',
+            'telefono'=>'required|integer|max:99999999|min:9999999',
+            'facultad_id'=>'required',
+            'carrera_id'=>'required',
+            'ocupacion_id'=>'required'
         ];
-        $Mensaje=["required"=>'El :attribute es requerido'];
+        $Mensaje=[
+            "required"=>'El campo :attribute es requerido',
+            "regex"=>'Solo se admiten letras',
+            "max"=>'Excedio el numero de digitos permitido',    
+            "min"=>'Número digitos invalido',
+            "unique"=>'El correo es existente ingrese uno nuevo'
+        ];
         $this->validate($request,$campos,$Mensaje);
         $datosPersona=request()->except('_token');
         $datosPersona['user_id']='0';
+
         
-        
-
-
-
         Personas::insert($datosPersona);
         //$ocupacion=$datosPersona->ocupacion;
         //return response()->json($ocupacion);
@@ -186,13 +216,23 @@ class PersonasController extends Controller
     public function update(Request $request, $id)
     {
         $campos=[
-            'nombre'=>'required',
-            'apellidoP'=>'required',
-            'apellidoM'=>'required',
-            'correo'=>'required',
-            'telefono'=>'required'
+            'codigoSIS'=>'required|integer|max:999999999999|min:99999999',
+            'nombre'=>'required|string|regex:/^[\pL\s\-]+$/u|max:50',
+            'apellidoP'=>'required|string|regex:/^[\pL\s\-]+$/u|max:50',
+            'apellidoM'=>'required|string|regex:/^[\pL\s\-]+$/u|max:50',
+            'correo'=>'required|email|unique:personas',
+            'telefono'=>'required|integer|max:99999999|min:9999999',
+            'facultad_id'=>'required',
+            'carrera_id'=>'required',
+            'ocupacion_id'=>'required'
         ];
-        $Mensaje=["required"=>'El :attribute es requerido'];
+        $Mensaje=[
+            "required"=>'El campo :attribute es requerido',
+            "regex"=>'Solo se admiten letras',
+            "max"=>'Excedio el numero de digitos permitido',    
+            "min"=>'Número digitos invalido',
+            "unique"=>'El correo es existente ingrese uno nuevo'
+        ];
         $this->validate($request,$campos,$Mensaje);
         
         $datosPersona=request()->except(['_token','_method']);

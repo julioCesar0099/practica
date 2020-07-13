@@ -104,8 +104,10 @@
             
           </div>
           
-          <div class="container">
-          {{$convocatorias->render("pagination::bootstrap-4")}}
+          <div class="container"  >
+            
+                {{$convocatorias->render("pagination::bootstrap-4")}}
+          </div>
           </div>
 
         </div>

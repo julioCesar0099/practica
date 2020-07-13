@@ -20,7 +20,7 @@
 			@foreach ($convocatorias as $convocatoria)
 				<article class="post no-imag col-md-4">
 				<div class="card-header bg-primary"></div>
-				<div class="card" style="width: 43rem;">
+				<div class="card" style="width: 52rem;">
  					<div class="card-body">
 					 <header class="container-flex space-between">
 								<div class="date">
@@ -70,15 +70,25 @@
 					
 			  	<ul>
 					@foreach($convocatorias as $convocatoria)
-						
-						<h5>{{$convocatoria->titulo}}</h5>
+						<li id="slide1">
+							<h4>{{$convocatoria->titulo}}</h4>
+						</li>
 						<ul>
+						<li id="slide2">
+								<label>Fecha de inicio:</label>
+								<label class="fecha">{{$convocatoria->fecha_inicio->format('d - M - Y')}}</label>
+						</li>
+						
 						@foreach($convocatoria->eventos as $evento)
-							<li id="slide2">
+							<li id="slide3">
 								<label>{{$evento->detalle}}:</label>
 								<label class="fecha">{{$evento->fecha->format('d - M - Y')}}</label>
 							</li>
 						@endforeach
+						<li id="slide4">
+								<label>Fecha de fin:</label>
+								<label class="fecha">{{$convocatoria->fecha_fin->format('d - M - Y')}}</label>
+						</li>
 						</ul>
 					@endforeach
 				</ul>
