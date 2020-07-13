@@ -26,6 +26,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Título</th>
+                    <th>Estado</th>
                     <th>Calificar</th>
                     <th>Notas</th>
                   </tr>
@@ -35,6 +36,13 @@
                     <tr>
                       <td>{{ $convocatoria->id }}</td>
                       <td>{{ $convocatoria->titulo }}</td>
+                      <td>
+                      @if( $convocatoria->notas === NULL)
+                          No publicado
+                      @else
+                        Publicado
+                      @endif  
+                      </td>
                       <td>
                           @can('calificar postulantes',new \Spatie\Permission\Models\Role) 
                           <a href="{{ route('admin.calificaciones.items',$convocatoria) }}"  class="btn btn-xs btn-info" ><i class="fa fa-check"></i></a>

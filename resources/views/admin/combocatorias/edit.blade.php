@@ -62,7 +62,7 @@
                                                                                     <div class="input-group-addon">
                                                                                         <i class="fa fa-calendar"></i>
                                                                                     </div>
-                                                                                        <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker" value="{{old('fecha_fin' ,$combocatoria->fecha_fin->format('m/d/Y'))}}">
+                                                                                        <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker" value="{{old('fecha_fin' ,$combocatoria->fecha_fin->format('m/d/Y'))}}" readonly>
                                                                             </div>
                                                                 </div>
                                                                 <div class="form-group {{ $errors->has('facultad') ? 'has-error' : '' }}">
@@ -123,17 +123,21 @@
                                                                         </template>
                                                                          @if ($d === 0 )
                                                                             <tr>
-                                                                            <td><input autocomplete="off" type="text" name="requisito[]" placeholder="Ingrese Documento" class="form-control name_list" value="{{old('requisito' )}}"></td>
-                                                                                            <td><button type="button" name="add" id="add" class="btn btn-primary">Añadir Requisito </button></td>
+                                                                                    <td><h4>Añadir nuevo requisito</h4></td>
+                                                                                      <td><button type="button" name="add" id="add" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
                                                                             </tr>
                                                                             @else
                                                                                     @foreach($combocatoria->requisitos as $requisito)
                                                                                         @if ($c === 1)
                                                                                         <tr>
-                                                                                            <td><input autocomplete="off" type="text" name="requisito[]" placeholder="Ingrese Documento" class="form-control name_list" value="{{old('requisito' ,$requisito->detalle )}}"></td>
-                                                                                            <td><button type="button" name="add" id="add" class="btn btn-primary">Añadir Requisito </button></td>
+                                                                                                <td><h4>Añadir nuevo requisito</h4></td>
+                                                                                                <td><button type="button" name="add" id="add" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
                                                                                         </tr>
-                                                                                    
+                                                                                        <tr id="row{{$i}}"> 
+                                                                                            <td><input  autocomplete="off" type="text" name="requisito[]" placeholder="Ingrese documento" class="form-control name_list" value="{{old('requisito' ,$requisito->detalle )}}"></td>
+                                                                                            <td><button type="button" name="remove" id="{{$i}}" class="btn btn-danger btn_remove">X</button></td>
+                                                                                        
+                                                                                        </tr>
                                                                                         @else
                                                                                         <tr>
                                                                                         <tr id="row{{$i}}"> 
@@ -171,15 +175,20 @@
                                                                         </template>
                                                                              @if ($d === 0 )
                                                                             <tr>
-                                                                                <td><input autocomplete="off" type="text" name="documentos[]" placeholder="Ingrese Documento" class="form-control name_list" value="{{old('documento'  )}}"></td>
-                                                                                <td><button type="button" name="add" id="add2" class="btn btn-primary">Añadir Documento </button></td>
+                                                                                <td><h4>Añadir nuevo documento</h4></td>
+                                                                                <td><button type="button" name="add" id="add2" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
                                                                             </tr>
                                                                             @else
                                                                                 @foreach($combocatoria->documentos as $documento)
                                                                                     @if ($c === 1 )
                                                                                     <tr>
-                                                                                        <td><input autocomplete="off" type="text" name="documentos[]" placeholder="Ingrese Documento" class="form-control name_list" value="{{old('documento' ,$documento->detalle )}}"></td>
-                                                                                        <td><button type="button" name="add" id="add2" class="btn btn-primary">Añadir Documento </button></td>
+                                                                                        <td><h4>Añadir nuevo documento</h4></td>
+                                                                                        <td><button type="button" name="add" id="add2" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
+                                                                                    </tr>
+                                                                                    <tr id="row2{{$i}}"> 
+                                                                                        <td><input  autocomplete="off" type="text" name="documentos[]" placeholder="Ingrese documento" class="form-control name_list" value="{{old('documento' ,$documento->detalle )}}"></td>
+                                                                                        <td><button type="button" name="remove" id2="{{$i}}" class="btn btn-danger btn_remove">X</button></td>
+                                                                                    
                                                                                     </tr>
                                                                                     @else
                                                                                     <tr>
@@ -222,32 +231,35 @@
                                                                         @if ($d === 0 )
                                                                             <tr>
                                                                                      <td>
-                                                                                        <label> Cantidad de auxiliares  </label>
-                                                                                        <input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares" value="{{old('cantidad_aux' )}}"></input>
-                                                                                        <label> Horas laborales  </label>
-                                                                                        <input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"  value="{{old('horas' )}}"></input>
-                                                                                        <label> Destino  </label>
-                                                                                        <input autocomplete="off" type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"  value="{{old('destino' )}}"></input>
+                                                                                        <h4>Agregar Item </h4>
                                                                                         </td>
-                                                                                        <td><button type="button" name="add" id="add3" class="btn btn-primary">Añadir Item</button></td>
+                                                                                        <td><button type="button" name="add" id="add3" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
                                                                             </tr>
                                                                             @else
                                                                                 @foreach($combocatoria->items as $item)
                                                                                     @if ($c === 1)
                                                                                     <tr>
-                                                                                    <td>
-                                                                                        <label> Cantidad de auxiliares  </label>
-                                                                                        <input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares" value="{{old('cantidad_aux' ,$item->cantidad_aux )}}"></input>
-                                                                                        <label> Horas laborales  </label>
-                                                                                        <input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"  value="{{old('horas' ,$item->horas )}}"></input>
-                                                                                        <label> Destino  </label>
-                                                                                        <input autocomplete="off" type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"  value="{{old('destino' ,$item->destino )}}"></input>
-                                                                                        </td>
-                                                                                        <td><button type="button" name="add" id="add3" class="btn btn-primary">Añadir Item</button></td>
+                                                                                                <td>
+                                                                                                    <h4>Agregar Item </h4>
+                                                                                                </td>
+                                                                                                <td><button type="button" name="add" id="add3" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
+                                                                                     </tr>
+                                                                                     <tr id="row3{{$i}}"> 
+                                                                                        <td>
+                                                                                            <label> Cantidad de auxiliares  </label>
+                                                                                            <input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares" value="{{old('cantidad_aux' ,$item->cantidad_aux )}}"></input>
+                                                                                            <label> Horas laborales  </label>
+                                                                                            <input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"  value="{{old('horas' ,$item->horas )}}"></input>
+                                                                                            <label> Destino  </label>
+                                                                                            <input autocomplete="off" type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"  value="{{old('destino' ,$item->destino )}}"></input>
+                                                                                            </td>
+                                                                                            
+                                                                                            <td><button type="button" name="remove" id3="{{$i}}" class="btn btn-danger btn_remove">X</button></td>
+                                                                                        
                                                                                     </tr>
                                                                                 
                                                                                     @else
-                                                                                    <tr>
+                                                                                    
                                                                                     <tr id="row3{{$i}}"> 
                                                                                         <td>
                                                                                             <label> Cantidad de auxiliares  </label>

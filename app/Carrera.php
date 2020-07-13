@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Carrera extends Model
 {
     //
+    protected  $guarded = [];
 
-    protected $table = 'carreras';
-    protected $fillable =['nombre'];
 
     public function Facultad()  
     {

@@ -41,8 +41,7 @@ class CombocatoriaController extends Controller
     }
 
     public function update(Request $request , Combocatoria $combocatoria){
-        $reqC= Requisito_Combocatoria::all();
-        $docC= Documento_Combocatoria::all();       
+     
        
         if($request->tituloDoc)
         {
@@ -51,10 +50,6 @@ class CombocatoriaController extends Controller
             'tituloDoc'=> 'required',
             'descripcion'=> 'required',
             'fecha_fin'=> 'required',
-            'facultad'=> 'required',
-            'area'=> 'required',
-            
-
 
         ]);
        
@@ -64,9 +59,10 @@ class CombocatoriaController extends Controller
         $combocatoria->tipo = 'Asignatura';
         $combocatoria->fecha_inicio = Carbon::now();
         $combocatoria->fecha_fin = Carbon::parse($request->get('fecha_fin'));
-        $combocatoria->area_id = $request->get('area');
         $combocatoria->tabla_id = $request->get('tabla');
         $combocatoria->facultad_id = $request->get('facultad');
+        
+        $combocatoria->area_id = $request->get('area');
         $combocatoria->save();
 
         $combocatoria->Carreras()->sync($request->get('carreras'));
@@ -75,42 +71,47 @@ class CombocatoriaController extends Controller
         $combocatoria->items()->delete();
         $combocatoria->requisitos()->delete();
 
-        $array= $request->get('documentos');
-        $a= count($request->get('documentos'));
-        for ($i=0; $i<$a;$i++)
+        if( $request->documentos && $request->documentos != [null]){
+
+            $array= $request->get('documentos');
+            $a= count($request->get('documentos'));
+            for ($i=0; $i<$a;$i++)
             {
-            $doc = new Documento_Combocatoria;
-            $doc->combocatoria_id = $combocatoria->id;
-            $doc->detalle = $array[$i];
-            $doc->save();
+                $doc = new Documento_Combocatoria;
+                $doc->combocatoria_id = $combocatoria->id;
+                $doc->detalle = $array[$i];
+                $doc->save();
+            }
+        }
+
+        if( $request->requisito && $request->requisito != [null]){
+            $array2= $request->get('requisito');
+            $a2= count($request->get('requisito'));
+            for ($i=0; $i<$a2;$i++)
+                {
+                    $doc= new Requisito_Combocatoria;
+                    $doc->combocatoria_id = $combocatoria->id;
+                    $doc->detalle = $array2[$i];
+                    $doc->save();
+                }
+        }
+
+        if( $request->destino && $request->destino != [null]){
+            $array3= $request->get('cantidad_aux');
+            $array4= $request->get('horas');
+            $array5= $request->get('destino');
+            $a3= count($request->get('horas'));
+            for ($i=0; $i<$a3;$i++)
+                {
+                    $doc = new Item;
+                    $doc->combocatoria_id = $combocatoria->id;
+                    $doc->area_id = $request->get('area');
+                    $doc->cantidad_aux= $array3[$i];
+                    $doc->horas = $array4[$i];
+                    $doc->destino = $array5[$i];
+                    $doc->save();
+                }
          }
-
-
-        $array2= $request->get('requisito');
-        $a2= count($request->get('requisito'));
-        for ($i=0; $i<$a2;$i++)
-            {
-                $doc= new Requisito_Combocatoria;
-                $doc->combocatoria_id = $combocatoria->id;
-                $doc->detalle = $array2[$i];
-                $doc->save();
-            }
-
-
-        $array3= $request->get('cantidad_aux');
-        $array4= $request->get('horas');
-        $array5= $request->get('destino');
-        $a3= count($request->get('horas'));
-        for ($i=0; $i<$a3;$i++)
-            {
-                $doc = new Item;
-                $doc->combocatoria_id = $combocatoria->id;
-                $doc->area_id = $request->get('area');
-                $doc->cantidad_aux= $array3[$i];
-                $doc->horas = $array4[$i];
-                $doc->destino = $array5[$i];
-                $doc->save();
-            }
 
         return redirect()->route('admin.combocatorias.index')->with('flash','La combocatoria a sido actualizada ');
         }
@@ -119,8 +120,7 @@ class CombocatoriaController extends Controller
                 'tituloLab'=> 'required',
                 'descripcion'=> 'required',
                 'fecha_fin'=> 'required',
-                'facultad'=> 'required',
-                'area'=> 'required',
+                
                 
     
             ]);
@@ -138,46 +138,54 @@ class CombocatoriaController extends Controller
             $combocatoria->Carreras()->sync($request->get('carreras'));
     
             $combocatoria->documentos()->delete();
-            $combocatoria->items()->delete();
+            $combocatoria->itemlabs()->delete();
             $combocatoria->requisitos()->delete();
     
-            $array= $request->get('documentos');
-            $a= count($request->get('documentos'));
-            for ($i=0; $i<$a;$i++)
+            if($request->documentos && $request->documentos != [null]){
+
+                $array= $request->get('documentos');    
+                $a= count($request->get('documentos'));
+                for ($i=0; $i<$a;$i++)
                 {
-                $doc = new Documento_Combocatoria;
-                $doc->combocatoria_id = $combocatoria->id;
-                $doc->detalle = $array[$i];
-                $doc->save();
-             }
-    
-    
-            $array2= $request->get('requisito');
-            $a2= count($request->get('requisito'));
-            for ($i=0; $i<$a2;$i++)
-                {
-                    $doc= new Requisito_Combocatoria;
+                    $doc = new Documento_Combocatoria;
                     $doc->combocatoria_id = $combocatoria->id;
-                    $doc->detalle = $array2[$i];
+                    $doc->detalle = $array[$i];
                     $doc->save();
                 }
+            }
     
-            $array3= $request->get('cantidad_aux');
-            $array4= $request->get('horas');
-            $array5= $request->get('nombre');
-            $array6= $request->get('codigo');
-            $a3= count($request->get('horas'));
-            for ($i=0; $i<$a3;$i++)
-                {
-                    $doc = new Itemlab;
-                    $doc->combocatoria_id = $combocatoria->id;
-                    $doc->area_id = $request->get('area');
-                    $doc->cantidad_aux= $array3[$i];
-                    $doc->horas = $array4[$i];
-                    $doc->nombre = $array5[$i];
-                    $doc->codigo = $array6[$i];
-                    $doc-> save();
-                }
+            if($request->requisito && $request->requisito != [null]){
+    
+                $array2= $request->get('requisito');
+                $a2= count($request->get('requisito'));
+                for ($i=0; $i<$a2;$i++)
+                    {
+                        $doc= new Requisito_Combocatoria;
+                        $doc->combocatoria_id = $combocatoria->id;
+                        $doc->detalle = $array2[$i];
+                        $doc->save();
+                    }
+            }
+    
+            if($request->codigo && $request->codigo != [null]){
+
+                $array3= $request->get('cantidad_aux');
+                $array4= $request->get('horas');
+                $array5= $request->get('nombre');
+                $array6= $request->get('codigo');
+                $a3= count($request->get('horas'));
+                for ($i=0; $i<$a3;$i++)
+                    {
+                        $doc = new Itemlab;
+                        $doc->combocatoria_id = $combocatoria->id;
+                        $doc->area_id = $request->get('area');
+                        $doc->cantidad_aux= $array3[$i];
+                        $doc->horas = $array4[$i];
+                        $doc->nombre = $array5[$i];
+                        $doc->codigo = $array6[$i];
+                        $doc-> save();
+                    }
+            }
     
             return redirect()->route('admin.combocatorias.index')->with('flash','La combocatoria a sido actualizada');
         }
@@ -217,94 +225,100 @@ class CombocatoriaController extends Controller
 
     public function store ( Request $request){
 
+
         if($request->tituloDoc)
         {
          
         $this->validate($request, [
             'tituloDoc'=> 'required',
-            'descripcion'=> 'required',
-            'fecha_fin'=> 'required',
-            'facultad'=> 'required',
-            'area'=> 'required',
-            'tabla'=> 'required',
-            'carreras'=> 'required',
-            'documentos'=> 'required',
-            'requisito'=> 'required',
-            'cantidad_aux'=> 'required',
-            'horas'=> 'required',
-            'destino'=> 'required'
+            'descripcion'=> 'required'
+          
 
         ]);
 
 
         $conv = new Combocatoria;
-        $conv-> titulo = $request->get('tituloDoc');
-        $conv-> descripcion = $request->get('descripcion');
-        $conv-> tipo = 'Asignatura';
-        $conv-> fecha_inicio = Carbon::now();
-        $conv-> fecha_fin = Carbon::parse($request->get('fecha_fin'));
-        $conv-> area_id = $request->get('area');
-        $conv-> tabla_id = $request->get('tabla');
-        $conv-> facultad_id = $request->get('facultad');
-
+        $conv->titulo = $request->get('tituloDoc');
+        $conv->descripcion = $request->get('descripcion');
+        $conv->tipo = 'Asignatura';
+        $conv->fecha_inicio = Carbon::now();
+        $conv->fecha_fin = Carbon::parse($request->get('fecha_fin'));
+        $conv->tabla_id = $request->get('tabla');
+        $conv->facultad_id = $request->get('facultad') ;
+        $conv->area_id = Area::find($area = $request->get('area'))
+                             ?$area : 
+                             Area::create(['nombre' => $area , 'facultad_id' => $request->get('facultad') ])->id ;
         $conv-> save();
-        $conv->Carreras()->attach($request->get('carreras'));
 
+        $carreras= [];
+        if($request->carreras){
 
-        $array= $request->get('documentos');
-        $a= count($request->get('documentos'));
-        for ($i=0; $i<$a;$i++)
+            foreach($request->get('carreras') as $carrera)
             {
-            $doc = new Documento_Combocatoria;
-            $doc-> combocatoria_id = $conv->id;
-            $doc-> detalle = $array[$i];
-            $doc-> save();
+                $carreras[] = Carrera::find($carrera) 
+                ? $carrera
+                : Carrera::create(['facultad_id' => $conv->facultad_id , 'area_id' => $conv->area_id ,'nombre'=> $carrera ])->id;
+            }
+            
+            
+            $conv->Carreras()->attach($carreras);
+            
+        }
+
+        if( $request->documentos && $request->documentos != [null] )
+        {
+
+            $array= $request->get('documentos');
+            $a= count($request->get('documentos'));
+            for ($i=0; $i<$a;$i++)
+                {
+                $doc = new Documento_Combocatoria;
+                $doc->combocatoria_id = $conv->id;
+                $doc->detalle = $array[$i];
+                $doc->save();
+             }
+        }
+
+        if($request->requisito && $request->requisito != [null])
+        {
+
+            $array2= $request->get('requisito');
+            $a2= count($request->get('requisito'));
+            for ($i=0; $i<$a2;$i++)
+                {
+                    $doc = new Requisito_Combocatoria;
+                    $doc-> combocatoria_id = $conv->id;
+                    $doc-> detalle = $array2[$i];
+                    $doc-> save();
+                }
          }
 
-
-        $array2= $request->get('requisito');
-        $a2= count($request->get('requisito'));
-        for ($i=0; $i<$a2;$i++)
-            {
-                $doc = new Requisito_Combocatoria;
-                $doc-> combocatoria_id = $conv->id;
-                $doc-> detalle = $array2[$i];
-                $doc-> save();
-            }
-
-
-        $array3= $request->get('cantidad_aux');
-        $array4= $request->get('horas');
-        $array5= $request->get('destino');
-        $a3= count($request->get('horas'));
-        for ($i=0; $i<$a3;$i++)
-            {
-                $doc = new Item;
-                $doc-> combocatoria_id = $conv->id;
-                $doc-> area_id = $request->get('area');
-                $doc-> cantidad_aux= $array3[$i];
-                $doc-> horas = $array4[$i];
-                $doc-> destino = $array5[$i];
-                $doc-> save();
-            }
+         if($request->destino && $request->destino != [null])
+         {
+                $array3= $request->get('cantidad_aux');
+                $array4= $request->get('horas');
+                $array5= $request->get('destino');
+                $a3= count($request->get('horas'));
+                for ($i=0; $i<$a3;$i++)
+                    {
+                        $doc = new Item;
+                        $doc-> combocatoria_id = $conv->id;
+                        $doc-> area_id = $request->get('area');
+                        $doc-> cantidad_aux= $array3[$i];
+                        $doc-> horas = $array4[$i];
+                        $doc-> destino = $array5[$i];
+                        $doc-> save();
+                    }
+        }
 
         return redirect()->route('admin.combocatorias.index')->with('flash','La combocatoria a sido publicada');
         }
         else{
             $this->validate($request, [
                 'tituloLab'=> 'required',
-                'descripcion'=> 'required',
-                'fecha_fin'=> 'required',
-                'facultad'=> 'required',
-                'area'=> 'required',
-                'tabla'=> 'required',
-                'carreras'=> 'required',
-                'documentos'=> 'required',
-                'requisito'=> 'required',
-                'cantidad_aux'=> 'required',
-                'horas'=> 'required',
-                'nombre'=> 'required',
-                'codigo'=> 'required'
+                'descripcion'=> 'required'
+              
+        
     
             ]);
     
@@ -315,52 +329,71 @@ class CombocatoriaController extends Controller
             $conv-> tipo = 'Laboratorios';
             $conv-> fecha_inicio = Carbon::now();
             $conv-> fecha_fin = Carbon::parse($request->get('fecha_fin'));
-            $conv-> area_id = $request->get('area');
             $conv-> tabla_id = $request->get('tabla');
             $conv-> facultad_id = $request->get('facultad');
-    
+            $conv-> area_id = Area::find($area = $request->get('area'))
+                            ?$area : 
+                            Area::create(['nombre' => $area , 'facultad_id' => $request->get('facultad') ])->id ;
             $conv-> save();
-            $conv->Carreras()->attach($request->get('carreras'));
-    
-    
-            $array= $request->get('documentos');
-            $a= count($request->get('documentos'));
-            for ($i=0; $i<$a;$i++)
-                {
-                $doc = new Documento_Combocatoria;
-                $doc-> combocatoria_id = $conv->id;
-                $doc-> detalle = $array[$i];
-                $doc-> save();
+
+            $carreras= [];
+            if($request->carreras){
+                 foreach($request->get('carreras') as $carrera)
+                    {
+                            $carreras[] = Carrera::find($carrera) 
+                            ? $carrera
+                    : Carrera::create(['facultad_id' => $conv->facultad_id , 'area_id' => $conv->area_id ,'nombre'=> $carrera ])->id;
+                    }
+
+
+                    $conv->Carreras()->attach($carreras);
              }
+
     
-    
-            $array2= $request->get('requisito');
-            $a2= count($request->get('requisito'));
-            for ($i=0; $i<$a2;$i++)
+            if( $request->documentos && $request->documentos != [null] ){
+
+                $array= $request->get('documentos');
+                $a= count($request->get('documentos'));
+                for ($i=0; $i<$a;$i++)
                 {
-                    $doc = new Requisito_Combocatoria;
+                    $doc = new Documento_Combocatoria;
                     $doc-> combocatoria_id = $conv->id;
-                    $doc-> detalle = $array2[$i];
+                    $doc-> detalle = $array[$i];
                     $doc-> save();
                 }
+            }
     
+            if( $request->requisito && $request->requisito != [null] ) {
+
+                $array2= $request->get('requisito');
+                $a2= count($request->get('requisito'));
+                for ($i=0; $i<$a2;$i++)
+                    {
+                        $doc = new Requisito_Combocatoria;
+                        $doc-> combocatoria_id = $conv->id;
+                        $doc-> detalle = $array2[$i];
+                        $doc-> save();
+                    }
+            }
     
-            $array3= $request->get('cantidad_aux');
-            $array4= $request->get('horas');
-            $array5= $request->get('nombre');
-            $array6= $request->get('codigo');
-            $a3= count($request->get('horas'));
-            for ($i=0; $i<$a3;$i++)
-                {
-                    $doc = new Itemlab;
-                    $doc-> combocatoria_id = $conv->id;
-                    $doc-> area_id = $request->get('area');
-                    $doc-> cantidad_aux= $array3[$i];
-                    $doc-> horas = $array4[$i];
-                    $doc-> nombre = $array5[$i];
-                    $doc-> codigo = $array6[$i];
-                    $doc-> save();
-                }
+            if( $request->codigo && $request->codigo != [null] ){
+                    $array3= $request->get('cantidad_aux');
+                    $array4= $request->get('horas');
+                    $array5= $request->get('nombre');
+                    $array6= $request->get('codigo');
+                    $a3= count($request->get('horas'));
+                    for ($i=0; $i<$a3;$i++)
+                        {
+                            $doc = new Itemlab;
+                            $doc-> combocatoria_id = $conv->id;
+                            $doc-> area_id = $request->get('area');
+                            $doc-> cantidad_aux= $array3[$i];
+                            $doc-> horas = $array4[$i];
+                            $doc-> nombre = $array5[$i];
+                            $doc-> codigo = $array6[$i];
+                            $doc-> save();
+                        }
+            }
     
             return redirect()->route('admin.combocatorias.index')->with('flash','La combocatoria a sido publicada');
         }

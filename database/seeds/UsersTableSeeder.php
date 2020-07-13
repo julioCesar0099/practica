@@ -43,6 +43,11 @@ class UsersTableSeeder extends Seeder
         $permiso15=Permission::create(['name' =>'calificar postulantes']);
         $permiso16=Permission::create(['name' =>'editar convocatorias']);
         $permiso17=Permission::create(['name' =>'agregar nuevo usuario']);
+        $permiso18=Permission::create(['name' =>'calificar conocimientos']);
+        $permiso19=Permission::create(['name' =>'calificar meritos']);
+        $permiso20=Permission::create(['name' =>'ver eventos']);
+        $permiso21=Permission::create(['name' =>'habilitar postulantes']);
+       
 
         
 
@@ -63,6 +68,10 @@ class UsersTableSeeder extends Seeder
         $adminRole->givePermissionTo($permiso15);
         $adminRole->givePermissionTo($permiso16);
         $adminRole->givePermissionTo($permiso17);
+        $adminRole->givePermissionTo($permiso18);
+        $adminRole->givePermissionTo($permiso19);
+        $adminRole->givePermissionTo($permiso20);
+        $adminRole->givePermissionTo($permiso21);
 
 
         // $comiteRole->givePermissionTo($permiso1);

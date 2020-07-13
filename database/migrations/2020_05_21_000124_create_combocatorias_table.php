@@ -16,11 +16,11 @@ class CreateCombocatoriasTable extends Migration
         Schema::create('combocatorias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-            $table->mediumText('descripcion');
+            $table->mediumText('descripcion')->nullable();;
             $table->string('tipo');
             $table->timestamp('fecha_inicio')->nullable();
             $table->timestamp('fecha_fin')->nullable();
-            $table->unsignedInteger('area_id');
+            $table->unsignedInteger('area_id')->nullable();;
             $table->unsignedInteger('tabla_id')->nullable();
             $table->unsignedInteger('facultad_id')->nullable();
             $table->unsignedInteger('notas')->nullable();

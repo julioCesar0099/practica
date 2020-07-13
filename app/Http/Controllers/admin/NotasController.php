@@ -184,7 +184,7 @@ class NotasController extends Controller
         $convocatoria->notas= 1 ;
         $convocatoria->save();
 
-        return back()->with('flash','las Notas han sido publicadas');
+        return redirect()->route('admin.calificaciones.index')->with('flash','las Notas han sido publicadas');
 
     }
 }

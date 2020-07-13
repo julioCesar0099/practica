@@ -69,13 +69,12 @@
                                                                                     <div class="input-group-addon">
                                                                                         <i class="fa fa-calendar"></i>
                                                                                     </div>
-                                                                                        <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker">
+                                                                                        <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker" readonly>
                                                                             </div>
                                                                 </div>
                                                                 <div class="form-group {{ $errors->has('facultad') ? 'has-error' : '' }}">
                                                                     <label> Facultad </label>
                                                                     <select  name="facultad" class="form-control">
-                                                                              
                                                                         @foreach($facultades as $facultad)
                                                                                     <option value="{{ $facultad->id }}">{{ $facultad->nombre}}</option>
                                                                         @endforeach
@@ -84,7 +83,7 @@
                                                                 </div>
                                                                         <div class="form-group {{ $errors->has('area') ? 'has-error' : '' }}">
                                                                             <label> Area </label>
-                                                                            <select  name="area" class="form-control">
+                                                                            <select  name="area" class="form-control select2">
                                                                                   
                                                                                      @foreach($areas as $area)
                                                                                             <option value="{{ $area->id }}">{{ $area->nombre}}</option>
@@ -94,7 +93,7 @@
                                                                         </div>
                                                                         <div class="form-group {{ $errors->has('carreras') ? 'has-error' : '' }}">
                                                                             <label> Carreras </label>
-                                                                            <select  name="carreras[]" class="form-control select4" multiple="multiple" data-placeholder="Selecciona una o mas carreras" style="width: 100%;">
+                                                                            <select  name="carreras[]" class="form-control select2" multiple="multiple" data-placeholder="Selecciona una o mas carreras" style="width: 100%;">
                                                                                     @foreach($carreras as $carrera )
                                                                                         <option value="{{ $carrera->id }}">{{ $carrera->nombre }}</option>
                                                                                     @endforeach
@@ -117,8 +116,8 @@
                                                                 <div class="table-responsive">
                                                                         <table class="table table-bordered" id="dynamic_field">
                                                                             <tr>
-                                                                                <td><input  autocomplete="off" type="text" name="requisito[]" placeholder="Ingrese requisito" class="form-control name_list" /></td>
-                                                                                <td><button type="button" name="add" id="add" class="btn btn-primary">Añadir requisito </button></td>
+                                                                               <td> <h4>Añadir nuevo requisito </h4></td>
+                                                                                <td><button type="button" name="add" id="add" class="btn btn-primary "> <i class="fa fa-plus"></i>  </button></td>
                                                                             </tr>
                                                                         </table>
                                                                 </div>
@@ -134,8 +133,8 @@
                                                                 <div class="table-responsive">
                                                                         <table class="table table-bordered" id="dynamic_field2">
                                                                             <tr>
-                                                                                <td><input autocomplete="off" type="text" name="documentos[]" placeholder="Ingrese Documento" class="form-control name_list" /></td>
-                                                                                <td><button type="button" name="add" id="add2" class="btn btn-primary">Añadir Documento </button></td>
+                                                                                <td><h4>Añadir nuevo documento</h4></td>
+                                                                                <td><button type="button" name="add" id="add2" class="btn btn-primary"><i class="fa fa-plus"></i>  </button></td>
                                                                             </tr>
                                                                         </table>
                                                                 </div>
@@ -155,14 +154,9 @@
                                                             <table class="table table-bordered" id="dynamic_field3">
                                                                 <tr>
                                                                     <td>
-                                                                    <label> Cantidad de auxiliares  </label>
-                                                                    <input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input>
-                                                                    <label> Horas laborales  </label>
-                                                                    <input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input>
-                                                                    <label> Destino  </label>
-                                                                    <input autocomplete="off" type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"></input>
+                                                                    <h4> Agregar Item</h4>
                                                                     </td>
-                                                                    <td><button type="button" name="add" id="add3" class="btn btn-primary">Añadir Item</button></td>
+                                                                    <td><button type="button" name="add" id="add3" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
                                                                 </tr>
                                                             </table>
                                                     
@@ -240,7 +234,7 @@
                                                                                         <div class="input-group-addon">
                                                                                             <i class="fa fa-calendar"></i>
                                                                                         </div>
-                                                                                            <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker2">
+                                                                                            <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker2" readonly>
                                                                                 </div>
                                                                     </div>
                                                                     <div class="form-group {{ $errors->has('facultad') ? 'has-error' : '' }}">
@@ -253,11 +247,14 @@
                                                                         {!! $errors->first('facultad','<span class=help-block>:message</span>') !!}
                                                                     </div>
                                                                     <div class="form-group {{ $errors->has('area') ? 'has-error' : '' }}">
-                                                                        <label> Area </label>
-                                                                        <select name="area" class="form-control">
+                                                                        <label> Area </label> 
+                                                                        <br>
+                                                                        <select name="area" class="form-control  select2" >
+
                                                                             @foreach($areas as $area)
                                                                                         <option value="{{ $area->id }}">{{ $area->nombre}}</option>
                                                                             @endforeach
+
                                                                         </select>
                                                                         {!! $errors->first('area','<span class=help-block>:message</span>') !!}
                                                                     </div>
@@ -286,8 +283,8 @@
                                                                     <div class="table-responsive">
                                                                             <table class="table table-bordered" id="dynamic_field4">
                                                                                 <tr>
-                                                                                    <td><input  autocomplete="off" type="text" name="requisito[]" placeholder="Ingrese requisito" class="form-control name_list" /></td>
-                                                                                    <td><button type="button" name="add" id="add4" class="btn btn-primary">Añadir requisito </button></td>
+                                                                                    <td> <h4>Añadir nuevo requisito </h4></td>
+                                                                                    <td><button type="button" name="add" id="add4" class="btn btn-primary"><i class="fa fa-plus"></i> </button></td>
                                                                                 </tr>
                                                                             </table>
                                                                     </div>
@@ -303,8 +300,8 @@
                                                                     <div class="table-responsive">
                                                                             <table class="table table-bordered" id="dynamic_field5">
                                                                                 <tr>
-                                                                                    <td><input autocomplete="off" type="text" name="documentos[]" placeholder="Ingrese Documento" class="form-control name_list" /></td>
-                                                                                    <td><button type="button" name="add" id="add5" class="btn btn-primary">Añadir Documento </button></td>
+                                                                                    <td><h4> Añadir nuevo documento</h4></td>
+                                                                                    <td><button type="button" name="add" id="add5" class="btn btn-primary"><i class="fa fa-plus"></i> </button></td>
                                                                                 </tr>
                                                                             </table>
                                                                     </div>
@@ -324,16 +321,9 @@
                                                                     <table class="table table-bordered" id="dynamic_field6">
                                                                         <tr>
                                                                             <td>
-                                                                            <label> Cantidad de auxiliares </label>
-                                                                            <input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input>
-                                                                            <label> Horas laborales </label>
-                                                                            <input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input>
-                                                                            <label> Nombe de la auxiliatura </label>
-                                                                            <input  autocomplete="off" type="text" name="nombre[]" class="form-control name list" placeholder="ingresa el nombre de la auxiliatura"></input>
-                                                                            <label> Codigo de la Auxiliatura </label>
-                                                                            <input autocomplete="off" type="text" name="codigo[]" class="form-control name list" placeholder="ingresa el codigo de la  auxiliatura"></input>
+                                                                                <h4>Agregar item</h4> 
                                                                             </td>
-                                                                            <td><button type="button" name="add" id="add6" class="btn btn-primary">Añadir Item</button></td>
+                                                                            <td><button type="button" name="add" id="add6" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
                                                                         </tr>
                                                                     </table>
                                                             
@@ -392,12 +382,19 @@
             
             <script>  
                     
-                    $(".select2").select2();
-                    $(".select4").select2();
+                    $(".select2").select2({
+                        tags: true
+                    });
+
+                    
                     //Date picker
                     $('#datepicker').datepicker({
+
                     startDate: 'today',
-                    autoclose: true});
+                    disabled: true,
+                    autoclose: true
+                    
+                    });
 
                     $('#datepicker2').datepicker({
                     startDate: 'today',
@@ -446,7 +443,7 @@
                             $('#add3').click(function () {
                                 d++;
                                 $('#dynamic_field3').append('<tr id="row3'+d+'">' +
-                                                            '<td> <label> Cantidad de auxiliares </label><input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input> <label> Horas laborales </label><input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input><label> Destino   </label><input autocomplete="off" type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"></input>' +
+                                                            '<td> <label> Cantidad de auxiliares </label><input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input> <label> Horas laborales </label><input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input><label> Destino de la Auxiliatura  </label><input autocomplete="off" type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"></input>' +
                                                             '<td><button type="button" name="remove" id3="'+d+'" class="btn btn-danger btn_remove">X</button></td>' +
                                                             '</tr>');
                             });

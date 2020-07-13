@@ -29,6 +29,8 @@
 							@endcan
 						</ul>
     </li>
+	@endcan
+	@can('calificar postulantes', new \Spatie\Permission\Models\Role)
 	<li class="treeview {{ request()->is('admin/calificaciones*') ? 'active' : ''}}">
 
 				<a href="#"><i class="fa fa-book"></i> <span>Calificaciones</span>
