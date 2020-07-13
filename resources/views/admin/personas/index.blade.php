@@ -29,6 +29,7 @@
                         <th>Apellido Materno</th>
                         <th>Telefono</th>
                         <th>Correo</th>
+                        <th>Comisiones</th>
                         <th>Acciones</th>
                     </tr>
                  
@@ -44,13 +45,23 @@
                         <td>{{ $personas->telefono}}</td>
                         <td>{{ $personas->correo}}</td>
                         <td>
+                        
+                        </th>
+                        @if($personas->ocunombre == 'docente')
+                          @if($personas->user_id == '0')
+                            @can('agregar nuevo usuario',new \Spatie\Permission\Models\Role)
+                              <a href="{{ url('/admin/'.$personas->id.'/agregar/')}}"class="btn btn-xs btn-info"><i class="">agregar</i></a>
+                            @endcan
+                          @endif
+                          @if($personas->user_id == '1')
+                            @can('agregar nuevo usuario',new \Spatie\Permission\Models\Role)
+                              <a href="{{ url('/admin/'.$personas->id.'/quitar/')}}"class="btn btn-xs btn-info"><i class="">quitar</i></a>
+                            @endcan
+                          @endif
+                        @endif
+                        <td>
                         @can('editar usuarios',new \Spatie\Permission\Models\Role)   
                         <a href="{{ url('/admin/personas/'.$personas->id.'/edit')}}"class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a> 
-                        @if($personas->ocunombre == 'docente')
-                        @can('agregar nuevo usuario',new \Spatie\Permission\Models\Role)
-                           <a href="{{ url('/admin/'.$personas->id.'/agregar/')}}"class="btn btn-xs btn-info"><i class="">agregar</i></a>
-                        @endcan
-                        @endif
                         @endcan
                         @can('eliminar usuarios',new \Spatie\Permission\Models\Role)
                         <form method="post" action="{{ url('/admin/personas/'.$personas->id)}}" style="display: inline">

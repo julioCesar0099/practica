@@ -50,8 +50,10 @@
                         {!! $errors->first('correo','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
 
                         <label form="telefono">{{'Telefono'}}</label>
-                        <input class="form-control" type="text" name="telefono" id="telefono" value="{{isset($persona->telefono)?$persona->telefono:old('telefono')}}" Placeholder="Ingrese su telefono">
+                        <input class="form-control" type="number" name="telefono" id="telefono" value="{{isset($persona->telefono)?$persona->telefono:old('telefono')}}" Placeholder="Ingrese su telefono">
                         {!! $errors->first('telefono','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
+
+                        
 
                     </div>
                 </div>
@@ -64,11 +66,12 @@
                         <label form="facultades">{{'Facultades'}}</label>
                         <select id="facultad" name="facultad_id" class="form-control">
                             @foreach($facultades->get() as $index => $facultad)
-                            <option value="{{$index}}" {{old('facultad_id') == $index ? 'selected' : ''}} >
+                            <option value="{{$index}}" {{old('facultad_id' == $index ? 'selected' : ''}}>
                                 {{$facultad}}
                             </option>
                             @endforeach
-                        </select>   
+                        </select>
+                        {!! $errors->first('facultad_id','<div class="invalid-feedback alert alert-danger">:message</div>')!!}   
                         </br>
                         
                         <label form="carreras">{{'Carreras'}}</label>
@@ -79,7 +82,7 @@
                             </option>
                             @endforeach
                         </select>
-                        
+                        {!! $errors->first('carrera_id','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
                         </br>
                         <label form="ocupaciones">{{'Ocupaciones'}}</label>
                         <select id="ocupacion" name="ocupacion_id" class="form-control">
@@ -89,6 +92,7 @@
                             </option>
                             @endforeach
                         </select>
+                        {!! $errors->first('ocupacion_id','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
                         </br>
                         
                         <div class="form-group">

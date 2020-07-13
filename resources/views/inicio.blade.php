@@ -69,12 +69,20 @@
 						<li id="slide1">
 							<h4>{{$convocatoria->titulo}}</h4>
 						</li>
+						<li id="slide2">
+								<label>Fecha de inicio:</label>
+								<label class="fecha">{{$convocatoria->fecha_inicio->format('d - M - Y')}}</label>
+						</li>
 						@foreach($convocatoria->eventos as $evento)
-							<li id="slide2">
+							<li id="slide3">
 								<label>{{$evento->detalle}}:</label>
 								<label class="fecha">{{$evento->fecha->format('d - M - Y')}}</label>
 							</li>
 						@endforeach
+						<li id="slide4">
+								<label>Fecha de fin:</label>
+								<label class="fecha">{{$convocatoria->fecha_fin->format('d - M - Y')}}</label>
+						</li>
 					@endforeach
 				</ul>
 

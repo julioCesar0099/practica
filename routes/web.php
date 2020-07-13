@@ -49,6 +49,7 @@ Route::group([
        Route::delete('roles/{role}','RolesController@destroy')->name('admin.roles.destroy');
        Route::resource('personas', 'PersonasController');
        Route::get('/{id}/agregar','PersonasController@index3');
+       Route::get('/{id}/quitar','PersonasController@index4');
        Route::get('notas',function(){
            return view('admin.notas.index');
        });
