@@ -71,7 +71,7 @@
                             </option>
                             @endforeach
                         </select>
-                        {!! $errors->first('facultad_id','<div class="invalid-feedback alert alert-danger">:message</div>')!!}   
+                        {!! $errors->first('facultad_id','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
                         </br>
                         
                         <label form="carreras">{{'Carreras'}}</label>
