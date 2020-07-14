@@ -30,8 +30,10 @@
 									<span class="category text-capitalize">{{ $convocatoria->facultad->nombre}}</span>
 								</div>
 							</header>
+							<br>
 							<h4>{{ $convocatoria->titulo }}</h4>
 							<div class="divider"></div>
+							
 							<h6>{{ $convocatoria->descripcion }}</h6>
 							<footer class="container-flex space-between">
 								<div class="read-more">
