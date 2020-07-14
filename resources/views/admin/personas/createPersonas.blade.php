@@ -66,13 +66,13 @@
                         <label form="facultades">{{'Facultades'}}</label>
                         <select id="facultad" name="facultad_id" class="form-control">
                             @foreach($facultades->get() as $index => $facultad)
-                            <option value="{{$index}}" {{old('facultad_id' == $index ? 'selected' : ''}}>
+                            <option value="{{$index}}" {{old('facultad_id' == $index ? 'selected' : '')}}>
                                 {{$facultad}}
                             </option>
                             @endforeach
                         </select>
                         {!! $errors->first('facultad_id','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
-                        </br>
+                        
                         
                         <label form="carreras">{{'Carreras'}}</label>
                         <select id="carrera" data-old="{{old( "carrera_id" )}}" name="carrera_id" class="form-control">
