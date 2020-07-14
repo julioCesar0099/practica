@@ -124,7 +124,9 @@ class CombocatoriaController extends Controller
                 
     
             ]);
-    
+            $docC= Documento_Combocatoria::all();
+            $reqC= Requisito_Combocatoria::all();    
+
             $combocatoria->titulo = $request->get('tituloLab');
             $combocatoria->descripcion = $request->get('descripcion');
             $combocatoria->tipo = 'Laboratorios';
