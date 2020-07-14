@@ -43,7 +43,7 @@
                       <td>{{$evento->detalle}}</td>
                       <td>{{$evento->fecha->format('d - M - Y')}}</td>
                       <td>
-                        <form method="post" action="{{ route('admin.eventos.borrar',$evento)}}" style="display: inline">
+                        <form method="post" action="{{ route('admin.eventos.borrar',$evento) }}" style="display: inline">
                             {{csrf_field() }}
                             {{method_field('DELETE')}}
                             <button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar este dato?')"><i class="fa fa-times"></i></button>

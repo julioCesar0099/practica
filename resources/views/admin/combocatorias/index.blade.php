@@ -28,7 +28,6 @@
                     <th>Fecha finalizacion</th>
                     <th>Area </th>
                     <th>Carreras</th>
-                    <th>Resultados</th>
                     <th>Eventos</th>
                     <th>Acciones</th>
 
@@ -45,7 +44,7 @@
                       <td>{{ $combocatoria->fecha_fin->format('d - M - Y')  }}</td>
                       <td>{{ $combocatoria->area->nombre }}</td>
                       <td>{{ $combocatoria->carreras->pluck('nombre')->implode(' , ')}}</td>
-                      <td> <a href="{{ route('postulantes.itemsPost',$combocatoria) }}" class="btn btn-default">Postulantes</a></td>
+                      
                       <td>
                       <a href="{{url('/admin/eventos/'.$combocatoria->id)}}"  class="btn btn-default" ><i class="">ver</i></a>
                       </td>
