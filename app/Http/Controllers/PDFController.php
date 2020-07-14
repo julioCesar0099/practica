@@ -59,6 +59,6 @@ class PDFController extends Controller
 		$idCarrera = $codS->carrera_id;
 		$carrera = Carrera::findOrFail($idCarrera);
 		$pdf = PDF::loadview('postulantes.generar',compact('codS','convocatoria','carrera','docC','item','numHojas'));
-		return $pdf->download();
+		return $pdf->stream();
 	}
 }
