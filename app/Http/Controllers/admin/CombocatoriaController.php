@@ -52,7 +52,7 @@ class CombocatoriaController extends Controller
 
         ]);
         $docC= Documento_Combocatoria::all();
-       
+        $reqC= Requisito_Combocatoria::all();
         $combocatoria->titulo = $request->get('tituloDoc');
 
         $combocatoria->descripcion = $request->get('descripcion');
