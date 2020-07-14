@@ -42,7 +42,6 @@ class CombocatoriaController extends Controller
 
     public function update(Request $request , Combocatoria $combocatoria){
      
-       
         if($request->tituloDoc)
         {
          
@@ -52,6 +51,7 @@ class CombocatoriaController extends Controller
             'fecha_fin'=> 'required',
 
         ]);
+        $docC= Documento_Combocatoria::all();
        
         $combocatoria->titulo = $request->get('tituloDoc');
 
