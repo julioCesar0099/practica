@@ -46,15 +46,14 @@
                       <td>{{ $combocatoria->area->nombre }}</td>
                       <td>{{ $combocatoria->carreras->pluck('nombre')->implode(' , ')}}</td>
                       <td> 
-                      
+                      @can('habilitar postulantes', new \Spatie\Permission\Models\Role)
                       <a href="{{ route('postulantes.itemsPost',$combocatoria) }}" class="btn btn-default">Habilitar</a>
-                      
+                      @endcan
                       </td>
                       <td>
-                      
-                      <a href="{{url('/admin/eventos/'.$combocatoria->id)}}"  class="btn btn-default" ><i class="">Ver</i></a>
-                      
-
+                      @can('ver eventos', new \Spatie\Permission\Models\Role)
+                      <a href="{{url('/admin/eventos/'.$combocatoria->id)}}"  class="btn btn-default" ><i class="">ver</i></a>
+                      @endcan
                       </td>
 
                       <td>

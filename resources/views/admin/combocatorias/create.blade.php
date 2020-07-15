@@ -388,16 +388,16 @@
 
                     
                     //Date picker
-                    $('#datepicker').datepicker({
-
-                    startDate: 'today',
-                    disabled: true,
-                    autoclose: true
+                    $('#datepicker').datepicker({                    
+                    startDate: '+5d',
+                    endDate:'+1m'
+                    autoclose: true});
                     
                     });
 
                     $('#datepicker2').datepicker({
-                    startDate: 'today',
+                    startDate: '+5d',
+                    endDate:'+1m'
                     autoclose: true});
             
             </script>        

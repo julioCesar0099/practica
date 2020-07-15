@@ -342,11 +342,13 @@
                     $(".select4").select2();
                     //Date picker
                     $('#datepicker').datepicker({
-                    startDate: 'today',
+                    startDate: '+5d',
+                    endDate:'+1m'
                     autoclose: true});
 
                     $('#datepicker2').datepicker({
-                    startDate: 'today',
+                    startDate: '+5d',
+                    endDate:'+1m'
                     autoclose: true});
             
             </script>        
@@ -461,6 +463,11 @@
            
 
 @endpush
+
+
+
+
+
 
 
 
