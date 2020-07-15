@@ -56,7 +56,9 @@ class EventosController extends Controller
         $eventos['fecha']= Carbon::parse($request->get('fecha'));
         $eventos['combocatoria_id']=$id;
         Eventos::insert($eventos);
-        return view('admin.eventos.index',compact('id','combocatoria'));
+        return redirect()->route('admin.eventos.index',$id);
+        
+        
     }
     public function eliminar($id)
     {
