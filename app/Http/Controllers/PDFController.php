@@ -62,6 +62,6 @@ class PDFController extends Controller
 		
 		return PDF::loadview('postulantes.generar',compact('codS','convocatoria','carrera','docC','item','numHojas'))
         ->setPaper('a4', 'portrait')
-        ->stream('Registro de Postulante.pdf');
+        ->download('Registro de Postulante.pdf');
 	}
 }
