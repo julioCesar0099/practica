@@ -346,12 +346,12 @@
                     //Date picker
                     $('#datepicker').datepicker({
                     startDate: '+5d',
-                    endDate:'+1m'
+                    endDate:'+1m',
                     autoclose: true});
 
                     $('#datepicker2').datepicker({
                     startDate: '+5d',
-                    endDate:'+1m'
+                    endDate:'+1m',
                     autoclose: true});
             
             </script>        
