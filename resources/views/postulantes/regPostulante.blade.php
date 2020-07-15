@@ -60,6 +60,7 @@
             <div class="form-group ">
             <input class="" type="number" name="num_Hojas">  N° de hojas a entregar
             </div>
+            <p style="color:red;">*Primero presione ACEPTAR y Luego presione GENERAR ROTULO</p>
             <br><br>
             <div class="d-flex justify-content-center">
             <div class="form-group">
