@@ -9,6 +9,7 @@ use App\Documento_Post;
 use App\Postulante;
 use App\Combocatoria;
 use App\Documento_Combocatoria;
+use App\Item;
 class PostulantController extends Controller
 {
     public function registroPost(Combocatoria $convocatoria){
@@ -62,35 +63,47 @@ class PostulantController extends Controller
 
 
     public function crear(Request $request,personas $codigoS,Combocatoria $convocatoria){
-        
-        $docC= Documento_Combocatoria::all();
-        $request->validate([
-            'items' => 'required',
-            'num_Hojas' => 'required'
-        ]);
-        
-        //$this->validate($request,$codigoS,$convocatoria);
-        if($request->aceptar)
-        {
-          $postulanteNuevo = new App\Postulante;
-          $postulanteNuevo->convocatoria_id = $convocatoria->id;
-          $postulanteNuevo->item_nombre = $request->items;
-          $postulanteNuevo->persona_id = $codigoS->id;
-          $postulanteNuevo->estado = 'Deshabilitado';
-          $postulanteNuevo->observacion = "";
-          $postulanteNuevo->save();
+      $request->validate([
+          'items' => 'required',
+          'num_Hojas' => 'required'
+             
+      ]);
+     // $idPersona = \DB::table('personas')->where('codigoSIS',$codigoS)->get();
+      
+       $destino = $request->items;
+       $id = $codigoS->id;
+       $comparar = \DB::table('personas')->where('persona_id',$id)
+     ->join('postulantes','persona_id','=','personas.id')
+     ->join('combocatorias','convocatoria_id','=','combocatorias.id')
+     ->join('items','combocatoria_id','=','combocatorias.id')
+     ->where('item_nombre',$destino)->get();
+     //dd($comparar);
+       $cantidadPost = count($comparar);
+       if($cantidadPost>1){
+       return view('postulantes.regPostulante',compact('convocatoria','codigoS'))->with('error','Ya se postulo a este item');
+     }
+     else {
+      if($request->aceptar)
+      {
+        $postulanteNuevo = new App\Postulante;
+        $postulanteNuevo->convocatoria_id = $convocatoria->id;
+        $postulanteNuevo->item_nombre = $request->items;
+        $postulanteNuevo->persona_id = $codigoS->id;
+        $postulanteNuevo->estado = 'Deshabilitado';
+        $postulanteNuevo->observacion = "";
+        $postulanteNuevo->save();
 
-          $documentosNuevo = new Documento_Post;
-          $documentosNuevo->postulantes_id = $codigoS->id;
-          $documentosNuevo->Doc_Ent = count($convocatoria->documentos); 
-          $documentosNuevo->num_Hojas= $request->num_Hojas;
-          $documentosNuevo->save();
-          return view('postulantes.regPostulante',compact('codigoS','convocatoria','docC'))->with('flash','Registro agregado!');
-        }else{
-          return view('postulantes.regPostulante',compact('codigoS','convocatoria','docC'))->with('flash','Debe aceptar presentar todos los documentos!');
-        }     
+        $documentosNuevo = new Documento_Post;
+        $documentosNuevo->postulantes_id = $codigoS->id;
+        $documentosNuevo->Doc_Ent = count($convocatoria->documentos); 
+        $documentosNuevo->num_Hojas= $request->num_Hojas;
+        $documentosNuevo->save();
+        return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('error','Registro agregado!');
+      }else{
+        return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('error','Debe aceptar presentar todos los documentos!');
+        }   
+     }
     }
-
 
     
 
