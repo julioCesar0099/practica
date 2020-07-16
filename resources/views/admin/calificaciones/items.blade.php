@@ -29,7 +29,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                @if($convocatoria->tituloDoc)
+                @if($convocatoria->tipo === 'Asignatura')
                   @foreach ($convocatoria->items as $item)
                     <tr>
                       <td>{{ $item->destino }}</td>

@@ -19,7 +19,7 @@
             </tr>
         </thead>
          <tbody>
-      @if($combocatoria->tituloDoc)
+      @if($combocatoria->tipo === 'Asignatura')
         @foreach($combocatoria->items as $item)
         <tr>
            <td>

@@ -38,10 +38,17 @@
             <h5>Seleccione item</h5>
             <div class="form-group btn">
                <select name="items" class="form-control">
+               
                     <option value="">Escoja el item</option>
-                     @foreach ($convocatoria->items as $item)
-                     <option value="{{$item->destino}}">{{$item->destino}}</option>
-                     @endforeach 
+                    @if($convocatoria ->tipo === 'Asignatura')
+                        @foreach ($convocatoria->items as $item)
+                           <option value="{{$item->destino}}">{{$item->destino}}</option>
+                        @endforeach 
+                     @else
+                        @foreach ($convocatoria ->itemlabs as $item)
+                           <option value="{{$item->nombre}}">{{$item->nombre}}</option>
+                        @endforeach 
+                     @endif
                </select>
             </div>                       
          </div>
