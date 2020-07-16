@@ -30,17 +30,9 @@ class EventosController extends Controller
     public function create($id)
     {
         $combocatoria=Combocatoria::findOrFail($id);
-        $fecha1=$combocatoria->fecha_inicio->month;
-        $fecha2=$combocatoria->fecha_inicio->day;
-        $fecha3=$combocatoria->fecha_inicio->year;
-        $inicio=$fecha1."-".$fecha2."-".$fecha3;
         
-        $fecha4=$combocatoria->fecha_fin->month;
-        $fecha5=$combocatoria->fecha_fin->day;
-        $fecha6=$combocatoria->fecha_fin->year;
-        $fin=$fecha4.'-'.$fecha5.'-'.$fecha6;
-
-        return view('admin.eventos.create',compact('id','fecha1','fecha2','fecha3'));
+        
+        return view('admin.eventos.create',compact('combocatoria'));
     }
 
     public function guardar($id, Request $request)
@@ -52,13 +44,27 @@ class EventosController extends Controller
         ];
         $Mensaje=["required"=>'El :attribute es requerido'];
         $this->validate($request,$campos,$Mensaje);
-        $eventos=request()->except('_token');
-        $eventos['fecha']= Carbon::parse($request->get('fecha'));
-        $eventos['combocatoria_id']=$id;
-        Eventos::insert($eventos);
-        return redirect()->route('admin.eventos.index',$id);
+
+        $fechaFin=$combocatoria->fecha_fin->format('m/d/y');
+        $fechaInicio=$combocatoria->fecha_inicio->format('m/d/y');
+        $fechaIngresada=$request->fecha;
         
-        
+
+        if($fechaIngresada > $fechaInicio){
+            if($fechaIngresada <= $fechaFin){
+                $eventos=request()->except('_token');
+                $eventos['fecha']= Carbon::parse($request->get('fecha'));
+                $eventos['combocatoria_id']=$id;
+                Eventos::insert($eventos);
+                return view('admin.eventos.index',compact('id','combocatoria'));
+            }
+            else{
+                return redirect()->route('admin.eventos.create',compact('id'))->with('flash2','ingrese una fecha correcta');
+            }
+        }
+        else{
+            return redirect()->route('admin.eventos.create',compact('id'))->with('flash2','ingrese una fecha correcta');
+        }
     }
     public function eliminar($id)
     {

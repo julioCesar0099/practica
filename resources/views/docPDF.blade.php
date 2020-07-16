@@ -92,7 +92,7 @@
         <p class="doc" style="text-align: justify">{{ $documento->detalle }}</p>
     @endforeach
     <p class="Nota" style="text-align: justify">Nota: Toda la documentación se legalizará gratuitamente en 
-    Secretaria del Departamento de Informática y Sistemas. (Presentar original
+    Secretaria del Departamento de {{$doc->area->nombre}}. (Presentar original
     y fotocopias). La documentación no será devuelta.</p>
 
     <h4>4. De la forma</h4>

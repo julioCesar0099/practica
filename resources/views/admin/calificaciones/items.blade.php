@@ -29,11 +29,21 @@
                   </tr>
                 </thead>
                 <tbody>
+                @if($convocatoria->tituloDoc)
                   @foreach ($convocatoria->items as $item)
                     <tr>
                       <td>{{ $item->destino }}</td>
                       <td>
                           <a href="{{ route('admin.calificaciones.postulantes',[$item->destino,$convocatoria]) }}"  class="btn btn-xs btn-primary" ><i class="fa fa-eye"></i></a>
+                      </td>
+                    </tr>
+                  @endforeach
+                  @else
+                  @foreach ($convocatoria->itemlabs as $item)
+                    <tr>
+                      <td>{{ $item->nombre }}</td>
+                      <td>
+                          <a href="{{ route('admin.calificaciones.postulantes',[$item->nombre,$convocatoria]) }}"  class="btn btn-xs btn-primary" ><i class="fa fa-eye"></i></a>
                       </td>
                     </tr>
                   @endforeach

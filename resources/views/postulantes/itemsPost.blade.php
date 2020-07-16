@@ -19,6 +19,7 @@
             </tr>
         </thead>
          <tbody>
+      @if($convocatoria->tituloDoc)
         @foreach($combocatoria->items as $item)
         <tr>
            <td>
@@ -26,6 +27,15 @@
            </td>
         </tr>   
         @endforeach
+      @else
+        @foreach($combocatoria->itemlabs as $item)
+        <tr>
+           <td>
+            <a href="{{route('item.Postulante',[$combocatoria,$item->nombre])}}">{{$item->nombre}}</a>
+           </td>
+        </tr>   
+        @endforeach
+      @endif
         </tbody>   
     </table>
   

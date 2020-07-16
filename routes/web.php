@@ -55,8 +55,8 @@ Route::group([
            return view('admin.notas.index');
        });
        
-       Route::get('eventos/{id}','EventosController@index')->name('admin.eventos.index');
-       Route::get('eventos/create/{id}','EventosController@create');
+       Route::get('eventos/{id}','EventosController@index');
+       Route::get('eventos/create/{id}','EventosController@create')->name('admin.eventos.create');
        Route::post('eventos/guardar/{id}','EventosController@guardar');
        Route::delete('eventos/borrar/{evento}','EventosController@destroy')->name('admin.eventos.borrar');
        
@@ -104,6 +104,9 @@ Route::group([
        Route::put('calificaciones/calif/{postulante}/{destino}/{convocatoria}', 'NotasController@calif')->name('admin.calificaciones.calif');
        Route::put('calificaciones/mer/{postulante}/{destino}/{convocatoria}', 'NotasController@mer')->name('admin.calificaciones.mer');
 
+
+       Route::get('publicar/{id}','CombocatoriaController@publicar');
+       Route::get('quitar/{id}','CombocatoriaController@quitar');
        
     });
 

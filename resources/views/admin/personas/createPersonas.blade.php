@@ -66,7 +66,7 @@
                         <label form="facultades">{{'Facultades'}}</label>
                         <select id="facultad" name="facultad_id" class="form-control">
                             @foreach($facultades->get() as $index => $facultad)
-                            <option value="{{$index}}" {{old('facultad_id' == $index ? 'selected' : '')}}>
+                            <option value="{{$index}}" {{old('facultad_id') == $index ? 'selected' : ''}}>
                                 {{$facultad}}
                             </option>
                             @endforeach

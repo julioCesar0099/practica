@@ -171,6 +171,9 @@
             @if(session()->has('flash'))
                 <div class="alert alert-success"> {{ session('flash')}}</div>
             @endif
+            @if(session()->has('flash2'))
+                <div class="alert alert-danger"> {{ session('flash2')}}</div>
+            @endif
           @yield('content')
         </section>
       </div>
