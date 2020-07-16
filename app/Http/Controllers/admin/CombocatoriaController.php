@@ -241,6 +241,7 @@ class CombocatoriaController extends Controller
         $conv-> titulo = $request->get('tituloDoc');
         $conv-> descripcion = $request->get('descripcion');
         $conv-> tipo = 'Asignatura';
+        $conv-> estado = '0';
         $conv-> fecha_inicio = Carbon::now();
         $conv-> fecha_fin = Carbon::parse($request->get('fecha_fin'));
         $conv-> area_id = $request->get('area');
@@ -313,6 +314,7 @@ class CombocatoriaController extends Controller
             $conv-> titulo = $request->get('tituloLab');
             $conv-> descripcion = $request->get('descripcion');
             $conv-> tipo = 'Laboratorios';
+            $conv-> estado = '0';
             $conv-> fecha_inicio = Carbon::now();
             $conv-> fecha_fin = Carbon::parse($request->get('fecha_fin'));
             $conv-> area_id = $request->get('area');
@@ -405,5 +407,54 @@ class CombocatoriaController extends Controller
             return response()->json($carrerasArray);
         }
 
+    }
+    public function indexArea(){
+        return view('admin.areas.index');
+    }
+    public function createArea(){
+        return view('admin.areas.create');
+    }
+    public function publicar($id){
+        $convocatoria=Combocatoria::findOrFail($id);
+        $convocatoria['estado']='1';
+
+        $convo['id']=$convocatoria->id;
+        $convo['titulo']=$convocatoria->titulo;
+        $convo['descripcion']=$convocatoria->descripcion;
+        $convo['tipo']=$convocatoria->tipo;
+        $convo['fecha_fin']=$convocatoria->fecha_fin;
+        $convo['fecha_inicio']=$convocatoria->fecha_inicio;
+        $convo['estado']=$convocatoria->estado;
+        $convo['area_id']=$convocatoria->area_id;
+        $convo['tabla_id']=$convocatoria->tabla_id;
+        $convo['facultad_id']=$convocatoria->facultad_id;
+        $convo['notas']=$convocatoria->notas;
+
+
+        Combocatoria::where('id','=',$id)->update($convo);
+
+        return redirect()->route('admin.combocatorias.index')->with('flash','la combocatoria ha sido publicada');
+    }
+    public function quitar($id){
+        $convocatoria=Combocatoria::findOrFail($id);
+        $convocatoria['estado']='0';
+
+        $convo['id']=$convocatoria->id;
+        $convo['titulo']=$convocatoria->titulo;
+        $convo['descripcion']=$convocatoria->descripcion;
+        $convo['tipo']=$convocatoria->tipo;
+        $convo['fecha_fin']=$convocatoria->fecha_fin;
+        $convo['fecha_inicio']=$convocatoria->fecha_inicio;
+        $convo['estado']=$convocatoria->estado;
+        $convo['area_id']=$convocatoria->area_id;
+        $convo['tabla_id']=$convocatoria->tabla_id;
+        $convo['facultad_id']=$convocatoria->facultad_id;
+        $convo['notas']=$convocatoria->notas;
+
+
+        Combocatoria::where('id','=',$id)->update($convo);
+
+        return redirect()->route('admin.combocatorias.index')->with('flash','la combocatoria ha sido retirada');
+         
     }
 }

@@ -20,6 +20,7 @@ class CreateCombocatoriasTable extends Migration
             $table->string('tipo');
             $table->timestamp('fecha_inicio')->nullable();
             $table->timestamp('fecha_fin')->nullable();
+            $table->string('estado');
             $table->unsignedInteger('area_id');
             $table->unsignedInteger('tabla_id')->nullable();
             $table->unsignedInteger('facultad_id')->nullable();

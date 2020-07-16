@@ -51,8 +51,20 @@
                       </td>
 
                       <td>
+                          @if($combocatoria->estado == '0')
+
+                            <a href="{{url('/admin/publicar/'.$combocatoria->id)}}"  class="btn btn-default" ><i class="">Publicar</i></a>
+
+                          @endif()
+                          @if($combocatoria->estado == '1')
+
+                            <a href="{{url('/admin/quitar/'.$combocatoria->id)}}"  class="btn btn-default" ><i class="">Retirar</i></a>
+
+                          @endif()
+                          
+                          </br>
                           <a href="{{ url('/index/'.$combocatoria->id)}}"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
-          
+
                           @can('editar convocatorias', new \Spatie\Permission\Models\Role)
                           <a href="{{ route('admin.combocatorias.edit',$combocatoria) }}"  class="btn btn-xs btn-primary" ><i class="fa fa-pencil"></i></a>
                           @endcan

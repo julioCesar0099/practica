@@ -1,5 +1,7 @@
 @extends('admin.layout')
 
+
+
 @section('header')
   <h1>
     Convocatoria
@@ -14,7 +16,7 @@
 
 @section('content')
 
-        <form  method="POST" action="{{url('/admin/eventos/guardar/'.$id)}}">
+        <form  method="POST" action="{{url('/admin/eventos/guardar/'.$combocatoria->id)}}">
         {{ csrf_field() }}
             <div class="col-md-8 col-md-offset-2">
                  <div class="box box-primary">
@@ -28,16 +30,22 @@
                                     <td>
                                         <label>detalle</label>
                                         <input autocomplete="off" class="form-control" type="text" name="detalle" id="detalle" value="" Placeholder="ingresar detalle del evento">
+                                        {!! $errors->first('detalle','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <label>fecha </label>
+                                                <label>Ingresar fechas entre:</label>
+                                                <label>{{$combocatoria->fecha_inicio->format('d - M - Y')}}</label>
+                                                <label> y </label>
+                                                <label>{{$combocatoria->fecha_fin->format('d - M - Y')}}</label>
+                                                
                                                 <div class="input-group date">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
                                                     
-                                                    <input autocomplete="off" name="fecha" type="text" class="form-control pull-right" id="0">
+                                                    <input autocomplete="off" name="fecha" type="text" class="form-control pull-right" id="0" Placeholder="ingresar la fecha del evento">
+                                                    {!! $errors->first('fecha','<div class="invalid-feedback alert alert-danger">:message</div>')!!}
                                                 </div>
                                             </div>
                                         </td>
@@ -46,7 +54,7 @@
                             </table>
                         </div>
                         <div class="form-group col-md-offset-5">
-                        <a href="{{url('/admin/eventos/'.$id)}}"  class="btn btn-primary" ><i class="">Atras</i></a>
+                        <a href="{{url('/admin/eventos/'.$combocatoria->id)}}"  class="btn btn-primary" ><i class="">Atras</i></a>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>     
@@ -70,9 +78,13 @@
                     $(".select4").select2();
                     //Date picker
                     $('#0').datepicker({
-                    startDate: "7-12-2020",
-                    endDate: "7-21-2020",
+
+                    
                     autoclose: true});
+
+
+
+
                     $('#1').datepicker({
                     startDate: 'today',
                     autoclose: true});
