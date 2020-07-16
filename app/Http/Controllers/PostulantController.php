@@ -69,7 +69,7 @@ class PostulantController extends Controller
              
       ]);
      // $idPersona = \DB::table('personas')->where('codigoSIS',$codigoS)->get();
-      
+     $docC= Documento_Combocatoria::all();
        $destino = $request->items;
        $id = $codigoS->id;
        $comparar = \DB::table('personas')->where('persona_id',$id)
@@ -80,7 +80,7 @@ class PostulantController extends Controller
      //dd($comparar);
        $cantidadPost = count($comparar);
        if($cantidadPost>1){
-       return view('postulantes.regPostulante',compact('convocatoria','codigoS'))->with('error','Ya se postulo a este item');
+       return view('postulantes.regPostulante',compact('convocatoria','codigoS','docC'))->with('error','Ya se postulo a este item');
      }
      else {
       if($request->aceptar)
@@ -98,9 +98,9 @@ class PostulantController extends Controller
         $documentosNuevo->Doc_Ent = count($convocatoria->documentos); 
         $documentosNuevo->num_Hojas= $request->num_Hojas;
         $documentosNuevo->save();
-        return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('error','Registro agregado!');
+        return view('postulantes.regPostulante',compact('codigoS','convocatoria','docC'))->with('error','Registro agregado!');
       }else{
-        return view('postulantes.regPostulante',compact('codigoS','convocatoria'))->with('error','Debe aceptar presentar todos los documentos!');
+        return view('postulantes.regPostulante',compact('codigoS','convocatoria','docC'))->with('error','Debe aceptar presentar todos los documentos!');
         }   
      }
     }
