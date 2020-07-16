@@ -19,7 +19,7 @@
             </tr>
         </thead>
          <tbody>
-      @if($convocatoria->tituloDoc)
+      @if($combocatoria->tituloDoc)
         @foreach($combocatoria->items as $item)
         <tr>
            <td>
