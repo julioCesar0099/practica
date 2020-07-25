@@ -73,8 +73,14 @@ class TablaController extends Controller
      */
     public function edit(Tabla $tabla)
     {
-        
-       return view('admin.tablas.create',compact('tabla'));
+        $i=0;
+        $sum=0;
+         $a= count($tabla->secciones);
+        while($i< $a){
+           $sum= $sum + $tabla->secciones[$i]->valor;
+           $i++;
+        } 
+       return view('admin.tablas.create',compact('tabla','sum'));
     }
 
     /**

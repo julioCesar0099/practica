@@ -48,7 +48,13 @@
                                                         <table class="table table " >
                                                                     <tr>
                                                                         <td> 
-                                                                            <button class="btn btn-primary"> GUARDAR TABLA </button>
+                                                                            @if($sum === 100)
+                                                                                    <button class="btn btn-primary"> GUARDAR TABLA </button>
+                                                                                                                                                                                                                                       
+                                                                            @else
+                                                                            <p style="color:red;">*Falta {{ $sum }}/100</p>
+                                                                                <button class="btn btn-primary" disabled> GUARDAR TABLA </button>
+                                                                            @endif
                                                                         </td> 
                                                                     </tr> 
                                                         </table>

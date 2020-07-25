@@ -23,10 +23,8 @@ class TituloController extends Controller
            $i++;
         }
         $val = ((100/$tabla->valor)*$tabla->valor)-$sum;
-
-
-     
-       return view('admin.tablas.titulo',compact('tabla','val'));
+        
+        return view('admin.tablas.titulo',compact('tabla','val'));
     }
 
     public function tituloDestroy(Tabla $tabla,Seccion $seccion)
