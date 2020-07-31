@@ -29,7 +29,7 @@
 		
 		
 	
-				<h1 class="display-4 " align="center" >Lista de Convocatorias  </h1>
+				<h1 class="display-4 " align="center" style="font-size:25px; font-weight: bold;">Lista de Convocatorias  </h1>
                 <p class="lead" align="center">Universidad Mayor de San Simón - Facultad de Ciencias y Tecnologia </p>
     	        <hr class="my-3">
 			@foreach ($convocatorias as $convocatoria)
@@ -46,7 +46,7 @@
 										<span class="category text-capitalize">{{ $convocatoria->facultad->nombre}}</span>
 									</div>
 								</header>
-								<h1>{{ $convocatoria->titulo }}</h1>
+								<h1 style="font-size:25px; font-weight: bold;">{{ $convocatoria->titulo }}</h1>
 								<div class="divider"></div>
 								<p>{{ $convocatoria->descripcion }}</p>
 								<footer class="container-flex space-between">
@@ -79,7 +79,7 @@
 @endsection
 
 @section('contenido')
-	<h1 class="display-4" align="center" >Eventos</h1>
+	<h1 class="display-4" align="center" style="font-size:25px; font-weight: bold;">Eventos</h1>
             <p class="lead" align="center"> Se muestran las fechas de todas las convocatorias</p>
     	      	<hr class="my-2">
 			  	<article class="post no-imag col-xs-offset-8">
