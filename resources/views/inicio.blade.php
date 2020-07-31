@@ -100,7 +100,7 @@
 						@foreach($convocatoria->eventos as $evento)
 						<li id="slide3">
 						
-								<label>{{$evento->detalle}}:</p>
+								<label>{{$evento->detalle}}:</label>
 								<label class="fecha">{{$evento->fecha->format('d - M - Y')}}</label>
 						
 						</li>	
