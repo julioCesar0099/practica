@@ -79,6 +79,7 @@
 @endsection
 
 @section('contenido')
+
 	<h1 class="display-4" align="center" style="font-size:25px; font-weight: bold;">Eventos</h1>
             <p class="lead" align="center"> Se muestran las fechas de todas las convocatorias</p>
     	      	<hr class="my-2">
