@@ -95,7 +95,7 @@
          <div class="container-fluid">
           <div class="row">
                     @yield('content')
-                    <div class="card">
+                        <div class="card " style="width: 40rem;">
                           <div class="card-body">
                             @yield('contenido')
                           </div>

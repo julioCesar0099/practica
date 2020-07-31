@@ -89,7 +89,7 @@
 					@foreach($convocatorias as $convocatoria)
 						
 						<li id="slide1">
-							<h4>{{$convocatoria->titulo}}</h4>
+							<p>{{$convocatoria->titulo}}</p>
 						</li>
 						<ul>
 						<li id="slide2">
@@ -98,10 +98,10 @@
 						</li>
 						
 						@foreach($convocatoria->eventos as $evento)
-							<li id="slide3">
-								<label>{{$evento->detalle}}:</label>
-								<label class="fecha">{{$evento->fecha->format('d - M - Y')}}</label>
-							</li>
+						<li id="slide3">	
+								<p>{{$evento->detalle}}:</p>
+								<p class="fecha">{{$evento->fecha->format('d - M - Y')}}</p>
+						</li>	
 						@endforeach
 						<li id="slide4">
 								<label>Fecha de fin:</label>
