@@ -89,7 +89,7 @@
 					@foreach($convocatorias as $convocatoria)
 						
 						<li id="slide1">
-							<p>{{$convocatoria->titulo}}</p>
+							<p style="font-weight: bold;">{{$convocatoria->titulo}}</p>
 						</li>
 						<ul>
 						<li id="slide2">
