@@ -9,7 +9,9 @@ use  Illuminate\Support\Facades\Hash;
 class InicioController extends Controller
 {
     public function index(){
-        return view('inicio', ['convocatorias'=>Combocatoria::latest('fecha_inicio')->paginate(2)]);
+        $convocatorias=Combocatoria::latest('fecha_inicio')->paginate(3);
+        
+        return view('inicio',compact('convocatorias'));
     }
 
     public function mostrar($id){

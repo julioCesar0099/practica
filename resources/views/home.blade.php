@@ -49,10 +49,15 @@
     .fecha{
       color: red;
     }
+   
+  
+}
+  
   </style>
 </head>
 <body>
-      <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+
+      <nav class="navbar fixed-top navbar-expand-sm bg-primary navbar-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -61,7 +66,7 @@
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                                 <li class="nav-item active">
                                   <a class="navbar-brand" href="{{ url('/') }}">
-                                      <!--img src="../public/images/Logo_NeoSoft.png" width="30" height="30" class="d-inline-block align-top" -->
+                                      
                                       Inicio
                                   </a>
                                 </li>
@@ -82,31 +87,27 @@
                             <a href="{{ url('/login') }}" class="btn btn-outline-danger my-2 my-sm-0">Iniciar Sesion</a>
                             
               </div>
-      </nav>
+         </nav>
+      
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
          @include('carrusel.carrusel')
-      </div>
-
-      
-
- 
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-8">
-            @yield('content')
-          </div>
-          <div class="col">
-            <div class="card col-12" style="width: 32rem ">
-             <div class="card-body" style="height: 50rem ">
-            @yield('contenido')
+         </div>
+         <div class="container-fluid">
+          <div class="row">
+                    @yield('content')
+                    <div class="card">
+                          <div class="card-body">
+                            @yield('contenido')
+                          </div>
+                        </div>
             </div>
           </div>
-            
-          </div>
+              
           
-          <div class="container"  >
-            
+          
+          <div class="container" >                   
                 {{$convocatorias->render("pagination::bootstrap-4")}}
+            
           </div>
           </div>
 
@@ -117,5 +118,6 @@
   <p>2020@NeoSoft</p>
 </div>
 
+</script>
 </body>
 </html>

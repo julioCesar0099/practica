@@ -3,9 +3,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convocatoria</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/framework.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/responsive.css">
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    
+    
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 @section('content')
@@ -18,7 +33,7 @@
                 <p class="lead" align="center">Universidad Mayor de San Simón - Facultad de Ciencias y Tecnologia </p>
     	        <hr class="my-3">
 			@foreach ($convocatorias as $convocatoria)
-				
+			
 				@if($convocatoria->estado == "1")
 					<article class="post no-imag col-xs-offset-8">
 					<div class="card-header text-white bg-primary"></div>
@@ -46,10 +61,13 @@
 								</footer>
 								<hr class="my-4">
 								<div class="float-right">
-									<a href="{{ route('notas.ver', $convocatoria) }}" class="btn  btn-info " style="font-size: inherit ">Notas</a>   
-									<a href="{{ url('/index/'.$convocatoria->id)}}" class="btn btn-info " style="font-size: inherit">Ver mas</a>
-									<a href="{{ url ('/listaHab',$convocatoria)}}" class="btn btn-info " style="font-size: inherit">Lista de habilitados</a>
-									<a href="{{ url('/registroPost', $convocatoria) }}" class="btn btn-info " style="font-size: inherit">Postular</a>
+									<div class="btn-group btn-group-justified">
+										<a href="{{ route('notas.ver', $convocatoria) }}" class="btn  btn-info " style="font-size: 14px ">Notas</a>   
+										<a href="{{ url('/index/'.$convocatoria->id)}}" class="btn btn-info " style="font-size: 14px">Ver mas</a>
+										<a href="{{ url ('/listaHab',$convocatoria)}}" class="btn btn-info " style="font-size: 14px">Lista de habilitados</a>
+										<a href="{{ url('/registroPost', $convocatoria) }}" class="btn btn-info " style="font-size: 14px">Postular</a>
+									</div>
+								</div>
 					</article>
 				@endif
 			@endforeach
@@ -61,7 +79,7 @@
 @endsection
 
 @section('contenido')
-	<h1 class="display-5" align="center" >Eventos</h1>
+	<h1 class="display-4" align="center" >Eventos</h1>
             <p class="lead" align="center"> Se muestran las fechas de todas las convocatorias</p>
     	      	<hr class="my-2">
 			  	<article class="post no-imag col-xs-offset-8">
@@ -69,6 +87,7 @@
 					
 			  	<ul>
 					@foreach($convocatorias as $convocatoria)
+						
 						<li id="slide1">
 							<h4>{{$convocatoria->titulo}}</h4>
 						</li>
@@ -89,6 +108,8 @@
 								<label class="fecha">{{$convocatoria->fecha_fin->format('d - M - Y')}}</label>
 						</li>
 						</ul>
+						
+						
 					@endforeach
 				</ul>
 				<br>
