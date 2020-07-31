@@ -98,9 +98,11 @@
 						</li>
 						
 						@foreach($convocatoria->eventos as $evento)
-						<li id="slide3">	
-								<p>{{$evento->detalle}}:</p>
-								<p class="fecha">{{$evento->fecha->format('d - M - Y')}}</p>
+						<li id="slide3">
+						
+								<label>{{$evento->detalle}}:</p>
+								<label class="fecha">{{$evento->fecha->format('d - M - Y')}}</label>
+						
 						</li>	
 						@endforeach
 						<li id="slide4">
