@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCarreraCombocatoriaTable extends Migration
+class CreateUnidadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateCarreraCombocatoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('carrera_combocatoria', function (Blueprint $table) {
+        Schema::create('unidads', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('carrera_id');
-            $table->unsignedInteger('combocatoria_id');
+            $table->unsignedInteger('area_id');
+            $table->string('nombre');
+            $table->string('codigo')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateCarreraCombocatoriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carrera_combocatoria');
+        Schema::dropIfExists('unidads');
     }
 }

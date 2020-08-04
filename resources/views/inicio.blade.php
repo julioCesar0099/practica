@@ -51,12 +51,18 @@
 								<p>{{ $convocatoria->descripcion }}</p>
 								<footer class="container-flex space-between">
 									<div class="read-more">
-										<a  class="text-uppercase " style="color:#164488">Area de : {{ $convocatoria->area->nombre}}</a>
+										<a  class="text-uppercase " style="color:#164488">Area de : 
+										@if($convocatoria->area)
+										{{ $convocatoria->area->nombre}}
+										@endif
+										</a>
 									</div>
 									<div class="tags container-flex">
-										@foreach ($convocatoria->carreras as $carrera)
+									@if($convocatoria->area)
+										@foreach ($convocatoria->area->carreras as $carrera)
 											<span class="tag c-gray-1 text-capitalize" style="opacity: 0.5">{{ $carrera->nombre }}</span>
 										@endforeach
+									@endif
 									</div>
 								</footer>
 								<hr class="my-4">

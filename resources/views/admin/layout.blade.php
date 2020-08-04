@@ -11,7 +11,6 @@
 		<link rel="stylesheet" href="/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
 		<!-- Ionicons -->
 		<link rel="stylesheet" href="/adminlte/bower_components/Ionicons/css/ionicons.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @stack('styles')
 
 		<!-- Theme style -->

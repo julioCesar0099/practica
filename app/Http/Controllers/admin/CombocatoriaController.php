@@ -12,6 +12,7 @@ use App\Area;
 use App\Tabla;
 use App\Carrera;
 use App\Eventos;
+use App\Unidad;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -64,8 +65,6 @@ class CombocatoriaController extends Controller
         
         $combocatoria->area_id = $request->get('area');
         $combocatoria->save();
-
-        $combocatoria->Carreras()->sync($request->get('carreras'));
 
         $combocatoria->documentos()->delete();
         $combocatoria->items()->delete();
@@ -136,8 +135,6 @@ class CombocatoriaController extends Controller
             $combocatoria->tabla_id = $request->get('tabla');
             $combocatoria->facultad_id = $request->get('facultad');
             $combocatoria->save();
-    
-            $combocatoria->Carreras()->sync($request->get('carreras'));
     
             $combocatoria->documentos()->delete();
             $combocatoria->itemlabs()->delete();
@@ -252,21 +249,6 @@ class CombocatoriaController extends Controller
 
         $conv-> save();
 
-        $carreras= [];
-        if($request->carreras){
-
-            foreach($request->get('carreras') as $carrera)
-            {
-                $carreras[] = Carrera::find($carrera) 
-                ? $carrera
-                : Carrera::create(['facultad_id' => $conv->facultad_id , 'area_id' => $conv->area_id ,'nombre'=> $carrera ])->id;
-            }
-            
-            
-            $conv->Carreras()->attach($carreras);
-            
-        }
-
         if( $request->documentos && $request->documentos != [null] )
         {
 
@@ -339,18 +321,7 @@ class CombocatoriaController extends Controller
                             Area::create(['nombre' => $area , 'facultad_id' => $request->get('facultad') ])->id ;
             $conv-> save();
 
-            $carreras= [];
-            if($request->carreras){
-                 foreach($request->get('carreras') as $carrera)
-                    {
-                            $carreras[] = Carrera::find($carrera) 
-                            ? $carrera
-                    : Carrera::create(['facultad_id' => $conv->facultad_id , 'area_id' => $conv->area_id ,'nombre'=> $carrera ])->id;
-                    }
-
-
-                    $conv->Carreras()->attach($carreras);
-             }
+            
 
     
             if( $request->documentos && $request->documentos != [null] ){
@@ -405,10 +376,8 @@ class CombocatoriaController extends Controller
 
     public function destroy(Combocatoria $combocatoria){
 
-                $reqC= Requisito_Combocatoria::all();
-                $docC= Documento_Combocatoria::all();
+         
                  if( auth()->user()->hasPermissionTo('eliminar convocatorias')){
-                    $combocatoria->Carreras()->detach();
                     $combocatoria->Documentos()->delete();
                     $combocatoria->Requisitos()->delete();
                     $combocatoria->Items()->delete();
@@ -442,6 +411,19 @@ class CombocatoriaController extends Controller
         }
 
     }
+
+    public function getUnidades( Request $request, $id)
+    {
+     
+        if($request->ajax())
+        {
+            $unidades = Unidad::unidades($id);
+            return response()->json($unidades);
+
+        }
+    
+    }
+    
     public function indexArea(){
         return view('admin.areas.index');
     }

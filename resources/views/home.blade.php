@@ -118,6 +118,5 @@
   <p>2020@NeoSoft</p>
 </div>
 
-</script>
 </body>
 </html>

@@ -17,6 +17,10 @@ Route::get('/ayuda', 'ControllerMail@index');
 Route::post('/send', 'ControllerMail@send');
 Route::get('/login','Auth\LoginController@showLoginForm');
 
+Route::get('/hola','InicioController@a');
+Route::get('unin/{id}','InicioController@b');
+
+
 
 Route::group([
    'prefix'=> 'admin',
@@ -34,6 +38,11 @@ Route::group([
        Route::post('combocatorias','CombocatoriaController@store')->name('admin.combocatorias.store');
        Route::delete('combocatorias/{combocatoria}','CombocatoriaController@destroy')->name('admin.combocatorias.destroy');
        
+       Route::get('unin/{id}','CombocatoriaController@getUnidades');
+
+     
+     
+
        route::get('roles','RolesController@index')->name('admin.roles.index');
        route::get('roles/create','RolesController@create')->name('admin.roles.create');
 
@@ -104,9 +113,29 @@ Route::group([
        Route::put('calificaciones/calif/{postulante}/{destino}/{convocatoria}', 'NotasController@calif')->name('admin.calificaciones.calif');
        Route::put('calificaciones/mer/{postulante}/{destino}/{convocatoria}', 'NotasController@mer')->name('admin.calificaciones.mer');
 
+       Route::get('departamentos/departamento', 'DepartamentosController@index')->name('admin.departamentos.index');
+       Route::post('departamentos/departamento', 'DepartamentosController@store')->name('admin.departamentos.store');
+       Route::delete('departamentos/departamento/{departamento}','DepartamentosController@destroy')->name('admin.departamentos.destroy');
+       Route::get('departamentos/departamento/{departamento}','DepartamentosController@edit')->name('admin.departamentos.edit');
+       Route::put('departamentos/departamento/{departamento}','DepartamentosController@update')->name('admin.departamentos.update');
+
+       Route::get('carreras/carrera', 'CarrerasController@index')->name('admin.carreras.index');
+       Route::post('carreras/carrera', 'CarrerasController@store')->name('admin.carreras.store');
+       Route::delete('carreras/carrera/{carrera}','CarrerasController@destroy')->name('admin.carreras.destroy');
+       Route::get('carreras/carrera/{carrera}','CarrerasController@edit')->name('admin.carreras.edit');
+       Route::put('carreras/carrera/{carrera}','CarrerasController@update')->name('admin.carreras.update');
+
+       Route::get('unidades/unidad', 'UnidadesController@index')->name('admin.unidades.index');
+       Route::post('unidades/unidad', 'UnidadesController@store')->name('admin.unidades.store');
+       Route::delete('unidades/unidad/{unidad}','UnidadesController@destroy')->name('admin.unidades.destroy');
+       Route::get('unidades/unidad/{unidad}','UnidadesController@edit')->name('admin.unidades.edit');
+       Route::put('unidades/unidad/{unidae}','UnidadesController@update')->name('admin.unidades.update');
 
        Route::get('publicar/{id}','CombocatoriaController@publicar');
        Route::get('quitar/{id}','CombocatoriaController@quitar');
+        
+     
+
        
     });
 

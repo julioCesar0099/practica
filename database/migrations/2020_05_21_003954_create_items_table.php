@@ -16,10 +16,10 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('combocatoria_id');
-            $table->unsignedInteger('area_id');
-            $table->Integer('cantidad_aux');
-            $table->Integer('horas');
-            $table->text('destino');
+            $table->unsignedInteger('area_id')->nullable();
+            $table->Integer('cantidad_aux')->nullable();
+            $table->Integer('horas')->nullable();
+            $table->text('destino')->nullable();
             $table->timestamps();
         });
     }

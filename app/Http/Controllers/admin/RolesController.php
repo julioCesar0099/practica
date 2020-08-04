@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Combocatoria;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -90,10 +91,11 @@ class RolesController extends Controller
 
     public function asignar2( User $user)
     {
-
+        
         return view('admin.roles.asignar2',[
             'user' => $user,
-            'roles' => Role::with('permissions')->get()
+            'roles' => Role::with('permissions')->get(),
+            'convocatorias' => Combocatoria::all()
         ]);
     }
 
@@ -101,6 +103,9 @@ class RolesController extends Controller
     {
         
         $user->syncRoles($request->get('rol'));
+
+        $nuevo = new Usuario;
+        
 
 
         return redirect()->route('admin.roles.asignar')->withFlash('Los roles se han actualizado Correctamente');

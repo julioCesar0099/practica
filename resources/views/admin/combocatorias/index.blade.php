@@ -22,12 +22,10 @@
                   <tr>
                     <th>ID</th>
                     <th>Título</th>
-                    <th>Descripcion</th>
                     <th>Tipo</th>
                     <th>Fecha publicacion</th>
                     <th>Fecha finalizacion</th>
                     <th>Area </th>
-                    <th>Carreras</th>
                     <th>Postulantes</th>
                     <th>Eventos</th>
                     <th>Acciones</th>
@@ -39,12 +37,17 @@
                     <tr>
                       <td>{{ $combocatoria->id }}</td>
                       <td>{{ $combocatoria->titulo }}</td>
-                      <td>{{ $combocatoria->descripcion }}</td>
                       <td>{{ $combocatoria->tipo}}</td>
                       <td>{{ $combocatoria->fecha_inicio->format('d - M - Y') }}</td>
                       <td>{{ $combocatoria->fecha_fin->format('d - M - Y')  }}</td>
-                      <td>{{ $combocatoria->area->nombre }}</td>
-                      <td>{{ $combocatoria->carreras->pluck('nombre')->implode(' , ')}}</td>
+                      <td>
+                      @if($combocatoria->area_id)
+                      {{ $combocatoria->area->nombre }}
+                      @else
+                       <a class="text-muted"> Asignar Area</a>
+                      @endif
+                      
+                      </td>
                       <td> 
                       @can('habilitar postulantes', new \Spatie\Permission\Models\Role)
                       <a href="{{ route('postulantes.itemsPost',$combocatoria) }}" class="btn btn-default">Habilitar</a>
@@ -68,7 +71,7 @@
 
                           @endif()
                           
-                          </br>
+                         
                           <a href="{{ url('/index/'.$combocatoria->id)}}"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
 
                           @can('editar convocatorias', new \Spatie\Permission\Models\Role)

@@ -1,15 +1,5 @@
 @extends('admin.layout')
 
-@section('header')
-  <h1>
-     Crear Nueva Convocatoria 
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
-    <li><a href="{{ route('admin.combocatorias.index') }}"><i class="fa fa-list"></i> Convocatorias</a></li>
-    <li class="active"> crear convocatoria</li>
-  </ol>
-@endsection
 
 @section('content')
 
@@ -18,14 +8,11 @@
               <li class="active"><a href="#activity" data-toggle="tab">Auxiliatura de Docencia</a></li>
               <li><a href="#timeline" data-toggle="tab">Auxiliatura de Laboratorios</a></li>
             </ul>
-            <div class="tab-content">
+            <div class="tab-content" style="background:rgba(138,221,45,0);">
                     <div class="active tab-pane" id="activity">
-                            
-                        
                         <form  method="POST" action="{{ route('admin.combocatorias.store') }}">
                         {{ csrf_field() }}
                         <div class="row">
-
                                     <div class="col-md-6">
                                                 <div class="box box-primary">
                                                         <div class="box-header">
@@ -42,37 +29,29 @@
                                                                     <input autocomplete="off" name="descripcion" class="form-control" placeholder="ingresa la descripcion de la convocatoria">
                                                                     {!! $errors->first('descripcion','<span class=help-block>:message</span>') !!}
                                                                 </div>
-                                                                        <div  class="form-group {{ $errors->has('tabla') ? 'has-error' : '' }}">
-                                                                            <label> Tabla de calificacion de meritos </label>
-                                                                            <select  name="tabla" class="form-control">
-                                                                                         @foreach($tablasDoc as $tabla)
-                                                                                            <option  value="{{$tabla->id}}">{{$tabla->nombre}}</option>
-                                                                                        @endforeach
-                                                                            </select>
-                                                                            {!! $errors->first('tabla','<span class=help-block>:message</span>') !!}
-                                                                        </div>
-                                                                        <div class="form-group">
-
-                                                                        <a href="{{ route('admin.tablas.indexAsig')}}" class="btn btn-xm btn-primary"> inspeccionar</a>
-                                                                        </div>
-                                                        </div>
-                                            </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                                        <div class="box box-primary">
-                                                            <div class="box-header">
-                                                            </div>
-                                                        <div class="box-body">
+                                                                <div  class="form-group {{ $errors->has('tabla') ? 'has-error' : '' }}">
+                                                                    <label> Tabla de calificacion de meritos </label>
+                                                                    <select  name="tabla" class="form-control">
+                                                                                    @foreach($tablasDoc as $tabla)
+                                                                                    <option  value="{{$tabla->id}}">{{$tabla->nombre}}</option>
+                                                                                @endforeach
+                                                                    </select>
+                                                                    {!! $errors->first('tabla','<span class=help-block>:message</span>') !!}
+                                                                </div>
                                                                 <div class="form-group">
+                                                                            <a href="{{ route('admin.tablas.indexAsig')}}" class="btn btn-xm btn-primary "> inspeccionar</a>
+                                                                </div>
+                                                                        <br>
+                                                                <div class="form-group ">
                                                                         <label>fecha final</label>
-                                                                            <div class="input-group date">
+                                                                                <div class="input-group date">
                                                                                     <div class="input-group-addon">
                                                                                         <i class="fa fa-calendar"></i>
                                                                                     </div>
-                                                                                        <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker" readonly>
-                                                                            </div>
+                                                                                    <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-rigt" id="datepicker" readonly>
+                                                                                </div>
                                                                 </div>
-                                                                <div class="form-group {{ $errors->has('facultad') ? 'has-error' : '' }}">
+                                                                <div class="form-group {{ $errors->has('facultad') ? 'has-error' : '' }} hide " >
                                                                     <label> Facultad </label>
                                                                     <select  name="facultad" class="form-control">
                                                                         @foreach($facultades as $facultad)
@@ -81,28 +60,42 @@
                                                                     </select>
                                                                     {!! $errors->first('facultad','<span class=help-block>:message</span>') !!}
                                                                 </div>
-                                                                        <div class="form-group {{ $errors->has('area') ? 'has-error' : '' }}">
-                                                                            <label> Area </label>
-                                                                            <select  name="area" class="form-control select2">
-                                                                                  
-                                                                                     @foreach($areas as $area)
-                                                                                            <option value="{{ $area->id }}">{{ $area->nombre}}</option>
-                                                                                    @endforeach
-                                                                            </select>
-                                                                            {!! $errors->first('area','<span class=help-block>:message</span>') !!}
-                                                                        </div>
-                                                                        <div class="form-group {{ $errors->has('carreras') ? 'has-error' : '' }}">
-                                                                            <label> Carreras </label>
-                                                                            <select  name="carreras[]" class="form-control select2" multiple="multiple" data-placeholder="Selecciona una o mas carreras" style="width: 100%;">
-                                                                                    @foreach($carreras as $carrera )
-                                                                                        <option value="{{ $carrera->id }}">{{ $carrera->nombre }}</option>
-                                                                                    @endforeach
-                                                                            </select>
-                                                                            {!! $errors->first('carreras','<span class=help-block>:message</span>') !!}
-                                                                        </div>
-                                                                
+                                                                <div class="form-group {{ $errors->has('area') ? 'has-error' : '' }}">
+                                                                    <label> Area </label><br>
+                                                                    <small class="text-muted "> Antes de seleccionar una Area predeterminar la cantidad de Items </small>
+                                                                    <select id="area1"  name="area" class="form-control">
+                                                                            
+                                                                                @foreach($areas as $area)
+                                                                                    <option value="{{ $area->id }}">{{ $area->nombre}}</option>
+                                                                            @endforeach
+                                                                    </select>
+                                                                    {!! $errors->first('area','<span class=help-block>:message</span>') !!}
+                                                                </div>
+
                                                         </div>
-                                            </div>
+                                                 </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                                        <div class="box box-primary">
+                                                                 <div class="box-header">
+                                                                     <h3 class="box-title">Items de la convocatoria</h3>
+                                                                </div>
+                                                                <div class="box-body">
+                                                                        <div class="table-responsive">
+                                                                                <table class="table table-bordered" id="dynamic_field3">
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                        <h4> Agregar Item</h4>
+                                                                                        </td>
+                                                                                        <td><button type="button" name="add" id="add3" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                        
+                                                                        </div>
+                                                                 </div>        
+                                                        </div>
+                                            
                                     </div>
                         </div>
 
@@ -126,48 +119,7 @@
                                 </div>
                                 <div class="col-md-6">   
                                         <div class="box box-primary">
-                                            <div class="box-header">
-                                                <h3 class="box-title">Documentos a presentar de la convocatoria</h3>
-                                            </div>
-                                                    <div class="box-body">
-                                                                <div class="table-responsive">
-                                                                        <table class="table table-bordered" id="dynamic_field2">
-                                                                            <tr>
-                                                                                <td><h4>Añadir nuevo documento</h4></td>
-                                                                                <td><button type="button" name="add" id="add2" class="btn btn-primary"><i class="fa fa-plus"></i>  </button></td>
-                                                                            </tr>
-                                                                        </table>
-                                                                </div>
-                                                    </div>        
-                                        </div>
-                                </div>
-                        </div>
-
-                        <div class="row">
-                                <div class="col-md-6">
-                                        <div class="box box-primary">
-                                                    <div class="box-header">
-                                                        <h3 class="box-title">Items de la convocatoria</h3>
-                                                    </div>
-                                                    <div class="box-body">
-                                                    <div class="table-responsive">
-                                                            <table class="table table-bordered" id="dynamic_field3">
-                                                                <tr>
-                                                                    <td>
-                                                                    <h4> Agregar Item</h4>
-                                                                    </td>
-                                                                    <td><button type="button" name="add" id="add3" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
-                                                                </tr>
-                                                            </table>
-                                                    
-                                                    </div>
-                                                        
-                                                    </div>        
-                                        </div>
-                                </div>
-                                <div class="col-md-6">
-                                        <div class="box box-primary">
-                                                <div class="box-header">
+                                                 <div class="box-header">
                                                         <h3 class="box-title">Acciones para la convocatoria</h3>
                                                 </div>
                                                 <div class="box-body">
@@ -181,10 +133,32 @@
                                         </div>
                                 </div>
                         </div>
+
+                        <div class="row">
+                                <div class="col-md-6">
+                                        <div class="box box-primary">
+                                                <div class="box-header">
+                                                        <h3 class="box-title">Documentos a presentar de la convocatoria</h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                                <div class="table-responsive">
+                                                                        <table class="table table-bordered" id="dynamic_field2">
+                                                                            <tr>
+                                                                                <td><h4>Añadir nuevo documento</h4></td>
+                                                                                <td><button type="button" name="add" id="add2" class="btn btn-primary"><i class="fa fa-plus"></i>  </button></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                </div>
+                                                    </div>        
+                                        </div>
+                                </div>
+                                
+                        </div>
  
                          </form>
 
                     </div>
+               
 
 
                  <div class="tab-pane" id="timeline">
@@ -217,18 +191,10 @@
                                                                                 {!! $errors->first('tabla','<span class=help-block>:message</span>') !!}
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <a href="{{ route('admin.tablas.indexAsig')}}" class="btn btn-xm btn-primary"> inspeccionar</a>
+                                                                                <a href="{{ route('admin.tablas.indexAsig')}}" class="btn btn-xm btn-primary "> inspeccionar</a>
                                                                             </div>
-                                                                              
-                                                            </div>
-                                                </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                                            <div class="box box-primary">
-                                                                <div class="box-header">
-                                                                </div>
-                                                            <div class="box-body">
-                                                                    <div class="form-group">
+                                                                              <br>
+                                                                            <div class="form-group">
                                                                             <label>fecha final</label>
                                                                                 <div class="input-group date">
                                                                                         <div class="input-group-addon">
@@ -237,7 +203,7 @@
                                                                                             <input autocomplete="off" name="fecha_fin" type="text" class="form-control pull-right" id="datepicker2" readonly>
                                                                                 </div>
                                                                     </div>
-                                                                    <div class="form-group {{ $errors->has('facultad') ? 'has-error' : '' }}">
+                                                                    <div class="form-group {{ $errors->has('facultad') ? 'has-error' : '' }} hide">
                                                                         <label> Facultad </label>
                                                                         <select name="facultad" class="form-control">
                                                                             @foreach($facultades as $facultad)
@@ -249,7 +215,9 @@
                                                                     <div class="form-group {{ $errors->has('area') ? 'has-error' : '' }}">
                                                                         <label> Area </label> 
                                                                         <br>
-                                                                        <select name="area" class="form-control  select2" >
+                                                                        
+                                                                    <small class="text-muted "> Antes de seleccionar una Area predeterminar la cantidad de Items </small>
+                                                                        <select id="area2" name="area" class="form-control " >
 
                                                                             @foreach($areas as $area)
                                                                                         <option value="{{ $area->id }}">{{ $area->nombre}}</option>
@@ -258,15 +226,32 @@
                                                                         </select>
                                                                         {!! $errors->first('area','<span class=help-block>:message</span>') !!}
                                                                     </div>
-                                                                    <div class="form-group {{ $errors->has('carreras') ? 'has-error' : '' }}">
-                                                                        <label> Carreras </label>
-                                                                        <select  name="carreras[]" class="form-control select2" multiple="multiple" data-placeholder="Selecciona una o mas carreras" style="width: 100%;">
-                                                                            @foreach($carreras as $carrera )
-                                                                                <option value="{{ $carrera->id }}">{{ $carrera->nombre }}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                        {!! $errors->first('carreras','<span class=help-block>:message</span>') !!}
-                                                                    </div>
+                                                            </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                                            <div class="box box-primary">
+                                                                <div class="box-header">
+                                                                </div>
+                                                            <div class="box-body">
+                                                                    
+                                                            <div class="box-header">
+                                                                <h3 class="box-title">Items de la convocatoria</h3>
+                                                            </div>
+                                                            <div class="box-body">
+                                                            <div class="table-responsive">
+                                                                    <table class="table table-bordered" id="dynamic_field6">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <h4>Agregar item</h4> 
+                                                                            </td>
+                                                                            <td><button type="button" name="add" id="add6" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
+                                                                        </tr>
+                                                                    </table>
+                                                            
+                                                            </div>
+                                                                
+                                                            </div>        
                                                                     
                                                             </div>
                                                 </div>
@@ -293,6 +278,24 @@
                                         </div>
                                         <div class="col-md-6">   
                                             <div class="box box-primary">
+                                            <div class="box-header">
+                                                            <h3 class="box-title">Acciones para la convocatoria</h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                                <div class="form-group">
+                                                                        <button type="submit" class="btn btn-primary">CREAR CONVOCATORIA </button>
+                                                                        <a href="{{ route('admin.combocatorias.index')}}" class="btn btn-primary">ATRAS</a>
+                                                                        
+                                                                </div>
+                                                            
+                                                    </div>        
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-md-6">
+                                                <div class="box box-primary">
                                                 <div class="box-header">
                                                     <h3 class="box-title">Documentos a presentar de la convocatoria</h3>
                                                 </div>
@@ -306,47 +309,9 @@
                                                                             </table>
                                                                     </div>
                                                         </div>        
-                                            </div>
-                                        </div>
-                                </div>
-
-                                <div class="row">
-                                        <div class="col-md-6">
-                                                <div class="box box-primary">
-                                                            <div class="box-header">
-                                                                <h3 class="box-title">Items de la convocatoria</h3>
-                                                            </div>
-                                                            <div class="box-body">
-                                                            <div class="table-responsive">
-                                                                    <table class="table table-bordered" id="dynamic_field6">
-                                                                        <tr>
-                                                                            <td>
-                                                                                <h4>Agregar item</h4> 
-                                                                            </td>
-                                                                            <td><button type="button" name="add" id="add6" class="btn btn-primary"><i class="fa fa-plus"></i></button></td>
-                                                                        </tr>
-                                                                    </table>
-                                                            
-                                                            </div>
-                                                                
-                                                            </div>        
                                                  </div>
                                          </div>
-                                        <div class="col-md-6">
-                                            <div class="box box-primary">
-                                                    <div class="box-header">
-                                                            <h3 class="box-title">Acciones para la convocatoria</h3>
-                                                    </div>
-                                                    <div class="box-body">
-                                                                <div class="form-group">
-                                                                        <button type="submit" class="btn btn-primary">CREAR CONVOCATORIA </button>
-                                                                        <a href="{{ route('admin.combocatorias.index')}}" class="btn btn-primary">ATRAS</a>
-                                                                        
-                                                                </div>
-                                                            
-                                                    </div>        
-                                            </div>
-                                        </div>
+                                        
                                 </div>
                                                     
                              </form>
@@ -364,7 +329,8 @@
         <link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
           <!-- bootstrap datepicker -->
          <link rel="stylesheet" href="/adminlte/plugins/datepicker/datepicker3.css">
-         
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         
 
 
@@ -378,15 +344,9 @@
             <script src="/adminlte/plugins/select2/select2.full.min.js"></script>
             <!-- bootstrap datepicker -->
             <script src="/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
-            
+            <script src="/adminlte/js/unidades.js"></script>
             
             <script>  
-                    
-                    $(".select2").select2({
-                        tags: true
-                    });
-
-                    
                     //Date picker
                     $('#datepicker').datepicker({
                     startDate: '+5d',
@@ -441,7 +401,7 @@
                             $('#add3').click(function () {
                                 d++;
                                 $('#dynamic_field3').append('<tr id="row3'+d+'">' +
-                                                            '<td> <label> Cantidad de auxiliares </label><input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input> <label> Horas laborales </label><input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input><label> Destino de la Auxiliatura  </label><input autocomplete="off" type="text" name="destino[]" class="form-control name list" placeholder="ingresa el destino del item"></input>' +
+                                                            '<td> <label> Cantidad de auxiliares </label><input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input> <label> Horas laborales </label><input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input><label> Destino de la Auxiliatura  </label><select name="destino[]" id="unidad1" class="unidades form-control"></select></td>' +
                                                             '<td><button type="button" name="remove" id3="'+d+'" class="btn btn-danger btn_remove">X</button></td>' +
                                                             '</tr>');
                             });
@@ -450,10 +410,11 @@
                                 var id3 = $(this).attr('id3');
                             $('#row3'+ id3).remove();
                             });   
+
+                            
                         })
 
-
-
+                       
                         $(document).ready(function(){
                             var i = 1;
 
@@ -496,7 +457,7 @@
                             $('#add6').click(function () {
                                 d++;
                                 $('#dynamic_field6').append('<tr id="row6'+d+'">' +
-                                                            '<td> <label> Cantidad de auxiliares  </label><input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input> <label> Horas laborales  </label><input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input><label> Nombre de la Auxiliatura </label><input autocomplete="off" type="text" name="nombre[]" class="form-control name list" placeholder="ingresa el Nombre de la auxiliatura"></input><label> Codigo de la Auxiliatura </label><input autocomplete="off" type="text" name="codigo[]" class="form-control name list" placeholder="ingresa el codigo de la auxiliatura"></input>' +
+                                                            '<td> <label> Cantidad de auxiliares  </label><input type="number"  name="cantidad_aux[]" class="form-control name_list" placeholder="ingresa el numero de auxiliares"></input> <label> Horas laborales  </label><input type="number"  name="horas[]" class="form-control name_list" placeholder="ingresa las horas asignadas"></input><label> Nombre de la Auxiliatura </label><select   name="nombre[]" class="unidades2 form-control " ></select><label class="hide"> Codigo de la Auxiliatura </label><input autocomplete="off" type="text" name="codigo[]" class="form-control name list hide" placeholder="ingresa el codigo de la auxiliatura"></input>' +
                                                             '<td><button type="button" name="remove" id6="'+d+'" class="btn btn-danger btn_remove">X</button></td>' +
                                                             '</tr>');
                             });

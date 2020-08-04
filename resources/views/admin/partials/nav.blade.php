@@ -29,6 +29,32 @@
 							@endcan
 						</ul>
     </li>
+	<li class="treeview {{ request()->is('admin/departamentos*') || request()->is('admin/carreras*') || request()->is('admin/unidades*')? 'active' : ''}}">
+
+				<a href="#"><i class="fa fa-book"></i> <span>Departamentos</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
+				</a>
+						<ul class="treeview-menu">
+							<li {{ request()->is('admin/departamentos/departamento') ? 'class=active' : ''}} >
+								<a href="{{ route('admin.departamentos.index') }}">
+									<i class="fa fa-list"></i> Departamentos
+								</a>
+							</li>
+							
+							<li {{ request()->is('admin/carreras/carrera') ? 'class=active' : ''}} >
+								<a href="{{ route('admin.carreras.index') }}" >
+									<i class="fa fa-pencil"></i>Carreras
+								</a>
+							</li>
+							<li {{ request()->is('admin/unidades/unidad') ? 'class=active' : ''}} >
+								<a href="{{ route('admin.unidades.index') }}" >
+									<i class="fa fa-pencil"></i>Unidades
+								</a>
+							</li>
+						</ul>
+    </li>
 	@endcan
 	@can('calificar postulantes', new \Spatie\Permission\Models\Role)
 	<li class="treeview {{ request()->is('admin/calificaciones*') ? 'active' : ''}}">

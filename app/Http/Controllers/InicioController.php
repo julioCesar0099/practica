@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Combocatoria;
 use App\Postulante;
+use App\Unidad;
+use App\Area;
+
 use  Illuminate\Support\Facades\Hash;
 class InicioController extends Controller
 {
@@ -21,5 +24,10 @@ class InicioController extends Controller
 
         return view('nota',compact('combocatoria','post'));
     }
+
+
+  
+
+    
 }
   

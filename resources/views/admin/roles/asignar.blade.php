@@ -29,7 +29,7 @@
                     <th>ID</th>
                     <th>Usuario</th>
                     <th>Rol</th>
-                    <th>Acciones</th>
+                    <th>Asignar Rol</th>
 
                   </tr>
                 </thead>
