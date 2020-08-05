@@ -50,7 +50,7 @@ Route::group([
 
        route::get('roles/asignar/{user}','RolesController@asignar2')->name('admin.roles.asignar2');
        route::put('roles/asignar/{user}','RolesController@asignar3')->name('admin.roles.asignar3');
-       route::put('roles/quitar/{user}','RolesController@quitar')->name('admin.roles.quitar');
+       route::delete('roles/quitar/{asignacion}','RolesController@quitar')->name('admin.roles.quitar');
 
        Route::post('roles','RolesController@store')->name('admin.roles.store');
        Route::get('roles/{role}','RolesController@edit')->name('admin.roles.edit');

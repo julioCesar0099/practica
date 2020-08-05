@@ -21,9 +21,13 @@
                                     <div class="form-group">
                                                 <label for="select">Convocatoria a Asignar</label><br>
                                                     <select name="convocatoria"  class="col-md-5 " id="select">
-                                                                <option value=""> Eliga una convocatoria</option>
+                                                                <option value=""  >  Eliga una convocatoria</option>
                                                         @foreach ($convocatorias as $convocatoria )
-                                                                <option value="{{ $convocatoria->id}}">{{ $convocatoria->titulo }}</option>
+                                                                @if( $convocatoria->ocupado( $user->id,$convocatoria->id) === 1 )
+                                                                @else
+                                                                    <option value="{{ $convocatoria->id}}" >{{ $convocatoria->titulo }}</option>
+                                                                @endif
+                                                               <h1> asd{{ $convocatoria->ocupado( $user->id,$convocatoria->id)}}</h1> 
                                                         @endforeach
                                                     </select>
                                 

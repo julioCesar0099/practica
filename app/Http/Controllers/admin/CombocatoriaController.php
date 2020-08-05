@@ -10,6 +10,7 @@ use App\Itemlab;
 use App\Facultad;
 use App\Area;
 use App\Tabla;
+use App\Asignacion;
 use App\Carrera;
 use App\Eventos;
 use App\Unidad;
@@ -191,15 +192,21 @@ class CombocatoriaController extends Controller
     }
     public function index()
     {
-
-            if( auth()->user()->hasPermissionTo('ver convocatorias')){
+      ;
+       
+            if( auth()->user()->id == 1){
 
                 $combocatorias= Combocatoria::all();
 
                 return view('admin.combocatorias.index',compact('combocatorias')); 
             }
+         
+            $id= auth()->user()->id;
+            $idconv= Asignacion::where('user_id','=',$id )->select('convocatoria_id')->get();
 
-            return view('admin.dashboard');
+            $combocatorias= Combocatoria::find($idconv);
+           
+            return view('admin.combocatorias.index',compact('combocatorias')); 
                 
             
     }

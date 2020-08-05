@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Combocatoria;
+use App\Asignacion;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -85,7 +86,8 @@ class RolesController extends Controller
     {
 
         return view('admin.roles.asignar',[
-            'users' => User::all()
+            'users' => User::all(),
+            'asignaciones' => Asignacion::all()
         ]);
     }
 
@@ -101,19 +103,27 @@ class RolesController extends Controller
 
     public function asignar3(Request $request , User $user)
     {
+        $this->validate($request,[
+            'convocatoria' => 'required',
+            'rol' =>'required'
+
+        ]);
         
         $user->syncRoles($request->get('rol'));
-
-        $nuevo = new Usuario;
         
+        $nuevo = new Asignacion;
+        $nuevo->user_id= $user->id;
+        $nuevo->convocatoria_id= $request->convocatoria;
+        $nuevo->save();
 
-
-        return redirect()->route('admin.roles.asignar')->withFlash('Los roles se han actualizado Correctamente');
+        return redirect()->route('admin.roles.asignar')->withFlash('se Asigno  Correctamente');
     }
 
-   public function quitar(Request $request,User $user)
+   public function quitar(Request $request,Asignacion $asignacion)
    {
-                return $request;
+             $asignacion->delete();
+
+                 return redirect()->route('admin.roles.asignar')->withFlash('se Elimino Correctamente');
    }
 
 

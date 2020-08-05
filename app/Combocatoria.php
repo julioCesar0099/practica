@@ -14,6 +14,11 @@ class Combocatoria extends Model
     {
             return $this->belongsTo(Facultad::class);
     }
+    
+    public function asignaciones()
+    {
+            return $this->hasMany(Asignacion::class);
+    }
 
     
     public function Area()
@@ -59,4 +64,20 @@ class Combocatoria extends Model
         return $this->hasMany(Eventos::class);
     }
    
+
+    public function ocupado( $id , $idconv )
+    {  
+           
+           $ocupado = Asignacion::where([ 'user_id' => $id ,'convocatoria_id' =>$idconv])->select('id')->get();
+        
+            
+                if( !$ocupado->isEmpty())
+                {
+                        return 1;
+                }
+                else{
+
+                        return 0;
+                }
+    }
 }

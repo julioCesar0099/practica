@@ -335,21 +335,6 @@ class CombocatoriasTbleSeeder extends Seeder
         $a->nombre='Fcyt';
         $a-> save();
 
-        // $i =new Item;
-        // $i ->combocatoria_id ='1';
-        // $i ->area_id ='1';
-        // $i ->cantidad_aux =5;
-        // $i ->horas = 8;
-        // $i ->destino = 'matematica discreta';
-        // $i -> save();
-
-        // $i =new Item;
-        // $i ->combocatoria_id ='1';
-        // $i ->area_id ='1';
-        // $i ->cantidad_aux =2;
-        // $i ->horas = 3;
-        // $i ->destino = 'matematica cuantica';
-        // $i -> save();
 
 
         $i =new Item;
@@ -525,14 +510,7 @@ class CombocatoriasTbleSeeder extends Seeder
         $documento->detalle = 'Presentar documentación que respalde el currículum vitae, ORGANIZADO Y
         SEPARADO de acuerdo a la tabla de calificación de méritos.';
         $documento->save();
-        // $conv= new Combocatoria;
-        // $conv->titulo ='Primera Convocatoria';
-        // $conv->descripcion ='Descripcion primera convocatoria';
-        // $conv->fecha_inicio = Carbon::now();
-        // $conv->fecha_fin = Carbon::now()->addDays(15);
-        // $conv->area_id = 1;
-        // $conv->facultad_id = 1;
-        // $conv-> save();
+      
 
 
         $conv= new Combocatoria;
@@ -636,14 +614,7 @@ class CombocatoriasTbleSeeder extends Seeder
         $documento->detalle = 'Presentar documentación que respalde el currículum vitae, ORGANIZADO Y
         SEPARADO de acuerdo a la tabla de calificación de méritos.';
         $documento->save();
-        // $conv= new Combocatoria;
-        // $conv->titulo ='Segunda Convocatoria';
-        // $conv->descripcion ='Descripcion segunda convocatoria';
-        // $conv->fecha_inicio = Carbon::now()->subDays(3);
-        // $conv->fecha_fin = Carbon::now()->addDays(20);
-        // $conv->area_id = 2;
-        // $conv->facultad_id = 1;
-        // $conv-> save();
+     
 
 
         $conv= new Combocatoria;
@@ -656,39 +627,7 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->area_id = 1;
         $conv->facultad_id = 1;
         $conv-> save();
-        // $conv= new Combocatoria;
-        // $conv->titulo ='Tercera Convocatoria';
-        // $conv->descripcion ='Descripcion tercera convocatoria';
-        // $conv->fecha_inicio = Carbon::now()->subDays(5);
-        // $conv->fecha_fin = Carbon::now()->addDays(21);
-        // $conv->area_id = 1;
-        // $conv->facultad_id = 1;
-        // $conv-> save();
-
-        // $conv->Carreras()->attach($c5);
-
-        // $conv= new Combocatoria;
-        // $conv->titulo ='Cuarta Convocatoria';
-        // $conv->descripcion ='Descripcion cuarta convocatoria';
-        // $conv->fecha_inicio = Carbon::now()->subDays(7);
-        // $conv->fecha_fin = Carbon::now()->addDays(22);
-        // $conv->area_id = 2;
-        // $conv->facultad_id = 1;
-        // $conv-> save();
-
-        // $conv->Carreras()->attach($c2);
-
-        // $conv= new Combocatoria;
-        // $conv->titulo ='Quinta Convocatoria';
-        // $conv->descripcion ='Descripcion quinta convocatoria';
-        // $conv->fecha_inicio = Carbon::now()->subDays(7);
-        // $conv->fecha_fin = Carbon::now()->addDays(25);
-        // $conv->area_id = 3;
-        // $conv->facultad_id = 1;
-        // $conv-> save();
-
-        // $conv->Carreras()->attach($c3);
-        // $conv->Carreras()->attach($c4);
+        
 
         $conv= new Combocatoria;
         $conv->titulo ='Cuarta Convocatoria';
@@ -713,7 +652,5 @@ class CombocatoriasTbleSeeder extends Seeder
         $conv->facultad_id = 1;
         $conv-> save();
 
-        $conv->Carreras()->attach($c5);
-        $conv->Carreras()->attach($c1);
     }
 }

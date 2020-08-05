@@ -7,6 +7,7 @@ use App\Combocatoria;
 use App\Postulante;
 use App\notas;
 use App\Seccion;
+use App\Asignacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,8 +21,22 @@ class NotasController extends Controller
      */
     public function index()
     {
-        $convocatorias = Combocatoria::all();
-       return view('admin.calificaciones.index', compact('convocatorias'));
+
+        if( auth()->user()->id == 1){
+
+            $convocatorias = Combocatoria::all();
+             return view('admin.calificaciones.index', compact('convocatorias'));
+        }
+     
+        $id= auth()->user()->id;
+        $idconv= Asignacion::where('user_id','=',$id )->select('convocatoria_id')->get();
+
+        $convocatorias= Combocatoria::find($idconv);
+       
+        return view('admin.calificaciones.index', compact('convocatorias'));
+
+
+
     }
 
     /**
