@@ -335,48 +335,6 @@ class CombocatoriasTbleSeeder extends Seeder
         $a->nombre='Fcyt';
         $a-> save();
 
-
-
-        $i =new Item;
-        $i ->combocatoria_id ='1';
-        $i ->area_id ='1';
-        $i ->cantidad_aux =5;
-        $i ->horas = 8;
-        $i ->destino = 'Introduccion a la programacion';
-        $i -> save();
-
-        $i =new Item;
-        $i ->combocatoria_id ='1';
-        $i ->area_id ='1';
-        $i ->cantidad_aux =4;
-        $i ->horas = 7;
-        $i ->destino = 'Elementos de programacion';
-        $i -> save();
-
-        $i =new Item;
-        $i ->combocatoria_id ='1';
-        $i ->area_id ='1';
-        $i ->cantidad_aux =3;
-        $i ->horas = 6;
-        $i ->destino = 'Taller de computacion';
-        $i -> save();
-
-        $i =new Item;
-        $i ->combocatoria_id ='2';
-        $i ->area_id ='2';
-        $i ->cantidad_aux =3;
-        $i ->horas = 6;
-        $i ->destino = 'Ingles 1';
-        $i -> save();
-
-        $i =new Item;
-        $i ->combocatoria_id ='2';
-        $i ->area_id ='2';
-        $i ->cantidad_aux =3;
-        $i ->horas = 6;
-        $i ->destino = 'ingles 2';
-        $i -> save();
-
         $c1 = new Carrera;
         $c1 -> facultad_id = 1;
         $c1 -> area_id = 1 ;

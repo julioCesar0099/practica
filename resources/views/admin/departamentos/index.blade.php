@@ -19,7 +19,9 @@
       <div class="box box-primary">
                 <div class="box-header ">
                       <h3 class="box-title">Lista de Departamentos</h3>
+                    	@can('crear departamentos', new \Spatie\Permission\Models\Role)
                       <button  class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Nuevo Departamento</button>
+                      @endcan
                 </div>
                 <div class="box-body">
                   <table id="departamento-table" class="table table-bordered table-striped">
@@ -39,12 +41,15 @@
                           <td>{{ $departamento->nombre }}</td>
                           <td>{{ $departamento->carreras->pluck('nombre')->implode(' , ') }} </td>
                           <td>
+                              	@can('editar departamentos', new \Spatie\Permission\Models\Role)
                                 <a href="{{ route('admin.departamentos.edit', $departamento )}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
-
+                                @endcan
+                                @can('eliminar departamentos', new \Spatie\Permission\Models\Role)
                                 <form method="POST" action="{{route('admin.departamentos.destroy', $departamento )}}" style="display:inline">
                                 {{csrf_field()}} {{ method_field('DELETE') }}
                                         <button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar este departamento?')"><i class="fa fa-times"></i></button>
                                 </form>
+                                @endcan
                           </td>
                         </tr>
                       @endforeach

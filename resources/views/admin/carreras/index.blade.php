@@ -19,7 +19,9 @@
       <div class="box box-primary">
                 <div class="box-header ">
                       <h3 class="box-title">Lista de Carreras</h3>
-                      <button  class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Nueva Carrera</button>
+                    	@can('crear carreras', new \Spatie\Permission\Models\Role)
+                        <button  class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Nueva Carrera</button>
+                      @endcan
                 </div>
                 <div class="box-body">
                   <table id="departamento-table" class="table table-bordered table-striped">
@@ -36,12 +38,15 @@
                           <td>{{ $carrera->id }}</td>
                           <td>{{ $carrera->nombre }}</td>
                           <td>
+                                @can('editar carreras', new \Spatie\Permission\Models\Role)
                                 <a href="{{ route('admin.carreras.edit', $carrera )}}" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
-
+                                @endcan
+                                @can('eliminar carreras', new \Spatie\Permission\Models\Role)
                                 <form method="POST" action="{{route('admin.carreras.destroy', $carrera )}}" style="display:inline">
                                 {{csrf_field()}} {{ method_field('DELETE') }}
                                         <button class="btn btn-xs btn-danger"  onclick="return confirm('¿Esta seguro de eliminar este departamento?')"><i class="fa fa-times"></i></button>
                                 </form>
+                                @endcan
                           </td>
                         </tr>
                       @endforeach

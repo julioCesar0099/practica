@@ -29,8 +29,9 @@
 							@endcan
 						</ul>
     </li>
+	@endcan
+	@can('ver departamentos,carreras y unidades', new \Spatie\Permission\Models\Role )
 	<li class="treeview {{ request()->is('admin/departamentos*') || request()->is('admin/carreras*') || request()->is('admin/unidades*')? 'active' : ''}}">
-
 				<a href="#"><i class="fa fa-book"></i> <span>Departamentos</span>
 						<span class="pull-right-container">
 							<i class="fa fa-angle-left pull-right"></i>
@@ -42,7 +43,6 @@
 									<i class="fa fa-list"></i> Departamentos
 								</a>
 							</li>
-							
 							<li {{ request()->is('admin/carreras/carrera') ? 'class=active' : ''}} >
 								<a href="{{ route('admin.carreras.index') }}" >
 									<i class="fa fa-pencil"></i>Carreras
