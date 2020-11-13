@@ -30,6 +30,7 @@ class PDFController extends Controller
    		return $pdf->download('doc.pdf');
     }
 	public function index($id){
+		
 		$doc = Combocatoria::findOrFail($id);
 		
 		$items= $doc->items;
@@ -43,10 +44,17 @@ class PDFController extends Controller
 		$tabla = Tabla::findOrFail($idT);
 		$reqC= Requisito_Combocatoria::all();
 		$docC= Documento_Combocatoria::all();
-		
 		$pdf = PDF::loadview('docPDF',compact('doc','tabla','cant','reqC','docC'));
 		return $pdf->stream();
 	}
+
+	public function meritos (Combocatoria $convocatoria)
+	{
+
+		$pdf = PDF::loadview('meritosPDF',compact('convocatoria'));
+		return $pdf->stream();
+	}
+
 	public function generar($codigoS,Combocatoria $convocatoria){
 		$docC= Documento_Combocatoria::all();
 		$codS = \DB::table('personas')->where('id', $codigoS)->first();

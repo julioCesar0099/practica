@@ -28,7 +28,8 @@
                     <th>Título</th>
                     <th>Estado</th>
                     <th>Calificar</th>
-                    <th>Notas</th>
+                    <th>Notas de Merito</th>
+                    <th>Notas finales</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,6 +48,9 @@
                           @can('calificar postulantes',new \Spatie\Permission\Models\Role) 
                           <a href="{{ route('admin.calificaciones.items',$convocatoria) }}"  class="btn btn-xs btn-info" ><i class="fa fa-check"></i></a>
                           @endcan
+                      </td>
+                      <td>
+                      <a href="{{ route('admin.meritosPDF',$convocatoria)}}"  class="btn btn-xs btn-default"  target="_blank"><i class="fa fa-eye"></i></a>
                       </td>
                       <td>
                          @can('publicar notas',new \Spatie\Permission\Models\Role) 

@@ -26,4 +26,9 @@ class Postulante extends Model
    {
          return $this->hasMany(notas::class);
    }
+
+   public function notasm()
+   {
+         return $this->hasMany(Notasm::class);
+   }
 }

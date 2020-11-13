@@ -150,7 +150,7 @@ Route::get('/{id}/notas', 'InicioController@mostrar');
 //Route::get('/show', 'PDFController@show');
 //Route::get('/download', 'PDFController@download');
 Route::get('/index/{id}', 'PDFController@index');
-
+Route::get('/indexM/{convocatoria}' , 'PDFController@meritos')->name('admin.meritosPDF');
    
 Route::get('/notas/{convocatoria}','PostulantController@verNotas')->name('notas.ver');
 

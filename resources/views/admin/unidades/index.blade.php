@@ -31,7 +31,7 @@
                         <th>Unidad</th>
                         <th>Departamento</th>
                         <th>Acciones</th>
-                      </tr>
+                      </tr>0
                     </thead>
                     <tbody>
                       @foreach ($unidades as $unidad)

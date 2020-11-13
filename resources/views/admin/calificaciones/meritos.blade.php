@@ -70,12 +70,14 @@
                                                                                 
                                                                                 @if( $subseccion->tieneIncisos($subseccion) === 0 )
                                                                                     <td>
+                                                                                        <input type="text" name="subseccionN[]" class="hide" value="{{$subseccion->nombre }}"> 
                                                                                         <input type="number" name="subseccion[]"  max="{{ $subseccion->puntaje}}" class="form-control" placeholder="ingrese la nota" value="{{old('subseccion')}}" >
                                                                                         <input name="sumasubseccion" type="number" class="hide " value="{{ $sumasubseccion=$sumasubseccion+$subseccion->puntaje }}" >
                                                                                     </td>
                                                                                  @else
                                                                                  <td>
-                                                                                   
+                                                                                    <input type="text" name="subseccionN[]" class="hide" value="{{$subseccion->nombre }}"> 
+                                                                                    <input type="number" name="subseccion[]" class="hide" value="0"> 
                                                                                     <input name="sumasubseccion" type="number" class="hide " value="{{ $sumasubseccion=$sumasubseccion+$subseccion->puntaje }}" >
                                                                                  </td>
                                                                                  @endif
@@ -106,10 +108,20 @@
                                                                                                 <div class="table-responsive col-md-4 pull-right">
                                                                                                         <table class="table table-bordered " >
                                                                                                                 <tr>
+                                                                                                                    @if( $inciso->tieneSubincisos($inciso) === 0 )
                                                                                                                          <td>
-                                                                                                                    
+                                                                                                                            <input type="text" name="incisoN[]" class="hide" value="{{$inciso->nombre }}"> 
+                                                                                                                            <input type="number" name="inciso[]"  max="{{ $inciso->puntaje}}" class="form-control" placeholder="ingrese la nota" value="{{old('inciso')}}" >
                                                                                                                             <input name="sumainciso" type="number" class="hide " value="{{  $sumainciso=$sumainciso+$inciso->puntaje }}" >
                                                                                                                         </td>
+                                                                                                                        @else
+                                                                                                                    
+                                                                                                                         <td>
+                                                                                                                            <input type="text" name="incisoN[]" class="hide" value="{{$inciso->nombre }}">
+                                                                                                                            <input type="number" name="inciso[]" class="hide" value="0">  
+                                                                                                                            <input name="sumainciso" type="number" class="hide " value="{{  $sumainciso=$sumainciso+$inciso->puntaje }}" >
+                                                                                                                        </td>
+                                                                                                                        @endif
                                                                                                                     <td> <div class="form-group  pull-right">
                                                                                                                             <label > {{$inciso->puntaje}} </label>   
                                                                                                                             <small > puntos</small>
@@ -139,6 +151,7 @@
                                                                                                                         <table class="table table-bordered "  >
                                                                                                                                 <tr>
                                                                                                                                     <td>
+                                                                                                                                    <input type="text" name="subincisoN[]" class="hide" value="{{$subinciso->nombre }}"> 
                                                                                                                                     <input  type="number"  name="subinciso[]" max="{{ $inciso->puntaje}}" class="form-control" placeholder="ingrese la nota" value="{{old('subinciso[]')}}" >
                                                                                                                                     </td>
                                                                                                                                     <td> <div class="form-group  pull-right">

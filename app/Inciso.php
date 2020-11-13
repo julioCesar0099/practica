@@ -15,5 +15,19 @@ class Inciso extends Model
     {
             return $this->belongsTo(Subseccion::class);
     }
+
+    public function tieneSubincisos(Inciso $inciso )
+    {
+        
+        $subincisos=Subinciso::where('inciso_id', $inciso->id )->get();
+
+        if( count($subincisos)!= 0 )
+        {
+            return 1 ;
+        }else{
+            return 0;
+        }
+        
+    }
     
 }

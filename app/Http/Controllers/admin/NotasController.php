@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Combocatoria;
 use App\Postulante;
 use App\notas;
+use App\Notasm;
 use App\Seccion;
 use App\Asignacion;
 use Illuminate\Http\Request;
@@ -136,7 +137,42 @@ class NotasController extends Controller
     public function mer(Request $request,Postulante $postulante , $destino ,Combocatoria $convocatoria )
     {
 
-        
+        $postulante->notasm()->delete();
+
+            $descripcion=$request->subseccionN;
+            $nota=$request->subseccion;
+            $a=count($request->subseccionN);
+            for($i=0; $i< $a ; $i++){
+                $n=new Notasm;
+                $n->postulante_id=$postulante->id;
+                $n->descripcion=$descripcion[$i];
+                $n->nota=$nota[$i];
+                $n->save();
+            }
+
+            $descripcion=$request->incisoN;
+            $nota=$request->inciso;
+            $a=count($request->incisoN);
+            for($i=0; $i< $a ; $i++){
+                $n=new Notasm;
+                $n->postulante_id=$postulante->id;
+                $n->descripcion=$descripcion[$i];
+                $n->nota=$nota[$i];
+                $n->save();
+            }
+
+            $descripcion=$request->subincisoN;
+            $nota=$request->subinciso;
+            $a=count($request->subincisoN);
+            for($i=0; $i< $a ; $i++){
+                $n=new Notasm;
+                $n->postulante_id=$postulante->id;
+                $n->descripcion=$descripcion[$i];
+                $n->nota=$nota[$i];
+                $n->save();
+            }
+
+
         $subseccion=$request->subseccion;
         $subinciso=$request->subinciso;
 
